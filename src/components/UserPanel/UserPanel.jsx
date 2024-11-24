@@ -2,18 +2,14 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectUser } from '../../redux/auth/selectors.js';
 import { getUser } from '../../redux/auth/operations.js';
-
 import UserBar from '../UserBar/UserBar';
 import css from './UserPanel.module.css';
-
 const UserPanel = ({ setOpenSetting }) => {
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
-
   useEffect(() => {
     dispatch(getUser());
   }, [dispatch]);
-
   const getDisplayName = (name, email) => {
     if (name && name !== 'User') {
       return name;
@@ -23,13 +19,11 @@ const UserPanel = ({ setOpenSetting }) => {
       return 'User';
     }
   };
-
   const email = user?.email;
   const name = user?.name;
   const displayName = getDisplayName(name, email);
   const shortDisplayName = displayName.substring(0, 5);
   const avatarURL = user?.avatar;
-
   return (
     <div className={css.panelWrapper}>
       <h2 className={css.title}>
@@ -44,5 +38,4 @@ const UserPanel = ({ setOpenSetting }) => {
     </div>
   );
 };
-
 export default UserPanel;
