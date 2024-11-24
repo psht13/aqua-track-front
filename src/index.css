@@ -1,7 +1,32 @@
-@import "node_modules/modern-normalize/modern-normalize.css";
+@import "../node_modules/modern-normalize/modern-normalize.css";
+
+@font-face {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: normal;
+  src: url("./assets/fonts/Poppins-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: bold;
+  src: url("./assets/fonts/Poppins-Bold.ttf") format("truetype");
+}
+
+:root {
+  /* main colors */
+  --main: #323f47;
+  --main-text: #2f2f2f;
+  --accent: #9be1a0;
+  --background: #f0eff4;
+  --main-white: #ffffff;
+  --font: "Poppins";
+}
 
 body {
-  font-family: sans-serif;
+  color: var(--main-text);
+  font-family: var(--font);
 }
 
 h1,
