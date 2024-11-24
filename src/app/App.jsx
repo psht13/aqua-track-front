@@ -1,11 +1,12 @@
 import { Route, Routes } from "react-router";
-import HomePage from "../pages/home-page/HomePage";
 import { Suspense } from "react";
-import Loader from "../components/loader/Loader";
 
+import HomePage from "../pages/home-page/HomePage";
+import Loader from "../components/loader/Loader";
+import css from "./App.module.css";
 const App = () => {
   return (
-    <>
+    <div className={css.container}>
       <Suspense fallback={<Loader />}>
         <Routes>
           <Route
@@ -14,7 +15,7 @@ const App = () => {
           />
         </Routes>
       </Suspense>
-    </>
+    </div>
   );
 };
 
