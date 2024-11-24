@@ -1,0 +1,111 @@
+/* Модальне вікно - накладення поверх контенту */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5); /* затемнення фону */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* щоб модальне вікно було поверх інших елементів */
+}
+
+.modal {
+  position: relative;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 400px;
+  max-width: 90%;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+  padding: 40px 20px;
+}
+
+.closeBtn {
+  position: absolute;
+  top: 20px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.settingFormTitle {
+  font-size: 20px;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+
+  margin-bottom: 20px;
+}
+
+.imgContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  margin-bottom: 40px;
+}
+
+.avatar {
+  border-radius: 50%;
+  margin-bottom: 10px;
+  width: 75px;
+  height: 75px;
+}
+
+.customFileUpload {
+  display: flex;
+  gap: 8px;
+  border: none;
+  cursor: pointer;
+}
+
+.uploadBtn {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+}
+
+.genderContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 24px;
+}
+
+.icon {
+  width: 18px;
+  height: 18px;
+
+  stroke: currentColor;
+  fill: transparent;
+}
+
+.genderTitle {
+  font-size: 16px;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+}
+
+input[type="radio"] {
+  transform: scale(1.2);
+}
+
+.radioGender {
+  display: flex;
+  gap: 20px;
+
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 18px;
+  letter-spacing: -0.01em;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+}
