@@ -43,7 +43,14 @@ const Modal = ({ children, onClose }) => {
           className={css.closeButton}
           onClick={() => handleCloseModal({ code: "Escape" })}
         >
-          &#x2715; {/* Іконка "×" */}
+          <svg
+            width={12}
+            height={12}
+            className={css.icon}
+            style={{ stroke: "#2F2F2F", fill: "transparent" }}
+          >
+            <use href="src/assets/sprite.svg#icon-x"></use>
+          </svg>
         </button>
       </div>
     </div>

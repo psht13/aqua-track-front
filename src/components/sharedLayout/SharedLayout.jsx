@@ -1,7 +1,15 @@
-import css from "./SharedLayout.module.css";
+import { Outlet } from "react-router";
+import { Suspense } from "react";
+import Loader from "../loader/Loader";
 
-const SharedLayout = ({ children }) => {
-  return <div className={css.container}>{children}</div>;
+const SharedLayout = () => {
+  return (
+    <main>
+      <Suspense fallback={<Loader />}>
+        <Outlet />
+      </Suspense>
+    </main>
+  );
 };
 
 export default SharedLayout;
