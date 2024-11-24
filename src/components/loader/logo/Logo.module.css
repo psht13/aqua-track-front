@@ -1,0 +1,28 @@
+.logo {
+  display: inline-block;
+  width: 120px;
+  height: auto;
+  background-image: url('/assets/icons/logo@1x.svg');
+  background-repeat: no-repeat;
+  background-size: contain;
+  @media (min-resolution: 192dpi), (-webkit-min-device-pixel-ratio: 2) {
+    background-image: url('/assets/icons/logo@2x.svg');
+  }
+  @media screen and (min-width: 768px) {
+    width: 150px;
+  }
+  @media screen and (min-width: 1440px) {
+    width: 180px;
+  }
+}
+
+.hidden-text {
+  position: absolute;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+}
