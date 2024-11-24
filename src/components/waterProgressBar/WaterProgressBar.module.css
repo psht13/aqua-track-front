@@ -1,0 +1,54 @@
+.back {
+  max-width: 262px;
+  height: 335px;
+  background: url("../../assets/imgs/bottle-bg-mobile.png");
+  padding-top: 175px;
+  padding-left: 32px;
+  margin: auto;
+}
+
+.card {
+  border-radius: 15px;
+  padding: 12px;
+  max-width: 198px;
+  height: 70px;
+  box-shadow: 0 4px 50px 0 rgba(0, 0, 0, 0.1);
+  background: var(--main-white);
+}
+
+.today {
+  font-family: var(--font-family);
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 100%;
+  color: var(--main);
+}
+
+@media screen and (min-width: 768px) {
+  .back {
+    max-width: 374px;
+    height: 477px;
+    background: url("../../assets/imgs/bottle-bg-tablet.png");
+    padding-top: 253px;
+    padding-left: 40px;
+  }
+  .card {
+    padding: 20px;
+    max-width: 295px;
+    height: 106px;
+  }
+  .today {
+    font-size: 15px;
+    line-height: 149%;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .back {
+    max-width: 472px;
+    height: 604px;
+    background: url("../../assets/imgs/bottle-bg-desktop.png");
+    padding-top: 358px;
+    padding-left: 88px;
+  }
+}
