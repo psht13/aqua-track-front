@@ -1,20 +1,17 @@
 import { Route, Routes } from "react-router";
-import { Suspense } from "react";
+import SharedLayout from "../components/SharedLayout/SharedLayout";
 
 import HomePage from "../pages/home-page/HomePage";
-import Loader from "../components/loader/Loader";
 import css from "./App.module.css";
+
 const App = () => {
   return (
     <div className={css.container}>
-      <Suspense fallback={<Loader />}>
-        <Routes>
-          <Route
-            path="/"
-            element={<HomePage />}
-          />
-        </Routes>
-      </Suspense>
+      <Routes>
+        <Route path="/" element={<SharedLayout />}>
+          <Route path="/" element={<HomePage />} />
+        </Route>
+      </Routes>
     </div>
   );
 };
