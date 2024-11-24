@@ -1,0 +1,39 @@
+.advantages {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  background: url('/assets/images/advantages-background@1x.webp') no-repeat center/cover;
+  background-size: cover;
+  @media (min-resolution: 192dpi) {
+    background: url('/assets/images/advantages-background@2x.webp') no-repeat center/cover;
+  }
+  @media screen and (min-width: 768px) {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 40px;
+  }
+  @media screen and (min-width: 1440px) {
+    padding: 60px;
+  }
+}
+
+.advantages-item {
+  max-width: 300px;
+  text-align: center;
+  img {
+    width: 100px;
+    height: auto;
+    margin-bottom: 10px;
+    src: url('/assets/icons/advantage-icon@1x.webp');
+    srcset: 
+      '/assets/icons/advantage-icon@1x.webp 1x',
+      '/assets/icons/advantage-icon@2x.webp 2x';
+  }
+}
+
+.advantages-title {
+  font-size: 18px;
+  font-weight: bold;
+  color: #323547;
+}
