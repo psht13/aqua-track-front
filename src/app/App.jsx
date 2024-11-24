@@ -1,11 +1,12 @@
 import { Route, Routes } from "react-router";
-import HomePage from "../pages/home-page/HomePage";
 import { Suspense } from "react";
 import Loader from "../components/loader/Loader";
 import SharedLayout from "../components/SharedLayout/SharedLayout";
 import Modal from "../components/modal/Modal";
 import { useState } from "react";
 
+import HomePage from "../pages/home-page/HomePage";
+import css from "./App.module.css";
 const App = () => {
   const [isModalOpen, setModalOpen] = useState(false);
   return (
@@ -19,13 +20,15 @@ const App = () => {
           <p>Це приклад контенту.</p>
         </Modal>
       )}
-      <Suspense fallback={<Loader />}>
-        <SharedLayout>
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-          </Routes>
-        </SharedLayout>
-      </Suspense>
+      <div className={css.container}>
+        <Suspense fallback={<Loader />}>
+          <SharedLayout>
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+            </Routes>
+          </SharedLayout>
+        </Suspense>
+      </div>
     </>
   );
 };
