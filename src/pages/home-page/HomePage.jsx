@@ -1,13 +1,13 @@
-import WelcomeSection from "../../components/WelcomeSection/WelcomeSection";
-import AdvantagesSection from "../../components/AdvantagesSection/AdvantagesSection";
+import AdvantagesSection from "../../components/advantagesSection/AdvantagesSection";
+import WelcomeSection from "../../components/welcomeSection/WelcomeSection";
 
 const HomePage = () => {
-	return (
-		<main>
-			<WelcomeSection />
-			<AdvantagesSection />
-		</main>
-	);
+  return (
+    <main>
+      <WelcomeSection />
+      <AdvantagesSection />
+    </main>
+  );
 };
 
 export default HomePage;
