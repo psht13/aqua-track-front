@@ -1,28 +1,31 @@
 /* Модальне вікно - накладення поверх контенту */
-.modalOverlay {
+/* .modalOverlay {
   position: fixed;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 100px;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.5); /* затемнення фону */
+  background: rgba(0, 0, 0, 0.5); 
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 1000; /* щоб модальне вікно було поверх інших елементів */
-}
+  z-index: 1000; 
+} */
 
-.modal {
+/* .modal {
   position: relative;
   background: white;
-  padding: 20px;
   border-radius: 10px;
-  width: 400px;
-  max-width: 90%;
+  max-width: 375px;
+  margin-bottom: 20px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-
+  overflow-y: auto;
+  height: 100vh;
   padding: 40px 20px;
-}
+} */
 
 .closeBtn {
   position: absolute;
@@ -40,6 +43,7 @@
   letter-spacing: -0.01em;
 
   margin-bottom: 20px;
+  color: #323f47;
 }
 
 .imgContainer {
@@ -49,6 +53,7 @@
   justify-content: center;
 
   margin-bottom: 40px;
+  color: #323f47;
 }
 
 .avatar {
@@ -91,6 +96,8 @@
   font-size: 16px;
   line-height: 1.25;
   letter-spacing: -0.01em;
+
+  color: #323f47;
 }
 
 input[type="radio"] {
@@ -102,10 +109,186 @@ input[type="radio"] {
   gap: 20px;
 
   font-size: 14px;
-  font-weight: 400;
-  line-height: 18px;
+
+  line-height: 1.28;
   letter-spacing: -0.01em;
-  text-align: left;
-  text-underline-position: from-font;
-  text-decoration-skip-ink: none;
+  color: #323f47;
+}
+
+.userDataWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.userName {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+
+  color: #323f47;
+}
+
+.inputName {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.28;
+  letter-spacing: -0.01em;
+  padding: 14px 16px;
+  border-radius: 15px;
+
+  width: 100%;
+
+  outline: none;
+  color: #323f47;
+  border: 1px solid #2f2f2f26;
+}
+
+.inputName:focus {
+  border: 1px solid #2f2f2f66;
+}
+
+.userEmailWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.dailyTitle {
+  font-size: 16px;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+
+  margin-bottom: 14px;
+}
+
+.dailyList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.dailyText {
+  font-size: 14px;
+  line-height: 1.28;
+  letter-spacing: -0.01em;
+
+  margin-bottom: 4px;
+}
+
+.dailyFormula {
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.28;
+  letter-spacing: -0.01em;
+
+  color: #9be1a0;
+}
+
+.dailyDescribeWrapper {
+  padding: 16px;
+  border: 1px solid #2f2f2f26;
+  border-radius: 15px;
+  margin-bottom: 14px;
+}
+
+.dailyDescribeSpan {
+  color: #9be1a0;
+}
+
+.dailyDescribeText {
+  font-size: 14px;
+
+  line-height: 1.28;
+  letter-spacing: -0.01em;
+  color: #2f2f2f99;
+}
+
+.dailyAttention {
+  font-size: 14px;
+  line-height: 1.28;
+  letter-spacing: -0.01em;
+  margin-bottom: 24px;
+}
+
+input::placeholder {
+  color: #2f2f2f; /* Колір плейсхолдера */
+}
+
+.dailyWeightWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.dailyWeight {
+  font-size: 14px;
+
+  line-height: 1.28;
+  letter-spacing: -0.01em;
+}
+
+.dailyTimeWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.dailyRequiredWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+
+  font-size: 14px;
+  line-height: 1.28;
+  letter-spacing: -0.01em;
+  margin-bottom: 14px;
+}
+
+.dailyRequiredNorma {
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.28;
+
+  color: #9be1a0;
+}
+
+.dailyWater {
+  display: block;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 20px;
+  letter-spacing: -0.01em;
+  margin-bottom: 8px;
+
+  color: #323f47;
+}
+
+.dailyWaterWrapper {
+  margin-bottom: 40px;
+}
+
+.saveButton {
+  width: 116px;
+  height: 46px;
+  padding: 14px 40px;
+  gap: 10px;
+  border-radius: 30px;
+  align-items: center;
+
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.28;
+  letter-spacing: -0.01em;
+  text-align: center;
+
+  background-color: #9be1a0;
+  color: #323f47;
+  border: none;
 }

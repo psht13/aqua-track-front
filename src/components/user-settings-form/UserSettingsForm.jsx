@@ -98,7 +98,10 @@ const UserSettingsForm = ({ onClose, onUpdate }) => {
         <div className={css.imgContainer}>
           <img
             className={css.avatar}
-            src={avatarPreview || "/default-avatar.png"}
+            src={
+              avatarPreview ||
+              "src/assets//imgs/user-settings-form/avatar-user-basic.jpg"
+            }
             alt="Avatar preview"
             width="75px"
           />
@@ -136,33 +139,86 @@ const UserSettingsForm = ({ onClose, onUpdate }) => {
           {errors.gender && <p>{errors.gender.message}</p>}
         </div>
 
-        <div>
-          <label>Your name</label>
-          <input type="text" {...register("name")} />
+        <div className={css.userDataWrapper}>
+          <label className={css.userName}>Your name</label>
+          <input className={css.inputName} type="text" {...register("name")} />
           {errors.name && <p>{errors.name.message}</p>}
         </div>
 
-        <div>
-          <label>Email</label>
-          <input type="email" {...register("email")} />
+        <div className={css.userEmailWrapper}>
+          <label className={css.userName}>Email</label>
+          <input
+            className={css.inputName}
+            type="email"
+            {...register("email")}
+          />
           {errors.email && <p>{errors.email.message}</p>}
         </div>
 
         <div>
-          <label>Your weight in kilograms:</label>
-          <input type="number" {...register("weight")} />
+          <h3 className={css.dailyTitle}>My daily norma</h3>
+          <ul className={css.dailyList}>
+            <li className={css.dailyItem}>
+              <p className={css.dailyText}>For woman:</p>
+              <p className={css.dailyFormula}>V=(M*0,03) + (T*0,4)</p>
+            </li>
+            <li className={css.dailyItem}>
+              <p className={css.dailyText}>For man:</p>
+              <p className={css.dailyFormula}>V=(M*0,04) + (T*0,6)</p>
+            </li>
+          </ul>
+          <div className={css.dailyDescribeWrapper}>
+            <p className={css.dailyDescribeText}>
+              <span className={css.dailyDescribeSpan}>*</span> V is the volume
+              of the water norm in liters per day, M is your body weight, T is
+              the time of active sports, or another type of activity
+              commensurate in terms of loads (in the absence of these, you must
+              set 0)
+            </p>
+          </div>
+          <p className={css.dailyAttention}>
+            <span className={css.dailyAttentionSpan}>!</span>
+            Active time in hours
+          </p>
+        </div>
+
+        <div className={css.dailyWeightWrapper}>
+          <label className={css.dailyWeight}>Your weight in kilograms:</label>
+          <input
+            className={css.inputName}
+            type="number"
+            {...register("weight")}
+            placeholder="0"
+          />
           {errors.weight && <p>{errors.weight.message}</p>}
         </div>
 
-        <div>
-          <label>The time of active participation in sports:</label>
-          <input type="number" {...register("activeHours")} />
+        <div className={css.dailyTimeWrapper}>
+          <label className={css.dailyWeight}>
+            The time of active participation in sports:
+          </label>
+          <input
+            className={css.inputName}
+            type="number"
+            {...(register("activeHours") || 0)}
+            placeholder="0"
+          />
           {errors.activeHours && <p>{errors.activeHours.message}</p>}
         </div>
 
-        <div>
-          <label>The required amount of water in liters per day:</label>
+        <div className={css.dailyRequiredWrapper}>
+          <p className={css.dailyRequiredText}>
+            The required amount of water in liters per day:
+          </p>
+          <p className={css.dailyRequiredNorma}>1.8 L</p>
+        </div>
+
+        <div className={css.dailyWaterWrapper}>
+          <label className={css.dailyWater}>
+            Write down how much water you will drink:
+          </label>
           <input
+            className={css.inputName}
             type="text"
             {...register("waterNorm")}
             value={calculateRecommendedWaterNorm(
@@ -175,7 +231,11 @@ const UserSettingsForm = ({ onClose, onUpdate }) => {
           {errors.waterNorm && <p>{errors.waterNorm.message}</p>}
         </div>
 
-        <button type="submit" onClick={handleSubmit(onSubmit)}>
+        <button
+          className={css.saveButton}
+          type="submit"
+          onClick={handleSubmit(onSubmit)}
+        >
           Save
         </button>
 
