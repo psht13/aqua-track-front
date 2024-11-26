@@ -1,5 +1,6 @@
 import AdvantagesSection from "../../components/advantagesSection/AdvantagesSection";
-import UserSettingsForm from "../../components/user-settings-form/UserSettingsForm";
+import UserSettingsModal from "../../components/user-settings-modal/UserSettingsModal";
+
 import WelcomeSection from "../../components/welcomeSection/WelcomeSection";
 
 const HomePage = () => {
@@ -7,7 +8,6 @@ const HomePage = () => {
     <main>
       <WelcomeSection />
       <AdvantagesSection />
-      <UserSettingsForm />
     </main>
   );
 };
