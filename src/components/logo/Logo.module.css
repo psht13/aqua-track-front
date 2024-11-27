@@ -1,28 +1,17 @@
 .logo {
-  display: inline-block;
-  width: 120px;
-  height: auto;
-  background-image: url('/assets/icons/logo@1x.svg');
-  background-repeat: no-repeat;
-  background-size: contain;
-  @media (min-resolution: 192dpi), (-webkit-min-device-pixel-ratio: 2) {
-    background-image: url('/assets/icons/logo@2x.svg');
-  }
+  font-family: 'Poppins', sans-serif; 
+  font-weight: 700;
+  font-size: 18px; 
+  line-height: 24px; 
+  letter-spacing: -0.01em; 
+  color: #323F47; 
+  text-transform: uppercase;
+  text-align: left;
+  cursor: pointer; 
   @media screen and (min-width: 768px) {
-    width: 150px;
-  }
-  @media screen and (min-width: 1440px) {
-    width: 180px;
+    font-size: 24px; 
   }
 }
 
-.hidden-text {
-  position: absolute;
-  overflow: hidden;
-  clip: rect(0 0 0 0);
-  width: 1px;
-  height: 1px;
-  margin: -1px;
-  padding: 0;
-  border: 0;
-}
+
+
