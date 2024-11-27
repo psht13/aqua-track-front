@@ -4,6 +4,7 @@ import css from "./Modal.module.css";
 
 const Modal = ({ children, onClose }) => {
   const [active, setActive] = useState(false);
+  const [visible, setVisible] = useState(true);
 
   const dynamicStyle = clsx(css.backdrop, active && css.active);
 
@@ -11,7 +12,10 @@ const Modal = ({ children, onClose }) => {
     (e) => {
       if (e.target === e.currentTarget || e.code === "Escape") {
         setActive(false);
-        setTimeout(onClose, 300);
+        setTimeout(() => {
+          setVisible(false);
+          onClose();
+        }, 300);
       }
     },
     [onClose]
@@ -33,6 +37,8 @@ const Modal = ({ children, onClose }) => {
       document.body.removeAttribute("style");
     };
   }, [handleCloseModal]);
+
+  if (!visible) return null;
 
   return (
     <div className={dynamicStyle} onClick={handleCloseModal}>
