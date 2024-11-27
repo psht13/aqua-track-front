@@ -1,6 +1,6 @@
 .modalOverlay {
   position: fixed;
-  padding: 50px 16px; /* Відступ зверху */
+  padding: 50px 16px;
   top: 0;
   left: 0;
   right: 0;
@@ -20,7 +20,7 @@
   max-width: 375px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   overflow-y: auto;
-  max-height: calc(100vh - 50px); /* Обмеження висоти, враховуючи відступ */
+  max-height: calc(100vh - 50px);
   padding: 40px 20px;
 }
 

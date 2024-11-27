@@ -42,15 +42,14 @@ const UserSettingsForm = ({ onClose, onUpdate }) => {
   } = useForm({
     resolver: yupResolver(validationSchema),
     defaultValues: {
-      gender: "female", // Встановлення "female" як значення за замовчуванням
+      gender: "female",
       waterNorm: "1.8",
     },
   });
 
   const avatar = watch("avatar");
-  const gender = watch("gender"); // Отримуємо значення gender з форми
+  const gender = watch("gender");
 
-  // Update avatar preview when user selects a file
   useEffect(() => {
     if (avatar && avatar[0]) {
       setAvatarPreview(URL.createObjectURL(avatar[0]));
@@ -61,9 +60,9 @@ const UserSettingsForm = ({ onClose, onUpdate }) => {
     let waterNorm = 0;
 
     if (gender === "female") {
-      waterNorm = weight * 0.03 + activeHours * 0.4; // Формула для жінок
+      waterNorm = weight * 0.03 + activeHours * 0.4;
     } else if (gender === "male") {
-      waterNorm = weight * 0.04 + activeHours * 0.6; // Формула для чоловіків
+      waterNorm = weight * 0.04 + activeHours * 0.6;
     }
 
     return waterNorm.toFixed(1);
@@ -236,7 +235,7 @@ const UserSettingsForm = ({ onClose, onUpdate }) => {
               value={calculateRecommendedWaterNorm(
                 watch("weight") || 0,
                 watch("activeHours") || 0,
-                gender // передаємо значення статі
+                gender
               )}
               readOnly
             />

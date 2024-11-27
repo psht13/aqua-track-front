@@ -8,6 +8,7 @@ const HomePage = () => {
     <main>
       <WelcomeSection />
       <AdvantagesSection />
+      <UserSettingsModal />
     </main>
   );
 };
