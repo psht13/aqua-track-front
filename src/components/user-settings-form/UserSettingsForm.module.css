@@ -1,0 +1,470 @@
+.radioGender {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.customRadio {
+  position: relative;
+  padding-left: 30px;
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 20px;
+}
+
+.customRadio input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.customRadio .checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  border: 1.5px solid #9be1a0;
+  border-radius: 50%;
+}
+
+.customRadio .checkmark::after {
+  content: "";
+  position: absolute;
+  display: none;
+  top: 50%;
+  left: 50%;
+  width: 8.5px;
+  height: 8.5px;
+  background: #9be1a0;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.customRadio input:checked ~ .checkmark::after {
+  display: block;
+}
+
+.settingFormTitle {
+  font-size: 20px;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+
+  margin-bottom: 20px;
+  color: #323f47;
+}
+
+.imgContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  margin-bottom: 40px;
+  color: #323f47;
+}
+
+.avatar {
+  border-radius: 50%;
+  margin-bottom: 10px;
+  width: 75px;
+  height: 75px;
+}
+
+.customFileUpload {
+  display: flex;
+  gap: 8px;
+  border: none;
+  cursor: pointer;
+}
+
+.uploadBtn {
+  font-size: 14px;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+
+  color: #2f2f2f;
+}
+
+.genderContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 24px;
+}
+
+.icon {
+  width: 18px;
+  height: 18px;
+
+  stroke: currentColor;
+  fill: transparent;
+}
+
+.genderTitle {
+  font-size: 16px;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+
+  color: #323f47;
+}
+
+input[type="radio"] {
+  transform: scale(1.2);
+}
+
+.radioGender {
+  display: flex;
+  gap: 20px;
+
+  font-size: 14px;
+
+  line-height: 1.28;
+  letter-spacing: -0.01em;
+  color: #323f47;
+}
+
+.userDataWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.userName {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+
+  color: #323f47;
+}
+
+.inputName {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.28;
+  letter-spacing: -0.01em;
+  padding: 14px 16px;
+  border-radius: 15px;
+
+  width: 100%;
+
+  outline: none;
+  color: #323f47;
+  border: 1px solid #2f2f2f26;
+}
+
+.inputName:focus {
+  border: 1px solid #2f2f2f66;
+}
+
+.userEmailWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.dailyTitle {
+  font-size: 16px;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+
+  margin-bottom: 14px;
+}
+
+.dailyList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.dailyText {
+  font-size: 14px;
+  line-height: 1.28;
+  letter-spacing: -0.01em;
+
+  margin-bottom: 4px;
+}
+
+.dailyFormula {
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.28;
+  letter-spacing: -0.01em;
+
+  color: #9be1a0;
+}
+
+.dailyDescribeWrapper {
+  padding: 16px;
+  border: 1px solid #2f2f2f26;
+  border-radius: 15px;
+  margin-bottom: 14px;
+}
+
+.dailyDescribeSpan {
+  color: #9be1a0;
+}
+
+.dailyDescribeText {
+  font-size: 14px;
+
+  line-height: 1.28;
+  letter-spacing: -0.01em;
+  color: #2f2f2f99;
+}
+
+.dailyAttention {
+  font-size: 14px;
+  line-height: 1.28;
+  letter-spacing: -0.01em;
+}
+
+input::placeholder {
+  color: #2f2f2f;
+}
+
+.dailyWeightWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.dailyWeight {
+  font-size: 14px;
+
+  line-height: 1.28;
+  letter-spacing: -0.01em;
+}
+
+.dailyTimeWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.dailyRequiredWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+
+  font-size: 14px;
+  line-height: 1.28;
+  letter-spacing: -0.01em;
+  margin-bottom: 14px;
+}
+
+.dailyRequiredNorma {
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.28;
+
+  color: #9be1a0;
+}
+
+.dailyWater {
+  display: block;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 20px;
+  letter-spacing: -0.01em;
+  margin-bottom: 8px;
+
+  color: #323f47;
+}
+
+.dailyWaterWrapper {
+  margin-bottom: 40px;
+}
+
+.saveButton {
+  width: 116px;
+  height: 46px;
+  padding: 14px 40px;
+  gap: 10px;
+  border-radius: 30px;
+  align-items: center;
+
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.28;
+  letter-spacing: -0.01em;
+  text-align: center;
+
+  background-color: #9be1a0;
+  color: #323f47;
+  border: none;
+  cursor: pointer;
+}
+
+.saveButton:hover,
+.saveButton:focus {
+  background-color: #87d28d;
+  transition: background-color 0.3s;
+}
+
+.exclamation {
+  font-size: 24px;
+  color: #9be1a0;
+
+  align-items: center;
+}
+
+.exclamationWrapper {
+  display: flex;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+@media screen and (min-width: 768px) {
+  .settingFormTitle {
+    font-size: 28px;
+    line-height: 1.14;
+  }
+
+  .avatar {
+    width: 100px;
+    height: 100px;
+  }
+
+  .icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .uploadBtn {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  .genderTitle {
+    font-size: 18px;
+    line-height: 1.33;
+  }
+
+  .radioGender {
+    font-size: 16px;
+    line-height: 1.5;
+    letter-spacing: -0.01em;
+  }
+
+  .userName {
+    font-size: 18px;
+    line-height: 1.33;
+    letter-spacing: -0.01em;
+  }
+
+  .inputName {
+    font-size: 16px;
+    line-height: 1.5;
+    padding: 16px;
+  }
+
+  .dailyTitle {
+    font-size: 18px;
+    line-height: 1.33;
+  }
+
+  .dailyList {
+    flex-direction: row;
+    gap: 28px;
+    margin-bottom: 14px;
+  }
+
+  .dailyText {
+    font-size: 16px;
+    line-height: 1.5;
+
+    margin-bottom: 4px;
+  }
+
+  .dailyFormula {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  .dailyDescribeText {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  .dailyAttention {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  .dailyWeight {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  .dailyRequiredWrapper {
+    align-items: center;
+    flex-direction: row;
+    gap: 5px;
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 14px;
+  }
+
+  .dailyWater {
+    font-size: 18px;
+    line-height: 1.33;
+    margin-bottom: 8px;
+  }
+
+  .saveButton {
+    width: 141px;
+    height: 56px;
+    padding: 16px 50px;
+
+    font-size: 16px;
+    line-height: 1.5;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .deskWrapper {
+    display: flex;
+    gap: 40px;
+  }
+
+  .deskMiniWrapper {
+    min-width: 400px;
+  }
+}
+
+/* Стиль для контейнера повідомлень про помилки */
+.errorMessage {
+  color: red; /* Червоний колір тексту */
+  font-size: 14px; /* Розмір шрифта */
+  margin-top: 5px; /* Відступ зверху */
+}
+
+/* Стиль для конкретних полів форми з помилками */
+.inputError {
+  border: 1px solid red; /* Червона обводка для поля з помилкою */
+}
+
+.inputError:focus {
+  border: 1px solid red;
+}
+
+/* Стиль для повідомлень про помилки для груп */
+.errorGroup {
+  margin-top: 10px;
+  font-weight: bold;
+}
