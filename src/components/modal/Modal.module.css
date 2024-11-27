@@ -14,7 +14,6 @@
   align-items: center;
   opacity: 0;
   transition: opacity 200ms linear;
-  overflow-y: auto;
 }
 
 .active {
@@ -33,7 +32,7 @@
   width: calc(100% - 32px);
   overflow-y: auto;
   max-height: 90vh;
-  overflow: hidden auto;
+  /* overflow: hidden; */
 }
 
 .modalContent::-webkit-scrollbar-button {
