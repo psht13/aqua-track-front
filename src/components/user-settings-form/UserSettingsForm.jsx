@@ -9,7 +9,7 @@ import axios from "axios";
 import css from "./UserSettingsForm.module.css";
 
 const validationSchema = Yup.object().shape({
-  avatar: Yup.mixed(),
+  avatarUrl: Yup.mixed(),
   gender: Yup.string().required("Gender is required"),
   name: Yup.string()
     .required("Name is required")
@@ -19,12 +19,12 @@ const validationSchema = Yup.object().shape({
     .typeError("Weight must be a number")
     .positive("Weight must be positive")
     .required("Weight is required"),
-  activeHours: Yup.number()
+  activeTime: Yup.number()
     .typeError("Active hours must be a number")
     .min(0, "Active hours cannot be negative")
     .max(24, "Active hours cannot exceed 24")
     .required("Active hours are required"),
-  waterNorm: Yup.number()
+  dailyNorm: Yup.number()
     .typeError("Daily water norm must be a number")
     .positive("Daily water norm must be positive")
     .required("Daily water norm is required"),
@@ -42,42 +42,42 @@ const UserSettingsForm = ({ onClose, onUpdate }) => {
   } = useForm({
     resolver: yupResolver(validationSchema),
     defaultValues: {
-      gender: "female",
-      waterNorm: "1.8",
+      gender: "Woman",
+      dailyNorm: "1.8",
     },
   });
 
-  const avatar = watch("avatar");
+  const avatarUrl = watch("avatarUrl");
   const gender = watch("gender");
 
   useEffect(() => {
-    if (avatar && avatar[0]) {
-      setAvatarPreview(URL.createObjectURL(avatar[0]));
+    if (avatarUrl && avatarUrl[0]) {
+      setAvatarPreview(URL.createObjectURL(avatarUrl[0]));
     }
-  }, [avatar]);
+  }, [avatarUrl]);
 
-  const calculateRecommendedWaterNorm = (weight, activeHours, gender) => {
-    let waterNorm = 0;
+  const calculateRecommendedWaterNorm = (weight, activeTime, gender) => {
+    let dailyNorm = 0;
 
-    if (gender === "female") {
-      waterNorm = weight * 0.03 + activeHours * 0.4;
-    } else if (gender === "male") {
-      waterNorm = weight * 0.04 + activeHours * 0.6;
+    if (gender === "Woman") {
+      dailyNorm = weight * 0.03 + activeTime * 0.4;
+    } else if (gender === "Man") {
+      dailyNorm = weight * 0.04 + activeTime * 0.6;
     }
 
-    return waterNorm.toFixed(1);
+    return dailyNorm.toFixed(1);
   };
 
   const onSubmit = async (data) => {
     try {
       const formData = new FormData();
-      formData.append("avatar", data.avatar[0]);
+      formData.append("avatarUrl", data.avatarUrl[0]);
       formData.append("gender", data.gender);
       formData.append("name", data.name);
       formData.append("email", data.email);
       formData.append("weight", data.weight);
-      formData.append("activeHours", data.activeHours);
-      formData.append("waterNorm", data.waterNorm);
+      formData.append("activeTime", data.activeTime);
+      formData.append("dailyNorm", data.dailyNorm);
 
       const response = await axios.post("/api/user/update", formData);
       if (response.status === 200) {
@@ -103,31 +103,33 @@ const UserSettingsForm = ({ onClose, onUpdate }) => {
           width="75px"
         />
 
-        <label htmlFor="avatar" className={css.customFileUpload}>
+        <label htmlFor="avatarUrl" className={css.customFileUpload}>
           <svg className={css.icon}>
             <use href="src/assets/sprite.svg#icon-upload" />
           </svg>
           <p className={css.uploadBtn}> Upload a photo</p>
         </label>
         <input
-          id="avatar"
+          id="avatarUrl"
           type="file"
-          {...register("avatar")}
+          {...register("avatarUrl")}
           accept="image/*"
           style={{ display: "none" }}
         />
-        {errors.avatar && <p>{errors.avatar.message}</p>}
+        {errors.avatarUrl && <p>{errors.avatarUrl.message}</p>}
       </div>
 
       <div className={css.genderContainer}>
         <h3 className={css.genderTitle}>Your gender identity</h3>
         <div className={css.radioGender}>
-          <label>
-            <input type="radio" value="female" {...register("gender")} />
+          <label className={css.customRadio}>
+            <input type="radio" value="Woman" {...register("gender")} />
+            <span className={css.checkmark}></span>
             Woman
           </label>
-          <label>
-            <input type="radio" value="male" {...register("gender")} />
+          <label className={css.customRadio}>
+            <input type="radio" value="Man" {...register("gender")} />
+            <span className={css.checkmark}></span>
             Man
           </label>
         </div>
@@ -211,10 +213,10 @@ const UserSettingsForm = ({ onClose, onUpdate }) => {
             <input
               className={css.inputName}
               type="number"
-              {...(register("activeHours") || 0)}
+              {...(register("activeTime") || 0)}
               placeholder="0"
             />
-            {errors.activeHours && <p>{errors.activeHours.message}</p>}
+            {errors.activeTime && <p>{errors.activeTime.message}</p>}
           </div>
 
           <div className={css.dailyRequiredWrapper}>
@@ -231,15 +233,15 @@ const UserSettingsForm = ({ onClose, onUpdate }) => {
             <input
               className={css.inputName}
               type="text"
-              {...register("waterNorm")}
+              {...register("dailyNorm")}
               value={calculateRecommendedWaterNorm(
                 watch("weight") || 0,
-                watch("activeHours") || 0,
+                watch("activeTime") || 0,
                 gender
               )}
               readOnly
             />
-            {errors.waterNorm && <p>{errors.waterNorm.message}</p>}
+            {errors.dailyNorm && <p>{errors.dailyNorm.message}</p>}
           </div>
         </div>
       </div>
