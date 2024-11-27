@@ -1,39 +1,164 @@
-.advantages {
+/* AdvantagesSection.module.css */
+.advantagesSection {
+  width: 100%;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px;
-  background: url('/assets/images/advantages-background@1x.webp') no-repeat center/cover;
+  justify-content: flex-start;
+  align-items: flex-end;
+  padding: 209px 16px 32px;
+  background-image: url("../../assets/imgs/advantageSection.jpg");
+  background-position: center;
   background-size: cover;
-  @media (min-resolution: 192dpi) {
-    background: url('/assets/images/advantages-background@2x.webp') no-repeat center/cover;
-  }
+  background-repeat: no-repeat;
+  border-radius: 24px;
+  
   @media screen and (min-width: 768px) {
-    flex-direction: row;
-    justify-content: space-between;
-    padding: 40px;
+    background-image: url("../../assets/imgs/advantageSectionTab.jpg");
+    min-width: 704px;
+    padding: 32px;
+    padding-top: 283px;
   }
+
   @media screen and (min-width: 1440px) {
+    background-image: url("../../assets/imgs/advantageSectionDesc.jpg");
+    min-width: 672px;
+    background-size: contain;
+    height: 736px;
     padding: 60px;
   }
 }
 
-.advantages-item {
-  max-width: 300px;
-  text-align: center;
-  img {
-    width: 100px;
-    height: auto;
-    margin-bottom: 10px;
-    src: url('/assets/icons/advantage-icon@1x.webp');
-    srcset: 
-      '/assets/icons/advantage-icon@1x.webp 1x',
-      '/assets/icons/advantage-icon@2x.webp 2x';
+.content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  @media screen and (min-width: 768px) {
+  }
+  @media screen and (min-width: 1440px) {
+    gap: 24px;
   }
 }
 
-.advantages-title {
-  font-size: 18px;
-  font-weight: bold;
-  color: #323547;
+.badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 160px;
+  padding: 14px 10px;
+  border-radius: 30px;
+  font-family: var(--font);
+  font-size: 14px;
+  font-weight: 600;
+  text-align: center;
+  color: var(--main);
+  background-color: var(--main-white);
+  padding: 14px 10px;
+
+  @media screen and (min-width: 768px) {
+    width: 227px;
+    padding: 10px 20px;
+    font-size: 15px;
+    }
+  @media screen and (min-width: 1440px) {
+    
+  }
+}
+
+.avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%; 
+  border: 2px solid var(--main-white); 
+  margin-left: -8px; 
+  z-index: 1; 
+  @media screen and (min-width: 768px) {
+    margin-left: -18px;
+    width: 47px;
+  height: 47px;
+  }
+}
+
+.avatar:first-child {
+  margin-left: 0; 
+}
+
+.avatar:nth-child(1) {
+  z-index: 3; 
+}
+
+.avatar:nth-child(2) {
+  z-index: 2; 
+}
+
+.avatar:nth-child(3) {
+  z-index: 1;
+}
+
+
+.customersText strong {
+  font-weight: 600;
+  color: var(--accent);
+}
+
+
+.featuresList {
+display: flex;
+align-self: flex-end;
+gap: 4px;
+width: 170px;
+flex-wrap: wrap;
+
+@media screen and (min-width: 768px) {
+  position: relative;
+  margin-top: -40px;
+    width: 242px;
+  }
+}
+
+.greenDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--accent);
+}
+.habitText, 
+.featuresText  {
+  font-family:var(--font); 
+  font-size: 8px;
+  font-weight: 600;
+  color: var(--main-text);
+  white-space: nowrap;
+  @media screen and (min-width: 768px) {
+    font-size: 12px;
+  }
+}
+.habitText {
+  color: var(--main-white);
+  }
+.featuresText {
+  color: var(--main-text);
+  
+}
+
+.statisticsItem,
+.settingItem,
+.habitItem {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--accent);
+  border-radius: 30px;
+  padding: 8px 12px;
+  @media screen and (min-width: 768px) {
+    padding: 11px 16px;
+  }
+}
+
+.habitItem {
+  background-color: var(--main);
+  gap: 4px;
+}
+
+.settingItem {
+  background-color: var(--main-white);
 }
