@@ -1,9 +1,7 @@
 import { Route, Routes } from "react-router";
-
 import HomePage from "../pages/home-page/HomePage";
-import css from "./App.module.css";
 import SharedLayout from "../components/sharedLayout/SharedLayout";
-import WaterMainInfo from "../components/waterMainInfo/WaterMainInfo";
+import css from "./App.module.css";
 
 const App = () => {
   return (
@@ -11,7 +9,6 @@ const App = () => {
       <Routes>
         <Route path="/" element={<SharedLayout />}>
           <Route path="/" element={<HomePage />} />
-          <Route path="/water" element={<WaterMainInfo />} />
         </Route>
       </Routes>
     </div>
