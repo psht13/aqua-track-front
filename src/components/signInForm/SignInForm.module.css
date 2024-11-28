@@ -1,0 +1,115 @@
+/* LoginPage.module.css */
+
+.signInForm {
+    padding: 24px 16px 216px;
+    background-color: var(--background);
+    border-radius: 30px;
+}
+
+
+.header {
+margin-bottom: 172px; 
+
+@media screen and (min-width: 768px) {
+margin-bottom: 50px;
+}
+@media screen and (min-width: 1440px) {
+position: relative;
+margin-left: -28px;
+margin-bottom: 132px;
+
+}
+}
+
+
+.title {
+    font-family: var(--font);
+    font-size: 32px; 
+    font-weight: 700;
+    line-height: 0.9; 
+    color: var(--main);
+    margin-bottom: 32px;
+
+
+    @media screen and (min-width: 768px) {
+        font-size: 36px;
+    }
+
+    @media screen and (min-width: 1440px) {
+        
+    }
+}
+
+.form {
+    width: 100%;
+    
+    
+    background-color: var(--background);
+    border-radius: 30px;
+    
+}
+
+
+
+
+.label {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+    color: #5d5c61;
+}
+
+.label span {
+    font-family: var(--font);
+    font-size: 14px; 
+    font-weight: 700;
+    color: var(--main);
+    margin-bottom: 8px;
+}
+
+input {
+    padding: 10px;
+    border: 1px solid #dcdcdc;
+    border-radius: 15px;
+    background-color: #f1f3f4; 
+    font-family: var(--font);
+    font-size: 16px; 
+    /* font-weight: 700; */
+    color: rgba(47, 47, 47, 0.6);
+    margin-bottom: 8px;
+}
+
+input:focus {
+    outline: none;
+    border-color: #71c9ce; 
+    }
+
+.errorText {
+    font-size: 14px;
+    margin-top: 5px;
+    color: #EF5050;     
+    font-size: 0.9rem;
+}
+
+.submitBtn {
+    width: 100%;
+    padding: 12px;
+    background-color: #aed9e0; 
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 1.1rem;
+}
+
+.submitBtn:disabled {
+    background-color: #c6e2e8; 
+    cursor: not-allowed;
+}
+
+.submitBtn:hover:enabled {
+    background-color: #71c9ce; 
+}
+

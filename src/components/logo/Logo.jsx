@@ -1,17 +1,15 @@
+import { NavLink } from "react-router";
 import styles from "./Logo.module.css";
 
 const Logo = () => {
-	const handleClick = () => {
-		window.location.href = "/";
-	};
-
 	return (
-		<div
+		<NavLink
+			to='/'
 			className={styles.logo}
-			onClick={handleClick}
+			aria-label='Home page'
 		>
 			AquaTrack
-		</div>
+			</NavLink>
 	);
 };
 

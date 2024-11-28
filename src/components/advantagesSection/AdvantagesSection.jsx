@@ -8,17 +8,17 @@ const AdvantagesSection = () => {
 			<div className={styles.content}>
 				<div className={styles.badge}>
 					<img
-						src='/src/assets/imgs/memojis1.jpg'
+						src='/src/assets/imgs/advantage-section/memojis1.jpg'
 						alt='User 1'
 						className={styles.avatar}
 					/>
 					<img
-						src='/src/assets/imgs/memojis2.jpg'
+						src='/src/assets/imgs/advantage-section/memojis2.jpg'
 						alt='User 2'
 						className={styles.avatar}
 					/>
 					<img
-						src='/src/assets/imgs/memojis3.jpg'
+						src='/src/assets/imgs/advantage-section/memojis3.jpg'
 						alt='User 3'
 						className={styles.avatar}
 					/>
