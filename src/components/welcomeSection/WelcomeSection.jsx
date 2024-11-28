@@ -1,5 +1,5 @@
 import { NavLink } from "react-router";
-import Logo from "../Logo/Logo";
+import Logo from "../logo/Logo";
 import styles from "./WelcomeSection.module.css";
 
 const WelcomeSection = () => {
