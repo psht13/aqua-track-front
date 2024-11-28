@@ -8,8 +8,8 @@
   background: rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: center;
-  align-items: flex-start; /* Вирівнювання зверху */
-  overflow-y: auto; /* Прокрутка для довгого контенту */
+  align-items: flex-start;
+  overflow-y: auto;
   z-index: 1000;
 }
 

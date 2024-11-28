@@ -30,14 +30,16 @@ const validationSchema = Yup.object().shape({
     .required("Daily water norm is required"),
 });
 
-const UserSettingsForm = ({ onClose, onUpdate }) => {
+const UserSettingsForm = ({ onClose, onUpdate, userId }) => {
   const [avatarPreview, setAvatarPreview] = useState(null);
   const [errorMessage, setErrorMessage] = useState(null);
+  const [userData, setUserData] = useState(null);
 
   const {
     register,
     handleSubmit,
     formState: { errors },
+    setValue,
     watch,
   } = useForm({
     resolver: yupResolver(validationSchema),
@@ -49,6 +51,32 @@ const UserSettingsForm = ({ onClose, onUpdate }) => {
 
   const avatarUrl = watch("avatarUrl");
   const gender = watch("gender");
+
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        const response = await axios.get("/users/me");
+        const data = response.data;
+        setUserData(data);
+
+        setValue("name", data.name || "");
+        setValue("email", data.email || "");
+        setValue("gender", data.gender || "Woman");
+        setValue("weight", data.weight || 0);
+        setValue("activeTime", data.activeTime || 0);
+        setValue("dailyNorm", data.dailyNorm || 1.8);
+
+        // Set avatar preview if exists
+        if (data.avatarUrl) {
+          setAvatarPreview(data.avatarUrl);
+        }
+      } catch (error) {
+        setErrorMessage(error.message);
+      }
+    };
+
+    fetchUserData();
+  }, [setValue]);
 
   useEffect(() => {
     if (avatarUrl && avatarUrl[0]) {
@@ -79,7 +107,7 @@ const UserSettingsForm = ({ onClose, onUpdate }) => {
       formData.append("activeTime", data.activeTime);
       formData.append("dailyNorm", data.dailyNorm);
 
-      const response = await axios.post("/api/user/update", formData);
+      const response = await axios.patch(`/users/${userId}`, formData);
       if (response.status === 200) {
         onUpdate(response.data);
         onClose();
