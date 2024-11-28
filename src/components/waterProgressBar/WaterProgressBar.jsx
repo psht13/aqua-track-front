@@ -1,8 +1,10 @@
 import { useState } from "react";
 import css from "./WaterProgressBar.module.css";
+import { useSelector } from "react-redux";
 
 const WaterProgressBar = () => {
-  const [progressPercent, setProgressPercent] = useState(10);
+  const progressPercent = 50;
+  // const progressPercent = useSelector()
 
   return (
     <div className={css.back}>

@@ -8,8 +8,7 @@ import Logo from "../logo/Logo";
 const WaterMainInfo = () => {
   return (
     <div className={css.card}>
-      <h2 className={css.logo}>AquaTrack</h2>
-      {/* <Logo /> */}
+      <Logo />
       <WaterDailyNorma />
       <WaterProgressBar />
       <AddWaterBtn />

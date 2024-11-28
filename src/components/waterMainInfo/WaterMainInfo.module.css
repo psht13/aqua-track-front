@@ -6,14 +6,8 @@
   padding: 24px 16px;
   position: relative;
 }
-.logo {
-  font-family: var(--font-family);
-  font-weight: 700;
-  font-size: 18px;
-  line-height: 111%;
-  letter-spacing: -0.01em;
-  text-transform: uppercase;
-  color: var(--main);
+
+.card div:first-child {
   margin-bottom: 6px;
 }
 
@@ -24,9 +18,7 @@
     padding: 32px;
   }
 
-  .logo {
-    font-size: 24px;
-    line-height: 100%;
+  .card div:first-child {
     margin-bottom: 13px;
   }
 }
@@ -36,7 +28,7 @@
     max-width: 672px;
     height: 736px;
   }
-  .logo {
+  .card div:first-child {
     margin-bottom: 36px;
   }
 }
