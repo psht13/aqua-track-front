@@ -4,10 +4,8 @@ import { FiLogOut } from 'react-icons/fi';
 import LogOutModal from '../LogOutModal/LogOutModal';
 import css from './UserBarPopover.module.css';
 import UserSettingsModal from '../UserSettingsModal/UserSettingsModal';
-import { useTranslation } from 'react-i18next';
 
 const UserBarPopover = ({ onClose }) => {
-  const { t } = useTranslation();
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   const [modalSettingIsOpen, setModalSettingIsOpen] = useState(false);

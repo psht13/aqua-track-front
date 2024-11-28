@@ -1,0 +1,53 @@
+.addBtn {
+  border-radius: 30px;
+  width: 140px;
+  height: 46px;
+  background: var(--main);
+  position: absolute;
+  bottom: 32px;
+  right: 16px;
+  border: none;
+  color: var(--main-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: color 250ms ease-in-out;
+}
+
+.addBtn:hover,
+.addBtn:focus {
+  color: var(--accent);
+  fill: var(--accent);
+}
+
+.addBtn p {
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 129%;
+  letter-spacing: -0.01em;
+  text-align: center;
+}
+
+.plus {
+  stroke: currentColor;
+  /* color: red;
+  fill: red; */
+}
+
+@media screen and (min-width: 768px) {
+  .addBtn {
+    width: 178px;
+    height: 60px;
+    bottom: 64px;
+    right: 32px;
+  }
+  .addBtn p {
+    font-size: 16px;
+    line-height: 150%;
+  }
+  .plus {
+    width: 24px;
+    height: 24px;
+  }
+}
