@@ -7,31 +7,16 @@ import { useDispatch } from "react-redux";
 import Loader from "../loader/Loader";
 import css from "./waterForm.module.css";
 
-const WaterForm = ({ operationType, myTime, waterPortion, id }) => {
+const WaterForm = ({
+  operationType,
+  myTime,
+  waterPortion,
+  id,
+  handleClose,
+}) => {
   const [waterAmount, setWaterAmount] = useState(waterPortion || 50);
 
-  const addWater = (data) => {
-    console.log("Adding water:", data);
-    return { error: null }; // Успіх
-  };
-
-  const updateWater = (data) => {
-    console.log("Updating water:", data);
-    return { error: "Simulated error" }; // Помилка
-  };
-
-  const dispatch = (action) => {
-    console.log("Dispatching action:", action);
-    // Повертаємо результат дії
-    return action;
-  };
-
-  const useModalContext = () => ({
-    handleClose: () => console.log("Modal closed"),
-  });
-  const { handleClose } = useModalContext();
-
-  //   const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   const [isLoading, setIsLoading] = useState(false);
 

@@ -3,42 +3,12 @@ import Modal from "../modal/Modal";
 
 import { useDispatch } from "react-redux";
 
-// import { deleteWater } from "../../redux/water/operations";
-// import { useModalContext } from "../../context/useModalContext";
-
-const deleteWater = ({ id }) => {
-  return new Promise((resolve) => {
-    console.log(`Fake deleteWater called for ID: ${id}`);
-    setTimeout(() => resolve({ success: true }), 1000); // Симуляція затримки
-  });
-};
-
-// ============
-const useModalContext = () => ({
-  closeModal: () => {
-    console.log("Modal closed");
-  },
-});
-
-// ==============
-
 const DeleteWaterModal = ({ id, onClose }) => {
-  //   const dispatch = useDispatch();
-  const { closeModal } = useModalContext();
-
-  // ======================
-  const fakeDispatch = (action) => {
-    if (typeof action === "function") {
-      action();
-    } else {
-      console.log("Dispatching action:", action);
-    }
-  };
-  // ============================
+  const dispatch = useDispatch();
 
   const handleDelete = (id) => {
-    fakeDispatch(deleteWater({ id }));
-    closeModal();
+    dispatch(deleteWater({ id }));
+    onClose();
   };
 
   return (
@@ -54,7 +24,7 @@ const DeleteWaterModal = ({ id, onClose }) => {
             <button
               className={css.buttonDelete}
               type="button"
-              onClick={() => handleDelete(id)}
+              onClick={handleDelete}
             >
               Delete
             </button>
@@ -62,7 +32,7 @@ const DeleteWaterModal = ({ id, onClose }) => {
             <button
               className={css.buttonCancel}
               type="button"
-              onClick={closeModal}
+              onClick={onClose}
             >
               Cancel
             </button>

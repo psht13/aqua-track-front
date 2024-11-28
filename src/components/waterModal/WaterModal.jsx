@@ -2,13 +2,10 @@ import css from "./WaterModal.module.css";
 import WaterForm from "../waterForm/WaterForm";
 import Modal from "../modal/Modal";
 
-const WaterModal = ({
-  onClose,
-  operationType = "add",
-  id,
-  waterPortion,
-  myTime,
-}) => {
+const WaterModal = ({ onClose, operationType, id, waterPortion, myTime }) => {
+  const handleClose = () => {
+    onClose();
+  };
   return (
     <Modal onClose={onClose}>
       <h3 className={css.title}>
@@ -24,6 +21,7 @@ const WaterModal = ({
         waterPortion={waterPortion}
         operationType={operationType}
         myTime={myTime}
+        handleClose={handleClose}
       />
     </Modal>
   );
