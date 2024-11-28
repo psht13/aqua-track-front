@@ -1,0 +1,68 @@
+.page {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 32px;
+    padding: 16px;
+    min-height: 100vh;
+    /* Забезпечує заповнення всієї висоти екрану */
+}
+
+.leftSection {
+    background: #ffffff;
+    border-radius: 30px;
+    width: 672px;
+    height: 736px;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* Центрує форму по вертикалі */
+    background: #f0eff4;
+}
+
+.logo {
+    align-self: flex-start;
+    margin-bottom: 172px;
+}
+
+.formWrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* Центрує форму по вертикалі */
+    align-items: center;
+    /* Центрує форму по горизонталі */
+    flex-grow: 1;
+}
+
+.signupLink {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 14px;
+}
+
+.rightSection {
+    display: none;
+}
+
+.rightSection.desktop {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    padding-left: 20px;
+}
+
+@media (min-width: 1440px) {
+    .page {
+        flex-direction: row;
+    }
+
+    .rightSection {
+        display: block;
+    }
+}
