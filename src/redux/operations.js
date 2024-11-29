@@ -23,7 +23,7 @@ export const apiRegister = createAsyncThunk(
   "auth/register",
   async (formData, thunkAPI) => {
     try {
-      const { data } = await instance.post("/auth/signup", formData);
+      const { data } = await instance.post("/auth/register", formData);
       SetAuthHeaders(data.token);
       return data;
     } catch (error) {
