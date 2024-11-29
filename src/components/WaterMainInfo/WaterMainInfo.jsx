@@ -1,9 +1,9 @@
 import css from "./WaterMainInfo.module.css";
 
-import AddWaterBtn from "../addWaterBtn/AddWaterBtn";
+import AddWaterBtn from "../AddWaterBtn/AddWaterBtn";
 import WaterDailyNorma from "../waterDailyNorma/WaterDailyNorma";
-import WaterProgressBar from "../waterProgressBar/WaterProgressBar";
-import Logo from "../logo/Logo";
+import WaterProgressBar from "../WaterProgressBar/WaterProgressBar";
+import Logo from "../Logo/Logo";
 
 const WaterMainInfo = () => {
   return (

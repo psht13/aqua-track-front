@@ -3,7 +3,6 @@
     flex-direction: column;
     width: 100%;
     max-width: 436px;
-    padding: 0 30px;
     border-radius: 10px;
     background: #f0eff4;
     gap: 16px;
@@ -101,7 +100,7 @@ input[type="text"] {
     background: #9be1a0;
     text-align: center;
     letter-spacing: -0.01em;
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 700;
 }
 

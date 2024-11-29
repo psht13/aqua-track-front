@@ -1,6 +1,6 @@
 import css from "./UserSettingsModal.module.css";
 import UserSettingsForm from "../user-settings-form/UserSettingsForm";
-import Modal from "../modal/Modal";
+import Modal from "../Modal/Modal";
 
 const UserSettingsModal = ({ onClose, onUpdate }) => {
   return (

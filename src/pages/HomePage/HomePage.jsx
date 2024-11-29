@@ -1,5 +1,5 @@
-import AdvantagesSection from "../../components/advantagesSection/AdvantagesSection";
-import WelcomeSection from "../../components/welcomeSection/WelcomeSection";
+import AdvantagesSection from "../../components/AdvantagesSection/AdvantagesSection";
+import WelcomeSection from "../../components/WelcomeSection/WelcomeSection";
 import styles from "./HomePage.module.css";
 
 const HomePage = () => {

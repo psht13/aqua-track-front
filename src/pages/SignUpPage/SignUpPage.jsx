@@ -1,5 +1,4 @@
-import Logo from "../../components/logo/Logo";
-import AdvantageSection from "../../components/advantagesSection/AdvantagesSection";
+import AdvantageSection from "../../components/AdvantagesSection/AdvantagesSection";
 import SignUpForm from "../../components/SignUpForm/SignUpForm";
 import css from "./SignUpPage.module.css";
 

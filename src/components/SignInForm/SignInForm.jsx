@@ -12,7 +12,8 @@ const validationSchema = yup.object({
   password: yup.string().min(6, 'Password must be at least 6 characters').required('Password is required'),
 });
 
-function SignInForm() {
+function 
+SignInForm() {
   const [message, setMessage] = useState(null);
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false); 

@@ -1,5 +1,5 @@
-import Logo from '../../components/logo/Logo';
-import AdvantageSection from '../../components/advantagesSection/AdvantagesSection'; 
+import Logo from '../../components/Logo/Logo';
+import AdvantageSection from '../../components/AdvantagesSection/AdvantagesSection'; 
 import SignInForm from '../../components/SignInForm/SignInForm';
 import css from './SignInPage.module.css';
 

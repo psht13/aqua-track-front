@@ -1,6 +1,6 @@
 import css from "./WaterModal.module.css";
 import WaterForm from "../waterForm/WaterForm";
-import Modal from "../modal/Modal";
+import Modal from "../Modal/Modal";
 
 const WaterModal = ({ onClose, operationType, id, waterPortion, myTime }) => {
   const handleClose = () => {

@@ -6,7 +6,7 @@ import { useNavigate, Link } from "react-router-dom";
 import { apiRegister } from "../../redux/operations";
 import sprite from "../../assets/sprite.svg";
 import css from "./SignUpForm.module.css";
-import Logo from "../logo/Logo";
+import Logo from "../Logo/Logo";
 
 const validationSchema = yup.object({
   email: yup.string().email("Invalid email").required("Email is required"),

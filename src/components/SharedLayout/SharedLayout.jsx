@@ -1,6 +1,6 @@
 import { Outlet } from "react-router";
 import { Suspense } from "react";
-import Loader from "../loader/Loader";
+import Loader from "../Loader/Loader";
 
 const SharedLayout = () => {
   return (

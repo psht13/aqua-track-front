@@ -1,8 +1,8 @@
 import { Route, Routes } from "react-router";
-import HomePage from "../pages/home-page/HomePage";
-import SharedLayout from "../components/sharedLayout/SharedLayout";
-import SignInPage from "../pages/signin-page/SignInPage";
-import SignUpPage from "../pages/signup-page/SignUpPage";
+import HomePage from "../pages/HomePage/HomePage";
+import SharedLayout from "../components/SharedLayout/SharedLayout";
+import SignInPage from "../pages/SignInPage/SignInPage";
+import SignUpPage from "../pages/SignUpPage/SignUpPage";
 import css from "./App.module.css";
 
 const App = () => {

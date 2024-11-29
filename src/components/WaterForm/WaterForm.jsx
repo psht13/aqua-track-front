@@ -4,7 +4,7 @@ import * as Yup from "yup";
 import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useDispatch } from "react-redux";
-import Loader from "../loader/Loader";
+import Loader from "../Loader/Loader";
 import css from "./waterForm.module.css";
 
 const WaterForm = ({
