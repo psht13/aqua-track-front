@@ -1,25 +1,24 @@
 .page {
     display: flex;
+    align-items: center;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
-    gap: 16px;
-    padding: 16px;
     min-height: 100vh;
+    gap: 16px;
 }
 
 .leftSection {
-    background: #ffffff;
-    border-radius: 10px;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: space-between;
     width: 100%;
     max-width: 375px;
     padding: 24px 16px;
-    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: flex-start;
+    border-radius: 10px;
+    background: #ffffff;
     background: #f0eff4;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
 }
 
 .logo {
@@ -28,10 +27,10 @@
 }
 
 .formWrapper {
-    flex-grow: 1;
     display: flex;
-    justify-content: center;
     align-items: center;
+    flex-grow: 1;
+    justify-content: center;
     width: 100%;
 }
 
@@ -63,9 +62,9 @@
 
 @media screen and (min-width: 1024px) {
     .page {
+        align-items: stretch;
         flex-direction: row;
         justify-content: center;
-        align-items: stretch;
         gap: 32px;
     }
 
@@ -84,24 +83,23 @@
 
     .formWrapper {
         display: flex;
-        justify-content: center;
         align-items: center;
+        justify-content: center;
         width: 100%;
     }
 
     .rightSection {
         display: flex;
+        align-items: center;
         flex-direction: column;
         justify-content: center;
-        align-items: center;
         width: 50%;
         max-width: 672px;
         height: 736px;
-        padding-left: 20px;
-        background: #ffffff;
-        box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
 
         border-radius: 30px;
+        background: #ffffff;
+        box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
     }
 }
 

@@ -1,8 +1,10 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
+console.log(import.meta.env.VITE_BASE_URL);
+
 export const instance = axios.create({
-  baseURL: "http://127.0.0.1:8081",
+  baseURL: import.meta.env.VITE_BASE_URL,
 });
 
 const SetAuthHeaders = (token) => {
@@ -13,7 +15,7 @@ export const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
     await axios.post('/users/logout');
     axios.defaults.headers.common['Authorization'] = '';
   } catch (error) {
-    return thunkAPI.rejectWithValue(error.message);
+    return thunkAPI.rejectWithValue(error.response.data?.data.error);
   }
 });
 
@@ -21,11 +23,11 @@ export const apiRegister = createAsyncThunk(
   "auth/register",
   async (formData, thunkAPI) => {
     try {
-      const { data } = await instance.post("/users/signup", formData);
+      const { data } = await instance.post("/auth/signup", formData);
       SetAuthHeaders(data.token);
       return data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.response?.data.message || 'An error occurred');
+      return thunkAPI.rejectWithValue(error.response.data?.data.error || 'An error occurred');
     }
   }
 );
@@ -34,11 +36,11 @@ export const apiLogin = createAsyncThunk(
   "auth/login",
   async (formData, thunkAPI) => {
     try {
-      const { data } = await instance.post("/users/login", formData);
+      const { data } = await instance.post("/auth/login", formData);
       SetAuthHeaders(data.token);
       return data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.response?.data.message || 'An error occurred');
+      return thunkAPI.rejectWithValue(error.response.data?.data.error || 'An error occurred');
     }
   }
 );
@@ -47,7 +49,7 @@ export const apiLogout = createAsyncThunk(
   "auth/logout",
   async (_, thunkAPI) => {
     try {
-      await instance.post("/users/logout");
+      await instance.post("/auth/logout");
       return;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.response?.data.message || 'An error occurred');
@@ -62,10 +64,13 @@ export const apiRefreshUser = createAsyncThunk(
       const state = thunkApi.getState();
       const token = state.auth.token;
       SetAuthHeaders(token);
-      const { data } = await instance.get("/users/current");
+      const { data } = await instance.get("/auth/refresh");
       return data;
     } catch (error) {
-      return thunkApi.rejectWithValue(error.response?.data.message || 'An error occurred');
+      
+
+      
+      return thunkApi.rejectWithValue(error.response.data?.data.error || 'An error occurred');
     }
   },
   {

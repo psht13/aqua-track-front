@@ -1,25 +1,29 @@
 .welcomeSection {
   display: flex;
+  align-items: left;
   flex-direction: column;
   justify-content: center;
-  align-items: left;
   padding-top: 24px; 
   padding-bottom: 67px;
   padding-left: 16px;
-  background-color: #F0EFF4;
   border-radius: 30px;
+  background-color: #F0EFF4;
   
 
   @media screen and (min-width: 768px) {
-    min-width: 704px;
     flex-direction: column;
+    min-width: 672px;
     padding: 32px 32px 50px;
     
   }
 
   @media screen and (min-width: 1440px) {
-    padding: 32px 60px 188px;
     min-height: 736px;
+    padding: 32px 60px 188px;
+  }
+
+  .content {
+    max-width: 547px;
   }
 }
 
@@ -32,29 +36,29 @@
   }
   @media screen and (min-width: 1440px) {
     position: relative;
-    margin-left: -28px;
     margin-bottom: 132px;
+    margin-left: -28px;
     
   }
 }
 
 
 .textContent {
-  text-align: center;
-  margin-bottom: 32px; 
+  margin-bottom: 32px;
+  text-align: center; 
 
   @media screen and (min-width: 768px) {
-    text-align: left;
     max-width: 600px;
+    text-align: left;
   }
 }
 
 .subtitle {
+  margin-bottom: 16px;
+  color: var(--main-text);
   font-family: var(--font);
   font-size: 14px; 
-  font-weight: 400;
-  color: var(--main-text);
-  margin-bottom: 16px; 
+  font-weight: 400; 
 
 
   @media screen and (min-width: 768px) {
@@ -65,12 +69,12 @@
 }
 
 .title {
+  line-height: 0.9;
+  margin-bottom: 24px; 
+  color: var(--main);
   font-family: var(--font);
   font-size: 38px; 
   font-weight: 700;
-  line-height: 0.9; 
-  color: var(--main);
-  margin-bottom: 24px;
 
 
   @media screen and (min-width: 768px) {
@@ -93,14 +97,14 @@
 
 .tryTracker,
 .signIn {
-  font-family: var(--font);
-  font-size: 14px;
-  font-weight: 600;
   padding: 14px 19px; 
   border: none;
-  border-radius: 50px; 
-  text-decoration: none;
+  border-radius: 50px;
   transition: all 0.3s ease;
+  font-family: var(--font);
+  font-size: 14px;
+  font-weight: 600; 
+  text-decoration: none;
 
   &:hover {
     transform: scale(1.05);
@@ -113,8 +117,8 @@
 }
 
 .tryTracker {
-  background-color: var(--accent);
   color: var(--main);
+  background-color: var(--accent);
   &:hover {
     background-color: #87D28D;
   }
@@ -122,8 +126,8 @@
 }
 
 .signIn {
-  color: var(--main);
   border: 2px solid var(--main);
+  color: var(--main);
 
   &:hover {
     border-color: #87D28D;
