@@ -2,8 +2,8 @@ import { Route, Routes } from "react-router";
 import HomePage from "../pages/home-page/HomePage";
 import SharedLayout from "../components/sharedLayout/SharedLayout";
 import SignInPage from "../pages/signin-page/SignInPage";
+import SignUpPage from "../pages/signup-page/SignUpPage";
 import css from "./App.module.css";
-
 
 const App = () => {
   return (
@@ -12,7 +12,8 @@ const App = () => {
         <Route path="/" element={<SharedLayout />}>
           <Route path="/" element={<HomePage />} />
         </Route>
-          <Route path="/signin" element={<SignInPage />} />
+        <Route path="/signin" element={<SignInPage />} />
+        <Route path="/signup" element={<SignUpPage />} />
       </Routes>
     </div>
   );
