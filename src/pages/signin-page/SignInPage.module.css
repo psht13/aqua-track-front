@@ -1,0 +1,120 @@
+.page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    padding: 16px;
+    min-height: 100vh;
+}
+
+.leftSection {
+    background: #ffffff;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 375px;
+    padding: 24px 16px;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    background: #f0eff4;
+}
+
+.logo {
+    align-self: center;
+    margin-bottom: 16px;
+}
+
+.formWrapper {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.signupLink {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 14px;
+}
+
+.rightSection {
+    display: none;
+
+}
+
+
+@media screen and (min-width: 768px) {
+    .page {
+        flex-direction: column;
+        gap: 24px;
+    }
+
+    .leftSection {
+        max-width: 768px;
+        padding: 32px;
+        border-radius: 20px;
+    }
+}
+
+
+@media screen and (min-width: 1024px) {
+    .page {
+        flex-direction: row;
+        justify-content: center;
+        align-items: stretch;
+        gap: 32px;
+    }
+
+    .leftSection {
+        width: 50%;
+        max-width: 672px;
+        height: 736px;
+        padding: 40px;
+        border-radius: 30px;
+    }
+
+    .logo {
+        align-self: flex-start;
+        margin-bottom: auto;
+    }
+
+    .formWrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
+
+    .rightSection {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 50%;
+        max-width: 672px;
+        height: 736px;
+        padding-left: 20px;
+        background: #ffffff;
+        box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+
+        border-radius: 30px;
+    }
+}
+
+
+@media screen and (min-width: 1440px) {
+    .page {
+        justify-content: center;
+
+    }
+
+    .leftSection,
+    .rightSection {
+        max-width: 720px;
+
+    }
+}
