@@ -1,47 +1,53 @@
 .form {
-    background: #f0eff4;
-    padding: 30px;
-    border-radius: 10px;
-    width: 100%;
-    max-width: 400px;
     display: flex;
     flex-direction: column;
+    width: 100%;
+    max-width: 436px;
+    padding: 0 30px;
+    border-radius: 10px;
+    background: #f0eff4;
     gap: 16px;
 }
 
+.formContainer {
+    display: flex ;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
 .header {
-    text-align: left;
-    font-weight: 700;
-    font-size: 32px;
     line-height: 1;
-    letter-spacing: -0.01em;
-    color: #323f47;
     margin-bottom: 16px;
+    color: #323f47;
+    text-align: left;
+    letter-spacing: -0.01em;
+    font-size: 32px;
+    font-weight: 700;
 }
 
 .formGroup {
-    margin-bottom: 16px;
-    border-radius: 15px;
-    width: 311px;
-    height: 50px;
-    font-weight: 700;
-    font-size: 14px;
-    line-height: 1.28571;
-    letter-spacing: -0.01em;
-    color: #2f2f2f;
     display: flex;
     flex-direction: column;
+    height: 50px;
+    line-height: 1.28571;
+    margin-bottom: 16px;
+    border-radius: 15px;
+    color: #2f2f2f;
+    letter-spacing: -0.01em;
+    font-size: 14px;
+    font-weight: 700;
 
 
 }
 
 .formGroup label {
-    font-weight: 700;
-    font-size: 14px;
     line-height: 1.28571;
-    letter-spacing: -0.01em;
-    color: #2f2f2f;
     margin-bottom: 8px;
+    color: #2f2f2f;
+    letter-spacing: -0.01em;
+    font-size: 14px;
+    font-weight: 700;
 }
 
 .passwordWrapper {
@@ -55,30 +61,30 @@ input[type="text"] {
     width: 100%;
     padding: 10px;
     padding-right: 35px;
-    font-size: 1rem;
     border: 1px solid #ccc;
-    border-radius: 5px;
+    border-radius: 15px;
     background: #f0eff4;
+    font-size: 1rem;
 }
 
 .togglePasswordButton {
     position: absolute;
     top: 50%;
     right: 10px;
-    transform: translateY(-50%);
-    background: none;
-    border: none;
-    cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
+    border: none;
+    background: none;
+    cursor: pointer;
+    transform: translateY(-50%);
 }
 
 .togglePasswordButton svg {
     width: 20px;
     height: 20px;
-    fill: none;
     stroke: #333;
+    fill: none;
 }
 
 .errorInput {
@@ -86,36 +92,35 @@ input[type="text"] {
 }
 
 .submitButton {
-    border-radius: 30px;
-    width: 311px;
     height: 50px;
-    background: #9be1a0;
-    font-weight: 700;
-    font-size: 14px;
     line-height: 1.28571;
-    letter-spacing: -0.01em;
-    text-align: center;
-    color: #323f47;
-    border: none;
     margin-top: 16px;
+    border: none;
+    border-radius: 30px;
+    color: #323f47;
+    background: #9be1a0;
+    text-align: center;
+    letter-spacing: -0.01em;
+    font-size: 14px;
+    font-weight: 700;
 }
 
 .signupLink {
-    font-weight: 400;
-    font-size: 14px;
     line-height: 1.28571;
-    letter-spacing: -0.01em;
+    margin-top: 10px;
     color: rgba(47, 47, 47, 0.5);
     text-align: center;
-    margin-top: 10px;
+    letter-spacing: -0.01em;
+    font-size: 14px;
+    font-weight: 400;
 }
 
 .link {
+    color: #2f2f2f;
 
     font-weight: 700;
     text-decoration: underline;
     text-decoration-skip-ink: none;
-    color: #2f2f2f;
 }
 
 .link:hover {
