@@ -3,6 +3,7 @@ import HomePage from "../pages/home-page/HomePage";
 import SharedLayout from "../components/sharedLayout/SharedLayout";
 import css from "./App.module.css";
 import SignInPage from "../pages/signInPage/SignInPage";
+import TrackerPage from "../pages/trackerPage/TrackerPage";
 
 const App = () => {
   return (
@@ -19,6 +20,10 @@ const App = () => {
 					<Route
 						path='/signin'
 						element={<SignInPage />}
+					/>
+					<Route
+						path='/tracker'
+						element={<TrackerPage />}
 					/>
 				</Route>
 			</Routes>
