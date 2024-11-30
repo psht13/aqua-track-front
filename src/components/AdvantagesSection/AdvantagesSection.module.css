@@ -1,36 +1,36 @@
 /* AdvantagesSection.module.css */
 .advantagesSection {
-  width: 100%;
   display: flex;
-  justify-content: flex-start;
   align-items: flex-end;
+  justify-content: flex-start;
+  width: 100%;
   padding: 209px 16px 32px;
+  border-radius: 24px;
   background-image: url("../../assets/imgs/advantageSection.jpg");
+  background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  background-repeat: no-repeat;
-  border-radius: 24px;
   
   @media screen and (min-width: 768px) {
-    background-image: url("../../assets/imgs/advantageSectionTab.jpg");
     min-width: 704px;
     padding: 32px;
     padding-top: 283px;
+    background-image: url("../../assets/imgs/advantageSectionTab.jpg");
   }
 
   @media screen and (min-width: 1440px) {
-    background-image: url("../../assets/imgs/advantageSectionDesc.jpg");
     min-width: 672px;
-    background-size: contain;
     height: 736px;
     padding: 60px;
+    background-image: url("../../assets/imgs/advantageSectionDesc.jpg");
+    background-size: contain;
   }
 }
 
 .content {
-  width: 100%;
   display: flex;
   flex-direction: column;
+  width: 100%;
   gap: 8px;
   @media screen and (min-width: 768px) {
   }
@@ -45,14 +45,14 @@
   justify-content: center;
   width: 160px;
   padding: 14px 10px;
+  padding: 14px 10px;
   border-radius: 30px;
+  color: var(--main);
+  background-color: var(--main-white);
+  text-align: center;
   font-family: var(--font);
   font-size: 14px;
   font-weight: 600;
-  text-align: center;
-  color: var(--main);
-  background-color: var(--main-white);
-  padding: 14px 10px;
 
   @media screen and (min-width: 768px) {
     width: 227px;
@@ -64,17 +64,17 @@
   }
 }
 
-.avatar {
+.avatar { 
+  z-index: 1;
   width: 28px;
-  height: 28px;
-  border-radius: 50%; 
-  border: 2px solid var(--main-white); 
+  height: 28px; 
   margin-left: -8px; 
-  z-index: 1; 
+  border: 2px solid var(--main-white);
+  border-radius: 50%; 
   @media screen and (min-width: 768px) {
-    margin-left: -18px;
     width: 47px;
   height: 47px;
+    margin-left: -18px;
   }
 }
 
@@ -96,22 +96,22 @@
 
 
 .customersText strong {
-  font-weight: 600;
   color: var(--accent);
+  font-weight: 600;
 }
 
 
 .featuresList {
 display: flex;
 align-self: flex-end;
-gap: 4px;
-width: 170px;
 flex-wrap: wrap;
+width: 170px;
+gap: 4px;
 
 @media screen and (min-width: 768px) {
   position: relative;
-  margin-top: -40px;
     width: 242px;
+  margin-top: -40px;
   }
 }
 
@@ -123,11 +123,11 @@ flex-wrap: wrap;
 }
 .habitText, 
 .featuresText  {
+  color: var(--main-text);
+  white-space: nowrap;
   font-family:var(--font); 
   font-size: 8px;
   font-weight: 600;
-  color: var(--main-text);
-  white-space: nowrap;
   @media screen and (min-width: 768px) {
     font-size: 12px;
   }
@@ -144,11 +144,11 @@ flex-wrap: wrap;
 .settingItem,
 .habitItem {
   display: flex;
-  justify-content: center;
   align-items: center;
-  background-color: var(--accent);
-  border-radius: 30px;
+  justify-content: center;
   padding: 8px 12px;
+  border-radius: 30px;
+  background-color: var(--accent);
   @media screen and (min-width: 768px) {
     padding: 11px 16px;
   }

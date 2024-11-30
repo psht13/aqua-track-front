@@ -114,11 +114,18 @@ input[type="text"]::placeholder {
   border-radius: 30px;
   color: #323f47;
   background: #9be1a0;
+  transition: all 250ms ease-in-out;
   text-align: center;
   letter-spacing: -0.01em;
   font-size: 14px;
   font-weight: 700;
 }
+
+.submitButton:hover {
+  background-color: #87D28D;
+  transform: scale(1.05);
+}
+
 
 .signupLink {
   margin-top: 10px;
