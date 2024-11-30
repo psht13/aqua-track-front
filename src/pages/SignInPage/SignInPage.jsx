@@ -1,23 +1,16 @@
-import Logo from '../../components/Logo/Logo';
-import AdvantageSection from '../../components/AdvantagesSection/AdvantagesSection'; 
-import SignInForm from '../../components/SignInForm/SignInForm';
-import css from './SignInPage.module.css';
+import AdvantageSection from "../../components/AdvantagesSection/AdvantagesSection";
+import SignInForm from "../../components/SignInForm/SignInForm";
+import css from "./SignInPage.module.css";
 
 function SignInPage() {
-  const isDesktop = window.innerWidth >= 1024;
   return (
     <div className={css.page}>
       <div className={css.leftSection}>
-        <Logo className={css.logo} />
-        <div className={css.formWrapper}>
-          <SignInForm />
-        </div>
+        <SignInForm />
       </div>
-      {isDesktop && (
-        <div className={`${css.rightSection} desktop`}>
-          <AdvantageSection />
-        </div>
-      )}
+      <div className={`${css.rightSection} desktop`}>
+        <AdvantageSection />
+      </div>
     </div>
   );
 }

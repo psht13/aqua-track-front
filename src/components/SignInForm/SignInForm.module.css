@@ -1,127 +1,178 @@
 .form {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    max-width: 436px;
-    border-radius: 10px;
-    background: #f0eff4;
-    gap: 16px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 436px;
+  border-radius: 10px;
+  background: #f0eff4;
+  gap: 16px;
 }
 
 .formContainer {
-    display: flex ;
+    position: relative;
+    display: flex;
     align-items: center;
     justify-content: center;
-    width: 100%;
-}
+    max-width: 343px;
+    height: calc(100vh - 32px);
+    min-height: 736px;
+    padding: 0 16px;
+    border-radius: 30px;
+    background: var(--background);
+  }
 
+  .formContainer div:first-child {
+    position: absolute;
+    top: 24px;
+    left: 16px;
+  }
 .header {
-    line-height: 1;
-    margin-bottom: 16px;
-    color: #323f47;
-    text-align: left;
-    letter-spacing: -0.01em;
-    font-size: 32px;
-    font-weight: 700;
+  line-height: 1;
+  margin-bottom: 16px;
+  color: #323f47;
+  text-align: left;
+  letter-spacing: -0.01em;
+  font-size: 32px;
+  font-weight: 700;
 }
 
 .formGroup {
-    display: flex;
-    flex-direction: column;
-    height: 50px;
-    line-height: 1.28571;
-    margin-bottom: 16px;
-    border-radius: 15px;
-    color: #2f2f2f;
-    letter-spacing: -0.01em;
-    font-size: 14px;
-    font-weight: 700;
-
-
+  display: flex;
+  flex-direction: column;
+  line-height: 1.28571;
+  border-radius: 15px;
+  color: #2f2f2f;
+  letter-spacing: -0.01em;
+  font-size: 14px;
+  gap: 8px;
 }
 
 .formGroup label {
-    line-height: 1.28571;
-    margin-bottom: 8px;
-    color: #2f2f2f;
-    letter-spacing: -0.01em;
-    font-size: 14px;
-    font-weight: 700;
+  line-height: 1.28571;
+  color: #2f2f2f;
+  letter-spacing: -0.01em;
+  font-weight: 700;
 }
 
 .passwordWrapper {
-    position: relative;
-    width: 100%;
+  position: relative;
+  width: 100%;
 }
 
 input[type="email"],
 input[type="password"],
 input[type="text"] {
-    width: 100%;
-    padding: 10px;
-    padding-right: 35px;
-    border: 1px solid #ccc;
-    border-radius: 15px;
-    background: #f0eff4;
-    font-size: 1rem;
+  width: 100%;
+  padding: 10px;
+  padding-right: 35px;
+  border: 1px solid #ccc;
+  border-radius: 15px;
+  background: #f0eff4;
+  font-size: 14px;
 }
 
 .togglePasswordButton {
-    position: absolute;
-    top: 50%;
-    right: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: none;
-    background: none;
-    cursor: pointer;
-    transform: translateY(-50%);
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: none;
+  cursor: pointer;
+  transform: translateY(-50%);
 }
 
 .togglePasswordButton svg {
-    width: 20px;
-    height: 20px;
-    stroke: #333;
-    fill: none;
+  width: 20px;
+  height: 20px;
+  stroke: #333;
+  fill: none;
 }
 
 .errorInput {
-    border: 1px solid red;
+  border: 1px solid red;
 }
 
 .submitButton {
-    height: 50px;
-    line-height: 1.28571;
-    margin-top: 16px;
-    border: none;
-    border-radius: 30px;
-    color: #323f47;
-    background: #9be1a0;
-    text-align: center;
-    letter-spacing: -0.01em;
-    font-size: 16px;
-    font-weight: 700;
+  height: 50px;
+  line-height: 1.28571;
+  margin-top: 16px;
+  border: none;
+  border-radius: 30px;
+  color: #323f47;
+  background: #9be1a0;
+  text-align: center;
+  letter-spacing: -0.01em;
+  font-size: 14px;
+  font-weight: 700;
 }
 
 .signupLink {
-    line-height: 1.28571;
-    margin-top: 10px;
-    color: rgba(47, 47, 47, 0.5);
-    text-align: center;
-    letter-spacing: -0.01em;
-    font-size: 14px;
-    font-weight: 400;
+  line-height: 1.28571;
+  margin-top: 10px;
+  color: rgba(47, 47, 47, 0.5);
+  text-align: center;
+  letter-spacing: -0.01em;
+  font-size: 14px;
+  font-weight: 400;
 }
 
 .link {
-    color: #2f2f2f;
+  color: #2f2f2f;
 
-    font-weight: 700;
-    text-decoration: underline;
-    text-decoration-skip-ink: none;
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-skip-ink: none;
 }
 
 .link:hover {
-    text-decoration: underline;
+  text-decoration: underline;
+}
+
+.error {
+
+    color: red;
+  }
+
+@media screen and (min-width: 768px) {
+  .formContainer {
+    max-width: 704px;
+    height: calc(100vh - 64px);
+    min-height: 960px;
+  }
+
+  .formContainer div:first-child {
+    top: 32px;
+    left: 32px;
+  }
+  .signupLink {
+    font-size: 16px;
+  }
+
+  .formGroup {
+    font-size: 16px;
+  }
+  .submitButton {
+    font-size: 16px;
+  }
+
+  input[type="email"],
+  input[type="password"],
+  input[type="text"] {
+    font-size: 16px;
+  }
+
+  .header {
+    font-size: 36px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .formContainer {
+    max-width: 672px;
+    min-height: 736px;
+    max-height: 736px;
+  }
 }

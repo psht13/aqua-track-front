@@ -1,21 +1,23 @@
 .form {
-  max-width: 311px;
   flex-grow: 1;
-  gap: 16px;
-  font-size: 14px;
+  max-width: 311px;
   line-height: 129%;
+
+  font-size: 14px;
+  gap: 16px;
 }
 
 .formContainer {
   position: relative;
-  background: var(--background);
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 30px;
   max-width: 343px;
-  min-height: 736px;
   height: calc(100vh - 32px);
+  min-height: 736px;
+  padding: 0 16px;
+  border-radius: 30px;
+  background: var(--background);
 }
 
 .formContainer div:first-child {
@@ -25,12 +27,12 @@
 }
 
 .header {
-  margin-bottom: 32px;
-  font-weight: 700;
-  font-size: 32px;
   line-height: 100%;
-  letter-spacing: -0.01em;
+  margin-bottom: 32px;
   color: var(--main);
+  letter-spacing: -0.01em;
+  font-size: 32px;
+  font-weight: 700;
 }
 
 .formGroup {
@@ -38,12 +40,12 @@
   flex-direction: column;
   margin-bottom: 16px;
   color: var(--main-text);
+  gap: 8px;
 }
 
 .formGroup label {
-  margin-bottom: 8px;
-  font-weight: 700;
   letter-spacing: -0.01em;
+  font-weight: 700;
 }
 
 .passwordWrapper {
@@ -54,25 +56,25 @@
 input[type="email"],
 input[type="password"],
 input[type="text"] {
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 129%;
-  letter-spacing: -0.01em;
-  color: var(--main-text);
   width: 100%;
+  line-height: 129%;
+  padding: 16px;
   border: 1px solid rgba(47, 47, 47, 0.2);
   border-radius: 15px;
-  padding: 16px;
+  color: var(--main-text);
+  letter-spacing: -0.01em;
+  font-size: 14px;
+  font-weight: 400;
 }
 
 input[type="email"]::placeholder,
 input[type="password"]::placeholder,
 input[type="text"]::placeholder {
-  font-weight: 400;
-  font-size: 14px;
   line-height: 129%;
-  letter-spacing: -0.01em;
   color: rgba(47, 47, 47, 0.6);
+  letter-spacing: -0.01em;
+  font-size: 14px;
+  font-weight: 400;
 }
 
 .togglePasswordButton {
@@ -99,9 +101,14 @@ input[type="text"]::placeholder {
   border: 1px solid red;
 }
 
+.error {
+  padding-bottom: 8px;
+  color: red;
+}
 .submitButton {
   width: 100%;
   height: 50px;
+  line-height: 129%;
   margin-top: 16px;
   border: none;
   border-radius: 30px;
@@ -109,9 +116,8 @@ input[type="text"]::placeholder {
   background: #9be1a0;
   text-align: center;
   letter-spacing: -0.01em;
-  font-weight: 700;
   font-size: 14px;
-  line-height: 129%;
+  font-weight: 700;
 }
 
 .signupLink {
@@ -135,49 +141,50 @@ input[type="text"]::placeholder {
 
 @media screen and (min-width: 768px) {
   .formContainer {
-    height: calc(100vh - 64px);
-
     max-width: 704px;
+    min-height: 960px;
   }
+
   .formContainer div:first-child {
     top: 32px;
     left: 32px;
   }
   .form {
     max-width: 436px;
-    font-size: 16px;
     line-height: 150%;
+    font-size: 16px;
   }
   .header {
-    font-size: 36px;
     line-height: 106%;
+    font-size: 36px;
   }
   .formGroup {
+    line-height: 150%;
     margin-bottom: 20px;
     font-size: 16px;
-    line-height: 150%;
   }
   input[type="email"],
   input[type="password"],
   input[type="text"] {
-    font-size: 16px;
     line-height: 150%;
+    font-size: 16px;
   }
   input[type="email"]::placeholder,
   input[type="password"]::placeholder,
   input[type="text"]::placeholder {
-    font-size: 16px;
     line-height: 150%;
+    font-size: 16px;
   }
   .submitButton {
-    font-size: 16px;
     line-height: 150%;
+    font-size: 16px;
   }
 }
 
 @media screen and (min-width: 1440px) {
   .formContainer {
     max-width: 672px;
-    height: 736px;
+    min-height: 736px;
+    max-height: 736px;
   }
 }

@@ -1,119 +1,29 @@
-.page {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    justify-content: center;
-    min-height: 100vh;
-    gap: 16px;
-}
-
-.leftSection {
-    display: flex;
-    align-items: flex-start;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 100%;
-    max-width: 375px;
-    padding: 24px 16px;
-    border-radius: 10px;
-    background: #ffffff;
-    background: #f0eff4;
-
-}
-
-.logo {
-    align-self: center;
-    margin-bottom: 16px;
-}
-
-.formWrapper {
-    display: flex;
-    align-items: start;
-    flex-grow: 1;
-    justify-content: center;
-    width: 100%;
-    padding-top: 113px;
-}
-
-.signupLink {
-    margin-top: 20px;
-    text-align: center;
-    font-size: 14px;
-}
-
 .rightSection {
     display: none;
-
-}
-
-
-@media screen and (min-width: 768px) {
+  }
+  
+  @media screen and (min-width: 1440px) {
     .page {
-        flex-direction: column;
-        gap: 24px;
+      display: flex;
+      flex-direction: row;
+      /* justify-content: center;
+      align-items: stretch; */
+      gap: 32px;
     }
-
+  
     .leftSection {
-        max-width: 768px;
-        padding: 32px;
-        border-radius: 20px;
+      flex-grow: 1;
     }
-}
-
-
-@media screen and (min-width: 1024px) {
-    .page {
-        align-items: stretch;
-        flex-direction: row;
-        justify-content: center;
-        gap: 32px;
-    }
-
-    .leftSection {
-        width: 50%;
-        max-width: 672px;
-        height: 736px;
-        padding: 32px;
-        border-radius: 30px;
-    }
-
-    .logo {
-        align-self: flex-start;
-        margin-bottom: auto;
-    }
-
-    .formWrapper {
-        display: flex;
-        align-items: start;
-        justify-content: center;
-        width: 100%;
-    }
-
+  
     .rightSection {
-        display: flex;
-        align-items: center;
-        flex-direction: column;
-        justify-content: center;
-        width: 50%;
-        max-width: 672px;
-        height: 736px;
-
-        border-radius: 30px;
-        background: #ffffff;
-        box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      justify-content: center;
+      height: 736px;
+      border-radius: 30px;
+      background: transparent;
+      box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
     }
-}
-
-
-@media screen and (min-width: 1440px) {
-    .page {
-        justify-content: center;
-
-    }
-
-    .leftSection,
-    .rightSection {
-        max-width: 720px;
-
-    }
-}
+  }
+  
