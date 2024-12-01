@@ -9,9 +9,8 @@ import {
   PURGE,
   REGISTER,
 } from "redux-persist";
-import storage from "redux-persist/lib/storage"; 
-import authReducer from "./slice"; 
-
+import storage from "redux-persist/lib/storage";
+import authReducer from "./slice";
 
 const authPersistConfig = {
   key: "auth",
@@ -31,5 +30,5 @@ const store = configureStore({
     }),
 });
 
-export const persistor = persistStore(store); 
+export const persistor = persistStore(store);
 export { store };

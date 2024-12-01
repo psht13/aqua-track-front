@@ -99,6 +99,11 @@ input[type="text"] {
     border: none;
     margin-top: 16px;
 }
+.submitButton:hover {
+  background-color: #87D28D;
+  transform: scale(1.05);
+}
+  
 
 .signupLink {
     font-weight: 400;
