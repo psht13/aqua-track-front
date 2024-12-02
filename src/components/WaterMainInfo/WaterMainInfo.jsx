@@ -1,7 +1,7 @@
 import css from "./WaterMainInfo.module.css";
 
+import WaterDailyNorma from '../WaterDailyNorma/WaterDailyNorma'
 import AddWaterBtn from "../AddWaterBtn/AddWaterBtn";
-import WaterDailyNorma from "../waterDailyNorma/WaterDailyNorma";
 import WaterProgressBar from "../WaterProgressBar/WaterProgressBar";
 import Logo from "../Logo/Logo";
 

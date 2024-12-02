@@ -1,4 +1,3 @@
-import { useSelector } from "react-redux";
 import css from "./WaterDailyNorma.module.css";
 
 const WaterDailyNorma = () => {
