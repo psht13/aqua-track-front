@@ -1,5 +1,6 @@
-// AdvantagesSection.jsx
-// import React from "react";
+import memoji1 from '/src/assets/imgs/memojis1.jpg';
+import memoji2 from '/src/assets/imgs/memojis2.jpg';
+import memoji3 from '/src/assets/imgs/memojis3.jpg';
 import styles from "./AdvantagesSection.module.css";
 
 const AdvantagesSection = () => {
@@ -8,17 +9,17 @@ const AdvantagesSection = () => {
 			<div className={styles.content}>
 				<div className={styles.badge}>
 					<img
-						src='../../src/assets/imgs/memojis1.jpg'
+						src={memoji1}
 						alt='User 1'
 						className={styles.avatar}
 					/>
 					<img
-						src='../../src/assets/imgs/memojis2.jpg'
+						src={memoji2}
 						alt='User 2'
 						className={styles.avatar}
 					/>
 					<img
-						src='/src/assets/imgs/memojis3.jpg'
+						src={memoji3}
 						alt='User 3'
 						className={styles.avatar}
 					/>
