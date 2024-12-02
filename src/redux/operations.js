@@ -8,12 +8,13 @@ export const instance = axios.create({
 });
 
 const SetAuthHeaders = (token) => {
-  instance.defaults.headers.common["Authorization"] = `${token}`;
+  instance.defaults.headers.common["Authorization"] = `Bearer ${token}`;
 };
-export const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
+
+export const logOut = createAsyncThunk("/auth/logout", async (_, thunkAPI) => {
   try {
-    await axios.post('/users/logout');
-    axios.defaults.headers.common['Authorization'] = '';
+    await axios.post("/auth/logout");
+    axios.defaults.headers.common["Authorization"] = "";
   } catch (error) {
     return thunkAPI.rejectWithValue(error.response.data?.data.error);
   }
@@ -24,10 +25,12 @@ export const apiRegister = createAsyncThunk(
   async (formData, thunkAPI) => {
     try {
       const { data } = await instance.post("/auth/register", formData);
-      SetAuthHeaders(data.token);
+      SetAuthHeaders(data.accessToken);
       return data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.response.data?.data.error || 'An error occurred');
+      return thunkAPI.rejectWithValue(
+        error.response.data?.data.error || "An error occurred"
+      );
     }
   }
 );
@@ -37,10 +40,12 @@ export const apiLogin = createAsyncThunk(
   async (formData, thunkAPI) => {
     try {
       const { data } = await instance.post("/auth/login", formData);
-      SetAuthHeaders(data.token);
+      SetAuthHeaders(data.accessToken);
       return data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.response.data?.data.error || 'An error occurred');
+      return thunkAPI.rejectWithValue(
+        error.response.data?.data?.error || "An error occurred"
+      );
     }
   }
 );
@@ -50,9 +55,11 @@ export const apiLogout = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       await instance.post("/auth/logout");
-      return;
+      return {};
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.response?.data.message || 'An error occurred');
+      return thunkAPI.rejectWithValue(
+        error.response?.data.message || "An error occurred"
+      );
     }
   }
 );
@@ -67,16 +74,15 @@ export const apiRefreshUser = createAsyncThunk(
       const { data } = await instance.get("/auth/refresh");
       return data;
     } catch (error) {
-      
-
-      
-      return thunkApi.rejectWithValue(error.response.data?.data.error || 'An error occurred');
+      return thunkApi.rejectWithValue(
+        error.response.data?.data.error || "An error occurred"
+      );
     }
   },
   {
     condition: (_, thunkApi) => {
       const state = thunkApi.getState();
-      const token = state.auth.token;
+      const token = state.auth.accessToken;
       return !!token;
     },
   }

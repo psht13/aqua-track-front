@@ -34,8 +34,10 @@ function SignInForm() {
       setLoading(true);
       try {
         const result = await dispatch(apiLogin(values)).unwrap();
-        console.log(result)
-        if (result.token) {
+        console.log("API result:", result);
+        console.log("Token:", result?.data?.accessToken);
+        console.log(result);
+        if (result.data.accessToken) {
           setMessage({ type: "success", text: "Login successful!" });
           navigate("/tracker");
         }
@@ -56,10 +58,8 @@ function SignInForm() {
 
   return (
     <div className={css.formContainer}>
-      <Logo className=''/>
-      <form
-        className={css.form}
-        onSubmit={formik.handleSubmit}>
+      <Logo className="" />
+      <form className={css.form} onSubmit={formik.handleSubmit}>
         <h1 className={css.header}>Sign In</h1>
 
         {message && (
@@ -110,7 +110,8 @@ function SignInForm() {
               type="button"
               className={css.togglePasswordButton}
               onClick={togglePasswordVisibility}
-              aria-label={showPassword ? "Hide password" : "Show password"}>
+              aria-label={showPassword ? "Hide password" : "Show password"}
+            >
               <svg className={css.icon}>
                 <use
                   href={`${sprite}#icon-${showPassword ? "eye-off" : "eye"}`}
@@ -123,18 +124,13 @@ function SignInForm() {
           )}
         </div>
 
-        <button
-          type="submit"
-          className={css.submitButton}
-          disabled={loading}>
+        <button type="submit" className={css.submitButton} disabled={loading}>
           {loading ? "Signing in..." : "Sign In"}
         </button>
 
         <p className={css.signupLink}>
           Don’t have an account?{" "}
-          <Link
-            to="/signup"
-            className={css.link}>
+          <Link to="/signup" className={css.link}>
             Sign Up
           </Link>
         </p>
