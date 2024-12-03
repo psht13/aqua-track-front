@@ -1,12 +1,14 @@
 import css from "./AddWaterBtn.module.css";
 
-const AddWaterBtn = () => {
-  const openModal = () => {
-    return;
+const AddWaterBtn = ({ className = "", label = "Add water", onClick }) => {
+  const handleClick = () => {
+    if (onClick) {
+      onClick();
+    }
   };
 
   return (
-    <button className={css.addBtn} onClick={openModal}>
+    <button className={`${css.addBtn} ${className}`} onClick={handleClick}>
       {/* <svg className={css.plus} width={16} height={16}>
         <use href="src/assets/sprite.svg#icon-plus" />
       </svg> */}
@@ -31,7 +33,7 @@ const AddWaterBtn = () => {
           stroke-linejoin="round"
         />
       </svg>
-      <p>Add water</p>
+      <p>{label}</p>
     </button>
   );
 };
