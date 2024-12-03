@@ -34,9 +34,6 @@ function SignInForm() {
       setLoading(true);
       try {
         const result = await dispatch(apiLogin(values)).unwrap();
-        console.log("API result:", result);
-        console.log("Token:", result?.data?.accessToken);
-        console.log(result);
         if (result.data.accessToken) {
           setMessage({ type: "success", text: "Login successful!" });
           navigate("/tracker");
@@ -58,7 +55,7 @@ function SignInForm() {
 
   return (
     <div className={css.formContainer}>
-      <Logo className="" />
+      <Logo />
       <form className={css.form} onSubmit={formik.handleSubmit}>
         <h1 className={css.header}>Sign In</h1>
 
@@ -124,7 +121,11 @@ function SignInForm() {
           )}
         </div>
 
-        <button type="submit" className={css.submitButton} disabled={loading}>
+        <button
+          type="submit"
+          className={css.submitButton}
+          disabled={loading || !formik.isValid || !formik.dirty}
+        >
           {loading ? "Signing in..." : "Sign In"}
         </button>
 
