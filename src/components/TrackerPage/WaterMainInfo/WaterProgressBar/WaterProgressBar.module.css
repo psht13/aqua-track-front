@@ -1,0 +1,112 @@
+.progressContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* align-items: center; */
+  background-color: #fff;
+  border-radius: 15px;
+  padding: 20px 20px 45px 20px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  position: absolute;
+  bottom: 30%;
+  left: 50%;
+  transform: translateX(-50%) scale(1);
+  width: 46%;
+  transition: transform 0.3s ease;
+}
+
+.label {
+  font-size: 15px;
+  font-weight: bold;
+  text-align: left;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.progressBar {
+  position: relative;
+  width: 100%;
+  height: 8px;
+  background-color: #f0f0f0;
+  border-radius: 10px;
+  /* overflow: hidden; */
+}
+
+.progressFill {
+  background-color: #4caf50;
+  height: 100%;
+  border-radius: 10px;
+  transition: width 0.3s ease;
+}
+
+.progressCircle {
+  position: absolute;
+  top: -3px; /* Поднимаем кружок над линией */
+  width: 13px;
+  height: 13px;
+  background-color: #fff;
+  border: 2px solid #4caf50;
+  border-radius: 50%;
+  transform: translateX(-80%);
+  transition: left 0.3s ease;
+}
+
+.markers {
+  position: relative;
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 5px;
+  padding-right: 42px;
+}
+
+.staticMarker {
+  position: absolute;
+  top: 10px;
+  font-size: 0.8rem;
+  color: #666;
+  /* font-weight: bold; */
+}
+
+.marker {
+  position: absolute;
+  top: 20px;
+  font-size: 0.7rem;
+  color: #4caf50;
+  visibility: hidden; /* По умолчанию скрыто */
+  opacity: 0;
+  transition: visibility 0.3s ease, opacity 0.3s ease;
+}
+
+.marker.visible {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Мобильная адаптация */
+@media (max-width: 768px) {
+  .progressContainer {
+    transform: translateX(-50%) scale(0.8);
+    width: 70%;
+  }
+
+  .label {
+    font-size: 1rem;
+  }
+
+  .staticMarker {
+    top: 15px;
+    font-size: 0.8rem;
+  }
+
+  .marker {
+    top: 15px;
+    font-size: 0.7rem;
+  }
+
+  .progressCircle {
+    width: 12px;
+    height: 12px;
+    top: -4px;
+  }
+}

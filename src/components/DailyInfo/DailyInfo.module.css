@@ -1,0 +1,136 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 16px;
+  border-radius: 16px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.greeting {
+  font-size: 36px;
+  font-weight: 400;
+  color: var(--text);
+}
+
+.username {
+  font-weight: bold;
+}
+
+.userMenu {
+  position: relative;
+  background: var(--main);
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 30px;
+}
+
+.menuButton {
+  display: flex;
+  align-items: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.userName {
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+  margin-right: 10px;
+}
+
+.avatar {
+  width: 44px;
+  height: 44px;
+  background: #ccc;
+  border-radius: 50%;
+}
+
+.icon {
+  width: 16px;
+  height: 16px;
+  stroke: #fff;
+}
+
+.menu {
+  position: absolute;
+  top: 110%;
+  right: 0;
+  background: #fff;
+  border-radius: 15px;
+  z-index: 10;
+  padding: 13px 12px;
+}
+
+.menuItem {
+  padding: 4px 0px;
+  font-size: 15px;
+  font-weight: bold;
+  color: rgba(50, 63, 71, 0.4);
+  background: none;
+  text-align: center;
+  margin: 0 auto;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+}
+
+.menuItem:hover {
+  color: rgba(50, 63, 71, 1);
+}
+
+.dateAndAction {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+.date {
+  font-size: 28px;
+  font-weight: bold;
+  color: var(--text);
+}
+
+.dateAndAction .customAddWaterBtn {
+  width: 200px;
+  height: 60px;
+  right: 0;
+  bottom: 0;
+  width: auto;
+  height: auto;
+  background: none;
+  padding: 0;
+  color: var(--main);
+}
+
+.dateAndAction .customAddWaterBtn:hover {
+  background-color: var(--accent-hover);
+  transform: scale(1.05);
+}
+
+.dateAndAction .customAddWaterBtn svg {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  stroke: currentColor;
+  background: var(--accent);
+}
+
+.dateAndAction .customAddWaterBtn p {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.noRecords {
+  font-size: 1rem;
+  color: #666;
+  text-align: center;
+  margin-top: 20px;
+}
