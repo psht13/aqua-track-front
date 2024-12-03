@@ -77,6 +77,19 @@ input[type="text"]::placeholder {
   font-weight: 400;
 }
 
+input[type="email"]:hover,
+input[type="password"]:hover,
+input[type="text"]:hover {
+  border-color: #87D28D;
+}
+
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="text"]:focus {
+  border-color: #87D28D;
+  outline: none;
+}
+
 .togglePasswordButton {
   position: absolute;
   top: 50%;
@@ -105,6 +118,7 @@ input[type="text"]::placeholder {
   padding-bottom: 8px;
   color: red;
 }
+
 .submitButton {
   align-content: center;
   width: 100%;
@@ -127,6 +141,11 @@ input[type="text"]::placeholder {
   transform: scale(1.05);
 }
 
+.submitButton:disabled {
+  background: #d3d3d3;
+  cursor: not-allowed;
+  transform: none;
+}
 
 .signupLink {
   margin-top: 10px;
@@ -157,32 +176,38 @@ input[type="text"]::placeholder {
     top: 32px;
     left: 32px;
   }
+
   .form {
     max-width: 436px;
     line-height: 150%;
     font-size: 16px;
   }
+
   .header {
     line-height: 106%;
     font-size: 36px;
   }
+
   .formGroup {
     line-height: 150%;
     margin-bottom: 20px;
     font-size: 16px;
   }
+
   input[type="email"],
   input[type="password"],
   input[type="text"] {
     line-height: 150%;
     font-size: 16px;
   }
+
   input[type="email"]::placeholder,
   input[type="password"]::placeholder,
   input[type="text"]::placeholder {
     line-height: 150%;
     font-size: 16px;
   }
+
   .submitButton {
     line-height: 150%;
     font-size: 16px;

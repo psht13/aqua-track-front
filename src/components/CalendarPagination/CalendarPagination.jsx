@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import css from './CalendarPagination.module.css';
+import sprite from '../../assets/sprite.svg';
 
 const CalendarPagination = ({ currentDate, setCurrentDate }) => {
   const handlePrevMonth = () => {
@@ -24,10 +25,10 @@ const CalendarPagination = ({ currentDate, setCurrentDate }) => {
         onClick={handlePrevMonth}
         className={css.navButton}
         aria-label="Previous Month"
-      >
-        <svg className={css.icon}>
-          <use href="src/assets/sprite.svg#icon-chevron-left" />
-        </svg>
+      > ←
+        {/* <svg className={css.icon}>
+          <use href={`${sprite}#icon-chevron-left`} />
+        </svg> */}
       </button>
       <h3 className={css.currentDate}>
         {currentDate instanceof Date && !isNaN(currentDate)
@@ -40,10 +41,10 @@ const CalendarPagination = ({ currentDate, setCurrentDate }) => {
         onClick={handleNextMonth}
         className={css.navButton}
         aria-label="Next Month"
-      >
-        <svg className={css.icon}>
-          <use href="src/assets/sprite.svg#icon-chevron-right" />
-        </svg>
+      > →
+        {/* <svg className={css.icon}>
+          <use href={`${sprite}#icon-chevron-right`} />
+        </svg> */}
       </button>
 
       <button
@@ -52,7 +53,7 @@ const CalendarPagination = ({ currentDate, setCurrentDate }) => {
         onClick={() => console.log('Switch to statistics mode')}
       >
         <svg className={css.icon}>
-          <use href="src/assets/sprite.svg#icon-pie-chart-02" />
+          <use href={`${sprite}#icon-pie-chart-02`} />
         </svg>
       </button>
     </div>

@@ -2,6 +2,7 @@ import { useState } from 'react';
 import AddWaterBtn from '../AddWaterBtn/AddWaterBtn';
 import WaterList from '../WaterList/WaterList';
 import css from './DailyInfo.module.css';
+import sprite from '../../assets/sprite.svg';
 
 const DailyInfo = ({
   userName = 'Nadia',
@@ -9,6 +10,7 @@ const DailyInfo = ({
   selectedDate = new Date(),
 }) => {
   const [menuVisible, setMenuVisible] = useState(false);
+  const [activeModal, setActiveModal] = useState(null); // Отслеживание текущего модального окна
 
   const filteredRecords = waterRecords.filter((record) => {
     const recordDate = new Date(record.date);
@@ -22,6 +24,14 @@ const DailyInfo = ({
           month: 'long',
         })}`;
 
+  const handleOpenModal = (modalType) => {
+    setActiveModal(modalType); // Устанавливаем тип модального окна
+  };
+
+  const handleCloseModal = () => {
+    setActiveModal(null); // Закрываем модальное окно
+  };
+
   return (
     <div className={css.container}>
       <header className={css.header}>
@@ -29,7 +39,7 @@ const DailyInfo = ({
           Hello, <span className={css.username}>{userName}</span>!
         </h1>
         <div className={css.userMenu}>
-        <button
+          <button
             onClick={() => setMenuVisible(!menuVisible)}
             className={css.menuButton}
           >
@@ -37,27 +47,29 @@ const DailyInfo = ({
             <div className={css.avatar}></div>
             <svg className={css.icon}>
               <use
-                href={`src/assets/sprite.svg#icon-chevron-${menuVisible ? 'up' : 'down'}`}
+                href={`src/assets/sprite.svg#icon-chevron-${
+                  menuVisible ? 'up' : 'down'
+                }`}
               />
             </svg>
           </button>
           {menuVisible && (
             <div className={css.menu}>
               <button
-                onClick={() => console.log('Open Settings')}
+                onClick={() => handleOpenModal('settings')}
                 className={css.menuItem}
               >
                 <svg className={css.icon}>
-                  <use href="src/assets/sprite.svg#icon-settings" />
+                  <use href={`${sprite}#icon-settings`} />
                 </svg>
                 Setting
               </button>
               <button
-                onClick={() => console.log('Log out')}
+                onClick={() => handleOpenModal('logout')}
                 className={css.menuItem}
               >
                 <svg className={css.icon}>
-                  <use href="src/assets/sprite.svg#icon-log-out" />
+                  <use href={`${sprite}#icon-log-out`} />
                 </svg>
                 Log out
               </button>
@@ -69,16 +81,26 @@ const DailyInfo = ({
       <div className={css.dateAndAction}>
         <h2 className={css.date}>{formattedDate}</h2>
         <AddWaterBtn
-          className={css.customAddWaterBtn} 
+          className={css.customAddWaterBtn}
           onClick={() => console.log('Add water')}
         />
       </div>
 
-        <WaterList records={filteredRecords} />
-      {/* {filteredRecords.length > 0 ? (
-      ) : (
-        <p className={css.noRecords}>No records for this day.</p>
-      )} */}
+      <WaterList records={filteredRecords} />
+
+      {/* Модальные окна */}
+      {activeModal === 'settings' && (
+        <div className={css.modal}>
+          <h2>Settings Modal</h2>
+          <button onClick={handleCloseModal}>Close</button>
+        </div>
+      )}
+      {activeModal === 'logout' && (
+        <div className={css.modal}>
+          <h2>Logout Modal</h2>
+          <button onClick={handleCloseModal}>Close</button>
+        </div>
+      )}
     </div>
   );
 };

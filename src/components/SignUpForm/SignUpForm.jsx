@@ -131,9 +131,10 @@ function SignUpForm() {
             <div className={css.error}>{formik.errors.password}</div>
           )}
         </div>
+
         {/* Repeat Password */}
         <div className={css.formGroup}>
-          <label htmlFor="repPassword">Password</label>
+          <label htmlFor="repPassword">Repeat Password</label>
           <div className={css.passwordWrapper}>
             <input
               id="repPassword"
@@ -166,7 +167,12 @@ function SignUpForm() {
             <div className={css.error}>{formik.errors.repPassword}</div>
           )}
         </div>
-        <button type="submit" className={css.submitButton} disabled={loading}>
+
+        <button
+          type="submit"
+          className={css.submitButton}
+          disabled={loading || !formik.isValid || !formik.dirty}
+        >
           {loading ? "Signing up..." : "Sign Up"}
         </button>
 

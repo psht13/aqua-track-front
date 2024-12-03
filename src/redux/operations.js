@@ -82,7 +82,7 @@ export const apiRefreshUser = createAsyncThunk(
   {
     condition: (_, thunkApi) => {
       const state = thunkApi.getState();
-      const token = state.auth.accessToken;
+      const token = state.auth.token;
       return !!token;
     },
   }
