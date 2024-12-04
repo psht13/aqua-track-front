@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
+// Створимо асинхронний екшн для отримання даних користувача
 export const fetchUserData = createAsyncThunk(
   "user/fetchUserData",
   async (userId) => {
@@ -23,6 +24,7 @@ export const updateUserData = createAsyncThunk(
   }
 );
 
+// Створимо slice для управління даними користувача
 const userSlice = createSlice({
   name: "user",
   initialState: {
@@ -30,7 +32,9 @@ const userSlice = createSlice({
     error: null,
     loading: false,
   },
-  reducers: {},
+  reducers: {
+    // Можна додавати інші екшн для управління локальним станом, якщо потрібно
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchUserData.pending, (state) => {

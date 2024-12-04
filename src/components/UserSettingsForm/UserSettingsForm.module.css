@@ -166,6 +166,7 @@ input[type="radio"] {
 }
 
 .dailyTitle {
+  color: #323f47;
   font-size: 16px;
   line-height: 1.25;
   letter-spacing: -0.01em;
@@ -181,6 +182,7 @@ input[type="radio"] {
 }
 
 .dailyText {
+  color: #2f2f2f;
   font-size: 14px;
   line-height: 1.28;
   letter-spacing: -0.01em;
@@ -234,6 +236,7 @@ input::placeholder {
 }
 
 .dailyWeight {
+  color: #2f2f2f;
   font-size: 14px;
 
   line-height: 1.28;
@@ -252,6 +255,7 @@ input::placeholder {
   flex-direction: column;
   gap: 5px;
 
+  color: #2f2f2f;
   font-size: 14px;
   line-height: 1.28;
   letter-spacing: -0.01em;
@@ -403,6 +407,7 @@ input[type="number"] {
   }
 
   .dailyAttention {
+    color: #2f2f2f;
     font-size: 16px;
     line-height: 1.5;
   }
@@ -447,23 +452,20 @@ input[type="number"] {
   }
 }
 
-/* Стиль для контейнера повідомлень про помилки */
 .errorMessage {
-  color: red; /* Червоний колір тексту */
-  font-size: 14px; /* Розмір шрифта */
-  margin-top: 5px; /* Відступ зверху */
+  color: red;
+  font-size: 14px;
+  margin-top: 5px;
 }
 
-/* Стиль для конкретних полів форми з помилками */
 .inputError {
-  border: 1px solid red; /* Червона обводка для поля з помилкою */
+  border: 1px solid red;
 }
 
 .inputError:focus {
   border: 1px solid red;
 }
 
-/* Стиль для повідомлень про помилки для груп */
 .errorGroup {
   margin-top: 10px;
   font-weight: bold;
