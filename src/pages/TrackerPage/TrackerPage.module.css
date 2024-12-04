@@ -1,4 +1,4 @@
-/* Основной контейнер */
+/* 
 .container {
   display: flex;
   gap: 20px;
@@ -33,7 +33,6 @@
   }
 }
 
-/* Адаптация для мобильных устройств (320px - 374px) */
 @media (min-width: 320px) and (max-width: 374px) {
   .container {
     padding: 15px 0;
@@ -42,11 +41,29 @@
   }
 }
 
-/* Адаптация для мобильных устройств (375px - 767px) */
 @media (min-width: 375px) and (max-width: 767px) {
   .container {
     padding: 20px;
     max-width: 540px;
     flex-wrap: wrap;
   }
+} */
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  background-color: #ffffff;
+  @media screen and (min-width: 768px) {
+    flex-direction: column;
+  }
+
+  @media screen and (min-width: 1440px) {
+    flex-direction: row;
+    gap: 32px;
+  }
 }
+
+
+

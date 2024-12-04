@@ -1,13 +1,13 @@
 import WaterMainInfo from "../../components/WaterMainInfo/WaterMainInfo";
 import WaterDetailedInfo from "../../components/WaterDetailedInfo/WaterDetailedInfo";
-
+import styles from "./TrackerPage.module.css";
 const TrackerPage = () => {
   return (
-    <>
-      <WaterMainInfo />
-      <WaterDetailedInfo />
-    </>
-  );
+		<main className={styles.main}>
+			<WaterMainInfo />
+			<WaterDetailedInfo />
+		</main>
+	);
 };
 
 export default TrackerPage;
