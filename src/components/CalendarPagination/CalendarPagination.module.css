@@ -14,6 +14,7 @@
 }
 
 .navButton {
+  background: violet;
   border: none;
   cursor: pointer;
   display: flex;
@@ -39,11 +40,9 @@
 .icon {
   width: 24px;
   height: 24px;
+  fill: var(--accent);
 }
-.statisticsButton{
-  border: none;
-  cursor: pointer;
-}
+
 @media (max-width: 600px) {
   .pagination {
     flex-direction: column;
