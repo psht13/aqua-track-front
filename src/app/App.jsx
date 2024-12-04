@@ -9,6 +9,7 @@ import css from "./App.module.css";
 import { selectAuthIsRefreshing } from "../redux/auth/selectors.js";
 import { apiRefreshUser } from "../redux/auth/operations.js";
 import { Suspense } from "react";
+import Loader from "../components/Loader/Loader.jsx";
 
 // Лейзі імпорти для сторінок
 const HomePage = lazy(() => import("../pages/HomePage/HomePage"));
@@ -28,13 +29,15 @@ const App = () => {
   }, [dispatch]);
 
   return isRefreshing ? (
-    <b>Refreshing user...</b>
+    <Loader/>
   ) : (
     <div className={css.container}>
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<Loader/>}>
         {" "}
         <Routes>
-          <Route path="/" element={<SharedLayout />}>
+          <Route
+            path="/"
+            element={<SharedLayout />}>
             <Route
               path="/"
               element={
@@ -68,7 +71,10 @@ const App = () => {
               </PrivateRoute>
             }
           />
-          <Route path="*" element={<NotFoundPage />} />
+          <Route
+            path="*"
+            element={<NotFoundPage />}
+          />
         </Routes>
         <Toaster />
       </Suspense>
