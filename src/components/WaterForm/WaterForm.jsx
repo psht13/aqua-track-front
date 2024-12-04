@@ -4,7 +4,7 @@ import * as Yup from "yup";
 import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useDispatch } from "react-redux";
-import Loader from "../Loader/Loader";
+import { addWater, updateWater } from "../../redux/water/operations";
 import css from "./waterForm.module.css";
 
 const WaterForm = ({
@@ -17,8 +17,6 @@ const WaterForm = ({
   const [waterAmount, setWaterAmount] = useState(waterPortion || 50);
 
   const dispatch = useDispatch();
-
-  const [isLoading, setIsLoading] = useState(false);
 
   const dateFromUrl = new Date();
 
@@ -59,8 +57,6 @@ const WaterForm = ({
   });
 
   const onSubmit = (data) => {
-    console.log("Form submitted with data:", data); // дані форми
-
     const combinedDateTime = new Date(
       `${year}-${month}-${day}T${formHours}:${formMinutes}:00`
     );
@@ -76,16 +72,11 @@ const WaterForm = ({
       date: timeToSend,
     };
 
-    setIsLoading(true);
-
     switch (operationType) {
       case "add": {
         const result = dispatch(addWater(addWaterValue));
         if (!result.error) {
-          setIsLoading(false);
           handleClose();
-        } else {
-          setIsLoading(false);
         }
         break;
       }
@@ -94,15 +85,11 @@ const WaterForm = ({
           updateWater({ id: id, formData: editWaterValue })
         );
         if (!result.error) {
-          setIsLoading(false);
           handleClose();
-        } else {
-          setIsLoading(false);
         }
         break;
       }
       default:
-        setIsLoading(false);
         break;
     }
   };
@@ -196,8 +183,8 @@ const WaterForm = ({
           <p className={css.error}>{errors.waterValue.message}</p>
         )}
       </label>
-      <button className={css.btnSave} type="submit" disabled={isLoading}>
-        {isLoading ? <Loader /> : "Save"}
+      <button className={css.btnSave} type="submit">
+        Save
       </button>
     </form>
   );
