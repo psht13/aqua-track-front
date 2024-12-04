@@ -12,20 +12,15 @@ const WaterDetailedInfo = ({ waterRecords }) => {
 
   const handleDateChange = (newDate) => {
     setSelectedDate(newDate);
-    console.log('Selected date updated to:', newDate);
   };
 
   return (
     <div className={css.card}>
       <UserPanel setOpenSetting={setOpenSetting} />
       <DailyInfo selectedDate={selectedDate} />
-      <MonthInfo
-        waterRecords={waterRecords}
-        onDateChange={handleDateChange} // Передаём для синхронизации
-      />
+      <MonthInfo waterRecords={waterRecords} onDateChange={handleDateChange} />
     </div>
   );
 };
 
 export default WaterDetailedInfo;
-

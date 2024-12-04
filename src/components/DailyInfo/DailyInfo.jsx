@@ -34,7 +34,6 @@ const DailyInfo = ({ waterRecords = [], selectedDate = new Date() }) => {
 
       <WaterList records={filteredRecords} />
 
-      {/* Модальные окна */}
       {activeModal === 'settings' && (
         <div className={css.modal}>
           <h2>Settings Modal</h2>

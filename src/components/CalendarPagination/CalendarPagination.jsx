@@ -25,7 +25,9 @@ const CalendarPagination = ({ currentDate, setCurrentDate }) => {
         onClick={handlePrevMonth}
         className={css.navButton}
         aria-label="Previous Month"
-      > ←
+      >
+        {' '}
+        ←
         {/* <svg className={css.icon}>
           <use href={`${sprite}#icon-chevron-left`} />
         </svg> */}
@@ -41,7 +43,9 @@ const CalendarPagination = ({ currentDate, setCurrentDate }) => {
         onClick={handleNextMonth}
         className={css.navButton}
         aria-label="Next Month"
-      > →
+      >
+        {' '}
+        →
         {/* <svg className={css.icon}>
           <use href={`${sprite}#icon-chevron-right`} />
         </svg> */}

@@ -14,7 +14,7 @@ const MonthInfo = ({ waterRecords, onDateChange }) => {
   const handleDaySelect = (date) => {
     setSelectedDate(date);
     if (onDateChange) {
-      onDateChange(date); // Обновление компонента DailyInfo
+      onDateChange(date);
     }
   };
 
@@ -27,7 +27,7 @@ const MonthInfo = ({ waterRecords, onDateChange }) => {
     }
   };
 
-  const isToday = selectedDate.toDateString() === new Date().toDateString();
+  const isToday = selectedDate?.toDateString() === new Date().toDateString();
 
   return (
     <div className={css.container}>
@@ -50,6 +50,7 @@ const MonthInfo = ({ waterRecords, onDateChange }) => {
         currentMonth={currentMonth}
         waterRecords={waterRecords}
         onDaySelect={handleDaySelect}
+        selectedDate={selectedDate}
       />
     </div>
   );

@@ -4,6 +4,7 @@
   gap: 20px;
   padding: 16px;
   border-radius: 16px;
+  color: var(--mein-text);
 }
 
 .dateAndAction {
@@ -11,12 +12,6 @@
   justify-content: space-between;
   align-items: center;
   position: relative;
-}
-
-.date {
-  font-size: 28px;
-  font-weight: bold;
-  color: var(--text);
 }
 
 .dateAndAction .customAddWaterBtn {
@@ -32,7 +27,6 @@
 }
 
 .dateAndAction .customAddWaterBtn:hover {
-  background-color: var(--accent-hover);
   transform: scale(1.05);
 }
 
@@ -46,6 +40,11 @@
 
 .dateAndAction .customAddWaterBtn p {
   font-size: 16px;
+  font-weight: bold;
+}
+
+.date {
+  font-size: 28px;
   font-weight: bold;
 }
 

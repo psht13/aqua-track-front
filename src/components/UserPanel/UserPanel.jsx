@@ -1,17 +1,21 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUser } from '../../redux/user/operations';
-import { selectUser } from '../../redux/user/selectors'; 
+import { selectUser } from '../../redux/user/selectors';
 import css from './UserPanel.module.css';
 import sprite from '../../assets/sprite.svg';
+import UserSettingsModal from '../UserSettingsModal/UserSettingsModal';
+import LogOutModal from '../LogOutModal/LogOutModal';
 
-const UserPanel = ({ setOpenSetting }) => {
+const UserPanel = () => {
+  const [activeModal, setActiveModal] = useState(null);
+  const [selectedWaterId, setSelectedWaterId] = useState(null);
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
   const [menuVisible, setMenuVisible] = useState(false);
 
   useEffect(() => {
-    dispatch(getUser()); // Загружаем данные о пользователе при монтировании
+    dispatch(getUser());
   }, [dispatch]);
 
   const getDisplayName = (name, email) => {
@@ -28,12 +32,18 @@ const UserPanel = ({ setOpenSetting }) => {
   const name = user?.name;
   const displayName = getDisplayName(name, email);
 
-  const handleOpenModal = (modalType) => {
-    setOpenSetting(modalType); // Передаём управление модальным окном
+  const handleOpenModal = (modalType, waterId) => {
+    setActiveModal(modalType);
+    setSelectedWaterId(waterId);
+  };
+
+  const handleCloseModal = () => {
+    setActiveModal(null);
+    setSelectedWaterId(null);
   };
 
   return (
-    <div className={css.panelWrapper}>
+    <div className={css.container}>
       <header className={css.header}>
         <h1 className={css.greeting}>
           Hello, <span className={css.username}>{displayName}!</span>
@@ -77,6 +87,15 @@ const UserPanel = ({ setOpenSetting }) => {
           )}
         </div>
       </header>
+      {activeModal === 'settings' && (
+        <UserSettingsModal
+          waterId={selectedWaterId}
+          onClose={handleCloseModal}
+        />
+      )}
+      {activeModal === 'logout' && (
+        <LogOutModal waterId={selectedWaterId} onClose={handleCloseModal} />
+      )}
     </div>
   );
 };
