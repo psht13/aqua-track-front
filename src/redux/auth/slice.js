@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { apiLogin, apiLogout, apiRefreshUser } from "./operations"; // якщо у вас є ці операції
+import { apiLogin, apiLogout, apiRefreshUser} from "./operations";
 
 const initialState = {
   token: null,
