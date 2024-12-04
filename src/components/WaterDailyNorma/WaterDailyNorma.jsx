@@ -1,12 +1,13 @@
+import { useSelector } from "react-redux";
+import { selectDailyNorm } from "../../redux/user/selectors";
 import css from "./WaterDailyNorma.module.css";
 
 const WaterDailyNorma = () => {
-  const DailyNorma = 1.5;
-  // const dailyNorma = useSelector()
+  const dailyNorma = useSelector(selectDailyNorm) || 1500;
 
   return (
     <div className={css.card}>
-      <p className={css.amount}>{DailyNorma}</p>
+      <p className={css.amount}>{dailyNorma / 1000}</p>
       <p className={css.descr}>My daily norma</p>
     </div>
   );

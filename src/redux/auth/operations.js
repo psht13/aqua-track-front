@@ -1,8 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-console.log(import.meta.env.VITE_BASE_URL);
-
 export const instance = axios.create({
   baseURL: import.meta.env.VITE_BASE_URL,
 });
@@ -25,7 +23,7 @@ export const apiRegister = createAsyncThunk(
   async (formData, thunkAPI) => {
     try {
       const { data } = await instance.post("/auth/register", formData);
-      SetAuthHeaders(data.accessToken);
+      SetAuthHeaders(data.data.accessToken);
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(
@@ -40,7 +38,8 @@ export const apiLogin = createAsyncThunk(
   async (formData, thunkAPI) => {
     try {
       const { data } = await instance.post("/auth/login", formData);
-      SetAuthHeaders(data.accessToken);
+
+      SetAuthHeaders(data.data.accessToken);
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(
