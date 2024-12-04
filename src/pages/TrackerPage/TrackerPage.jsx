@@ -7,7 +7,7 @@ import { getUser } from "../../redux/user/operations";
 const TrackerPage = () => {
   const dispatch = useDispatch();
 
-  const f = async () => {
+  const fetchUser = async () => {
     try {
       const user = await dispatch(getUser());
       console.log(user);
@@ -15,7 +15,7 @@ const TrackerPage = () => {
   };
 
   useEffect(() => {
-    f();
+    fetchUser();
   }, []);
 
   return (
