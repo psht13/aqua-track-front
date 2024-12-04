@@ -9,8 +9,8 @@ export default function PrivateRoute({ children }) {
   const isLoggedIn = useSelector(selectAuthIsLoggedIn);
   const isRefreshing = useSelector(selectAuthIsRefreshing);
 
-  // console.log("isLoggedIn:", isLoggedIn);
-  // console.log("isRefreshing:", isRefreshing);
+  console.log("isLoggedIn:", isLoggedIn);
+  console.log("isRefreshing:", isRefreshing);
 
   if (isRefreshing) {
     return <div>Loading...</div>;

@@ -1,78 +1,25 @@
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.title {
+    font-family: 'Gilroy', sans-serif;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 1;
+    letter-spacing: -0.01em;
+    color: var(--basic-dark-blue);
 }
 
-.greeting {
-  font-size: 36px;
-  font-weight: 400;
-  color: var(--text);
+.secondaryText {
+    font-weight: 700;
 }
 
-.username {
-  font-weight: bold;
-}
+@media screen and (min-width: 768px) {
+    .panelWrapper {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
 
-.userMenu {
-  position: relative;
-  background: var(--main);
-  color: #fff;
-  padding: 6px 12px;
-  border-radius: 30px;
-}
-
-.menuButton {
-  display: flex;
-  align-items: center;
-  background: none;
-  border: none;
-  cursor: pointer;
-}
-
-.userName {
-  font-size: 16px;
-  font-weight: bold;
-  color: #fff;
-  margin-right: 10px;
-}
-
-.avatar {
-  width: 44px;
-  height: 44px;
-  background: #ccc;
-  border-radius: 50%;
-}
-
-.icon {
-  width: 16px;
-  height: 16px;
-  stroke: #fff;
-}
-
-.menu {
-  position: absolute;
-  top: 110%;
-  right: 0;
-  width: 100%;
-  background: #fff;
-  border-radius: 15px;
-  z-index: 10;
-  padding: 13px 12px;
-}
-
-.menuItem {
-  padding: 4px;
-  display: flex;
-  font-size: 15px;
-  font-weight: bold;
-  color: rgba(50, 63, 71, 0.4);
-  background: none;
-  border: none;
-  text-align: left;
-  cursor: pointer;
-}
-
-.menuItem:hover {
-  color: rgba(50, 63, 71, 1);
+    .title {
+        font-size: 36px;
+        line-height: 1.6;
+    }
 }
