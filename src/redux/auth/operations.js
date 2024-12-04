@@ -80,6 +80,8 @@ export const apiRefreshUser = createAsyncThunk(
     const state = thunkApi.getState();
     const token = state.auth.token;
 
+    console.log(token);
+    
     if (!token) {
       console.warn("No token found during refresh");
       return thunkApi.rejectWithValue("No token provided");
@@ -87,7 +89,7 @@ export const apiRefreshUser = createAsyncThunk(
 
     try {
       SetAuthHeaders(token);
-      const { data } = await instance.post("/auth/refresh");
+      const { data } = await instance.post("/auth/refresh", {accessToken: token});
       return data;
     } catch (error) {
       return thunkApi.rejectWithValue(
