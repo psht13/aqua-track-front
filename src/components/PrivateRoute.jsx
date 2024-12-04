@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import {
   selectAuthIsLoggedIn,
   selectAuthIsRefreshing,
-} from "../redux/selectors";
+} from "../redux/auth/selectors";
 
 export default function PrivateRoute({ children }) {
   const isLoggedIn = useSelector(selectAuthIsLoggedIn);

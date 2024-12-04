@@ -1,18 +1,10 @@
-import { useSelector } from 'react-redux';
-import { selectAuthUser } from '../../redux/selectors';
 import { useState } from 'react';
 import AddWaterBtn from '../AddWaterBtn/AddWaterBtn';
 import WaterList from '../WaterList/WaterList';
 import css from './DailyInfo.module.css';
-import sprite from '../../assets/sprite.svg';
 
 const DailyInfo = ({ waterRecords = [], selectedDate = new Date() }) => {
-  const [menuVisible, setMenuVisible] = useState(false);
   const [activeModal, setActiveModal] = useState(null);
-
-  // Получаем данные пользователя из Redux
-  const user = useSelector(selectAuthUser);
-  const userName = user?.name || (user?.email ? user.email.split('@')[0] : "Guest");
 
   const filteredRecords = waterRecords.filter((record) => {
     const recordDate = new Date(record.date);
@@ -26,60 +18,12 @@ const DailyInfo = ({ waterRecords = [], selectedDate = new Date() }) => {
           month: 'long',
         })}`;
 
-  const handleOpenModal = (modalType) => {
-    setActiveModal(modalType);
-  };
-
   const handleCloseModal = () => {
     setActiveModal(null);
   };
 
   return (
     <div className={css.container}>
-      <header className={css.header}>
-        <h1 className={css.greeting}>
-          Hello, <span className={css.username}>{userName}</span>!
-        </h1>
-        <div className={css.userMenu}>
-          <button
-            onClick={() => setMenuVisible(!menuVisible)}
-            className={css.menuButton}
-          >
-            <span className={css.userName}>{userName}</span>
-            <div className={css.avatar}></div>
-            <svg className={css.icon}>
-              <use
-                href={`src/assets/sprite.svg#icon-chevron-${
-                  menuVisible ? 'up' : 'down'
-                }`}
-              />
-            </svg>
-          </button>
-          {menuVisible && (
-            <div className={css.menu}>
-              <button
-                onClick={() => handleOpenModal('settings')}
-                className={css.menuItem}
-              >
-                <svg className={css.icon}>
-                  <use href={`${sprite}#icon-settings`} />
-                </svg>
-                Setting
-              </button>
-              <button
-                onClick={() => handleOpenModal('logout')}
-                className={css.menuItem}
-              >
-                <svg className={css.icon}>
-                  <use href={`${sprite}#icon-log-out`} />
-                </svg>
-                Log out
-              </button>
-            </div>
-          )}
-        </div>
-      </header>
-
       <div className={css.dateAndAction}>
         <h2 className={css.date}>{formattedDate}</h2>
         <AddWaterBtn

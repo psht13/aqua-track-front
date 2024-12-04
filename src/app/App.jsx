@@ -5,8 +5,8 @@ import SharedLayout from "../components/SharedLayout/SharedLayout";
 import PublicRoute from "../components/PublicRoute";
 import PrivateRoute from "../components/PrivateRoute";
 import css from "./App.module.css";
-import { selectAuthIsRefreshing } from "../redux/selectors";
-import { apiRefreshUser } from "../redux/operations";
+import { selectAuthIsRefreshing } from "../redux/auth/selectors.js";
+import { apiRefreshUser } from "../redux/auth/operations.js";
 import { Suspense } from "react";
 
 // Лейзі імпорти для сторінок
@@ -14,7 +14,9 @@ const HomePage = lazy(() => import("../pages/HomePage/HomePage"));
 const SignInPage = lazy(() => import("../pages/SignInPage/SignInPage"));
 const SignUpPage = lazy(() => import("../pages/SignUpPage/SignUpPage"));
 const TrackerPage = lazy(() => import("../pages/TrackerPage/TrackerPage"));
-const NotFoundPage = lazy(() => import("../pages/NotFoundPage/NotFoundPage.jsx"));
+const NotFoundPage = lazy(() =>
+  import("../pages/NotFoundPage/NotFoundPage.jsx")
+);
 
 const App = () => {
   const dispatch = useDispatch();

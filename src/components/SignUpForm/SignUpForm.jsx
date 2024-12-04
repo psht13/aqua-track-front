@@ -3,7 +3,7 @@ import { useFormik } from "formik";
 import * as yup from "yup";
 import { useDispatch } from "react-redux";
 import { useNavigate, Link } from "react-router-dom";
-import { apiLogin, apiRegister } from "../../redux/operations";
+import { apiLogin, apiRegister } from "../../redux/auth/operations";
 import sprite from "../../assets/sprite.svg";
 import css from "./SignUpForm.module.css";
 import Logo from "../Logo/Logo";
@@ -40,11 +40,16 @@ function SignUpForm() {
       setLoading(true);
       try {
         await dispatch(apiRegister({ email, password })).unwrap();
-    
-        const loginResult = await dispatch(apiLogin({ email, password })).unwrap();
-    
+
+        const loginResult = await dispatch(
+          apiLogin({ email, password })
+        ).unwrap();
+
         if (loginResult.accessToken) {
-          setMessage({ type: "success", text: "Registration and login successful!" });
+          setMessage({
+            type: "success",
+            text: "Registration and login successful!",
+          });
           navigate("/tracker");
         }
       } catch (error) {

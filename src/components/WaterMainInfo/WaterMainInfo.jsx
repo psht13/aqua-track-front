@@ -1,4 +1,4 @@
-import css from "./WaterMainInfo.module.css";
+import styles from "./WaterMainInfo.module.css";
 
 import WaterDailyNorma from '../WaterDailyNorma/WaterDailyNorma'
 import AddWaterBtn from "../AddWaterBtn/AddWaterBtn";
@@ -7,13 +7,15 @@ import Logo from "../Logo/Logo";
 
 const WaterMainInfo = () => {
   return (
-    <div className={css.card}>
-      <Logo />
-      <WaterDailyNorma />
-      <WaterProgressBar />
-      <AddWaterBtn />
-    </div>
-  );
+		<section className={styles.mainInfo}>
+			<Logo />
+			<div className={styles.infoBlock}>
+				<WaterDailyNorma />
+				<WaterProgressBar />
+				<AddWaterBtn />
+			</div>
+		</section>
+	);
 };
 
 export default WaterMainInfo;

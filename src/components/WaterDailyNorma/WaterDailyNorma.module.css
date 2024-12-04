@@ -5,8 +5,7 @@
   height: 54px;
   box-shadow: 0 4px 50px 0 rgba(0, 0, 0, 0.1);
   background: var(--main-white);
-  position: absolute;
-  top: 122px;
+  margin-bottom: 49px;
 }
 .amount {
   font-family: var(--font-family);
@@ -26,10 +25,10 @@
 
 @media screen and (min-width: 768px) {
   .card {
+    margin-bottom: 87px;
     padding: 14px 18px;
     width: 129px;
     height: 78px;
-    top: 157px;
   }
   .amount {
     font-size: 15px;
@@ -44,6 +43,7 @@
 
 @media screen and (min-width: 1440px) {
   .card {
-    left: 64px;
+    margin-bottom: 215px;
+    margin-left: 32px;
   }
 }

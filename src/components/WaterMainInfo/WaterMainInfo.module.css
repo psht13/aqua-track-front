@@ -1,34 +1,36 @@
-.card {
+.mainInfo {
+  display: flex;
+  flex-direction: column;
+  background: var(--accent);
+  background-image: url("../../assets/imgs/bottle-bg-mobile.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 100%;
   border-radius: 30px;
   max-width: 343px;
-  height: 415px;
-  background: var(--accent);
   padding: 24px 16px;
-  position: relative;
 }
 
-.card div:first-child {
-  margin-bottom: 6px;
+.infoBlock {
+  display: flex;
+  flex-direction: column;
+  padding-top: 78px;
 }
-
 @media screen and (min-width: 768px) {
-  .card {
+  .mainInfo {
+    background-image: url("../../assets/imgs/bottle-bg-tablet.png");
     max-width: 704px;
-    height: 578px;
     padding: 32px;
   }
-
-  .card div:first-child {
-    margin-bottom: 13px;
-  }
+.infoBlock {
+  padding-top: 101px;
+  padding-bottom: 32px;
+}
+  
 }
 
 @media screen and (min-width: 1440px) {
-  .card {
-    max-width: 672px;
-    height: 736px;
-  }
-  .card div:first-child {
-    margin-bottom: 36px;
+  .mainInfo {
+    background-image: url("../../assets/imgs/bottle-bg-desktop.png");
   }
 }

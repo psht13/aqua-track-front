@@ -1,4 +1,4 @@
-import { configureStore } from "@reduxjs/toolkit";
+import { configureStore } from '@reduxjs/toolkit';
 import {
   persistStore,
   persistReducer,
@@ -8,20 +8,21 @@ import {
   PERSIST,
   PURGE,
   REGISTER,
-} from "redux-persist";
-import storage from "redux-persist/lib/storage"; 
-import authReducer from "./slice"; 
-import waterReducer from "./waterSlice";
-
+} from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
+import authReducer from './auth/slice';
+import userReducer from './user/slice';
+import waterReducer from './waterSlice';
 
 const authPersistConfig = {
-  key: "auth",
+  key: 'auth',
   storage,
-  whitelist: ["token"], 
+  whitelist: ['token'],
 };
 
 const store = configureStore({
   reducer: {
+    user: userReducer,
     auth: persistReducer(authPersistConfig, authReducer),
     water: waterReducer,
   },
@@ -33,5 +34,5 @@ const store = configureStore({
     }),
 });
 
-export const persistor = persistStore(store); 
+export const persistor = persistStore(store);
 export { store };

@@ -3,9 +3,6 @@
   width: 140px;
   height: 46px;
   background: var(--main);
-  position: absolute;
-  bottom: 32px;
-  right: 16px;
   border: none;
   color: var(--main-white);
   display: flex;
@@ -13,6 +10,7 @@
   justify-content: center;
   gap: 10px;
   transition: color 250ms ease-in-out;
+  margin-left: auto;
 }
 
 .addBtn:hover,
