@@ -1,13 +1,4 @@
 import { configureStore } from "@reduxjs/toolkit";
-<<<<<<< HEAD
-import userReducer from "./user-slice";
-
-export const store = configureStore({
-  reducer: {
-    user: userReducer,
-  },
-});
-=======
 import {
   persistStore,
   persistReducer,
@@ -18,14 +9,13 @@ import {
   PURGE,
   REGISTER,
 } from "redux-persist";
-import storage from "redux-persist/lib/storage"; 
-import authReducer from "./slice"; 
-
+import storage from "redux-persist/lib/storage";
+import authReducer from "./slice";
 
 const authPersistConfig = {
   key: "auth",
   storage,
-  whitelist: ["token"], 
+  whitelist: ["token"],
 };
 
 const store = configureStore({
@@ -40,6 +30,5 @@ const store = configureStore({
     }),
 });
 
-export const persistor = persistStore(store); 
+export const persistor = persistStore(store);
 export { store };
->>>>>>> main
