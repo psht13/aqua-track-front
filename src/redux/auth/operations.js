@@ -6,12 +6,17 @@ export const instance = axios.create({
 });
 
 const SetAuthHeaders = (token) => {
+  if (!token) {
+    console.warn("No token provided for SetAuthHeaders");
+    return;
+  }
   instance.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+  console.log("Authorization header set:", token);
 };
 
 export const logOut = createAsyncThunk("/auth/logout", async (_, thunkAPI) => {
   try {
-    await axios.post("/auth/logout");
+    await instance.post("/auth/logout");
     axios.defaults.headers.common["Authorization"] = "";
   } catch (error) {
     return thunkAPI.rejectWithValue(error.response.data?.data.error);
@@ -38,12 +43,18 @@ export const apiLogin = createAsyncThunk(
   async (formData, thunkAPI) => {
     try {
       const { data } = await instance.post("/auth/login", formData);
+      console.log("Login response:", data);
 
-      SetAuthHeaders(data.data.accessToken);
+      const token = data?.data?.accessToken;
+      if (!token) {
+        throw new Error("No token returned from API");
+      }
+
+      SetAuthHeaders(token);
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(
-        error.response.data?.data?.error || "An error occurred"
+        error.response?.data?.error || "An error occurred during login"
       );
     }
   }
@@ -66,22 +77,29 @@ export const apiLogout = createAsyncThunk(
 export const apiRefreshUser = createAsyncThunk(
   "auth/refresh",
   async (_, thunkApi) => {
+    const state = thunkApi.getState();
+    const token = state.auth.token;
+
+    if (!token) {
+      console.warn("No token found during refresh");
+      return thunkApi.rejectWithValue("No token provided");
+    }
+
     try {
-      const state = thunkApi.getState();
-      const token = state.auth.token;
       SetAuthHeaders(token);
-      const { data } = await instance.get("/auth/refresh");
+      const { data } = await instance.post("/auth/refresh");
       return data;
     } catch (error) {
       return thunkApi.rejectWithValue(
-        error.response.data?.data.error || "An error occurred"
+        error.response?.data?.error || "An error occurred during refresh"
       );
     }
   },
   {
     condition: (_, thunkApi) => {
       const state = thunkApi.getState();
-      const token = state.auth.accessToken;
+      const token = state.auth.token;
+      console.log("Checking condition for refresh:", token);
       return !!token;
     },
   }

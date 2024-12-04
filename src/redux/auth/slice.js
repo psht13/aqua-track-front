@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { apiLogin, apiLogout, apiRefreshUser} from "./operations";
+import { apiLogin, apiLogout, apiRefreshUser } from "./operations"; // Якщо у вас є ці операції
 
 const initialState = {
   token: null,
@@ -32,15 +32,20 @@ const authSlice = createSlice({
       state.isLoading = false;
       state.error = null;
     },
+    resetError: (state) => {
+      state.error = null;
+    },
   },
   extraReducers: (builder) => {
     builder
+      // Обробка логіну
       .addCase(apiLogin.pending, (state) => {
         state.isLoading = true;
       })
       .addCase(apiLogin.fulfilled, (state, action) => {
-        state.token = action.payload.accessToken;
-        state.user = action.payload.user;
+        console.log("Token in action payload:", action.payload.data.accessToken); // Логуємо токен
+        state.token = action.payload.data.accessToken;
+        state.user = action.payload.data.user;
         state.isAuthenticated = true;
         state.isLoading = false;
         state.error = null;
@@ -49,6 +54,8 @@ const authSlice = createSlice({
         state.isLoading = false;
         state.error = action.payload || "Login failed";
       })
+
+      // Обробка логауту
       .addCase(apiLogout.pending, (state) => {
         state.isLoading = true;
       })
@@ -63,9 +70,12 @@ const authSlice = createSlice({
         state.isLoading = false;
         state.error = action.payload || "Logout failed";
       })
+
+      // Обробка рефрешу
       .addCase(apiRefreshUser.pending, (state) => {
         state.isRefreshing = true;
         state.isLoading = true;
+        state.error = null;
       })
       .addCase(apiRefreshUser.fulfilled, (state, action) => {
         state.user = action.payload.user;
@@ -83,5 +93,6 @@ const authSlice = createSlice({
   },
 });
 
-export const { loginSuccess, loginFailure, logout } = authSlice.actions;
+export const { loginSuccess, loginFailure, logout, resetError } =
+  authSlice.actions;
 export default authSlice.reducer;
