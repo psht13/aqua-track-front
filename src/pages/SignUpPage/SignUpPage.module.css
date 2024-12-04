@@ -1,0 +1,28 @@
+.rightSection {
+  display: none;
+}
+
+@media screen and (min-width: 1440px) {
+  .page {
+    display: flex;
+    flex-direction: row;
+    /* justify-content: center;
+    align-items: stretch; */
+    gap: 32px;
+  }
+
+  .leftSection {
+    flex-grow: 1;
+  }
+
+  .rightSection {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 736px;
+    background: transparent;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 30px;
+  }
+}

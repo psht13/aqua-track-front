@@ -1,0 +1,76 @@
+.section404 {
+  padding-top: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.title404 {
+  font-family: var(--font), sans-serif;
+  font-weight: 700;
+  font-size: 64px;
+  line-height: 1.09375;
+  letter-spacing: -0.01em;
+  color: var(--main);
+  margin-top: 0;
+}
+
+.container404 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-top: 16px;
+  width: 100%;
+}
+
+.mesage404 {
+  font-family: var(--font), sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1.33333;
+  letter-spacing: -0.01em;
+  text-align: center;
+  color: var(--main);
+}
+
+.link404 {
+  cursor: pointer;
+  margin-top: 12px;
+  font-family: "Poppins", sans-serif;
+  border-radius: 30px;
+  padding: 18px 50px;
+  height: 60px;
+  background: var(--accent);
+  font-family: var(--font), sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+  text-align: center;
+  color: var(--main);
+  border: none;
+}
+
+.link404:hover,
+.link404:focus {
+  background-color: #87d28d;
+}
+
+@media only screen and (min-width: 1440px) {
+  .title404 {
+    font-size: 80px;
+  }
+
+  .mesage404 {
+    font-size: 24px;
+  }
+
+  .link404 {
+    font-size: 20px;
+    height: 66px;
+  }
+}

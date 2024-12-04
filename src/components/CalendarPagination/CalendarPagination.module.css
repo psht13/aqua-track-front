@@ -1,0 +1,66 @@
+.pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 10px 0;
+}
+
+.currentDate {
+  font-size: 16px;
+  font-weight: bold;
+  color: var(--text);
+  text-transform: capitalize;
+}
+
+.navButton {
+  background: violet;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  border-radius: 50%;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.navButton:hover {
+  background-color: var(--hover);
+}
+
+.navButton:focus {
+  outline: 2px solid var(--focus-outline);
+}
+
+.navButton:active {
+  transform: scale(0.9);
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+  fill: var(--accent);
+}
+
+@media (max-width: 600px) {
+  .pagination {
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .currentDate {
+    font-size: 1.2rem;
+  }
+
+  .navButton {
+    padding: 6px;
+  }
+
+  .icon {
+    width: 20px;
+    height: 20px;
+
+  }
+}

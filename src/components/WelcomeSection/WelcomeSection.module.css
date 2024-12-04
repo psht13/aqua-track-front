@@ -1,0 +1,138 @@
+.welcomeSection {
+  display: flex;
+  align-items: left;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 24px; 
+  padding-bottom: 67px;
+  padding-left: 16px;
+  border-radius: 30px;
+  background-color: #F0EFF4;
+  
+
+  @media screen and (min-width: 768px) {
+    flex-direction: column;
+    min-width: 704px;
+    padding: 32px 32px 50px;
+    
+  }
+
+  @media screen and (min-width: 1440px) {
+    min-height: 736px;
+    padding: 32px 60px 188px;
+  }
+
+  .content {
+    max-width: 547px;
+  }
+}
+
+.header {
+  margin-bottom: 50px;
+  font-size: 24px; 
+
+  @media screen and (min-width: 768px) {
+    margin-bottom: 50px;
+  }
+  @media screen and (min-width: 1440px) {
+    position: relative;
+    margin-bottom: 132px;
+    margin-left: -28px;
+    
+  }
+}
+
+
+.textContent {
+  margin-bottom: 32px;
+  text-align: center; 
+
+  @media screen and (min-width: 768px) {
+    max-width: 600px;
+    text-align: left;
+  }
+}
+
+.subtitle {
+  margin-bottom: 16px;
+  color: var(--main-text);
+  font-family: var(--font);
+  font-size: 14px; 
+  font-weight: 400; 
+
+
+  @media screen and (min-width: 768px) {
+    font-size: 16px;
+  }
+
+
+}
+
+.title {
+  line-height: 0.9;
+  margin-bottom: 24px; 
+  color: var(--main);
+  font-family: var(--font);
+  font-size: 38px; 
+  font-weight: 700;
+
+
+  @media screen and (min-width: 768px) {
+    font-size: 64px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    font-size: 80px;
+  }
+}
+
+.buttons {
+  display: flex;
+  gap: 10px;
+  @media screen and (min-width: 768px) {
+    gap: 16px;
+  }
+
+}
+
+.tryTracker,
+.signIn {
+  padding: 14px 19px; 
+  border: none;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+  font-family: var(--font);
+  font-size: 14px;
+  font-weight: 600; 
+  text-decoration: none;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+
+  @media screen and (min-width: 768px) {
+    padding: 18px 40px;
+    font-size: 16px;
+  }
+}
+
+.tryTracker {
+  color: var(--main);
+  background-color: var(--accent);
+  &:hover {
+    background-color: #87D28D;
+  }
+  
+}
+
+.signIn {
+  border: 2px solid var(--main);
+  color: var(--main);
+
+  &:hover {
+    border-color: #87D28D;
+    color: #87D28D;
+  }
+}
+
+

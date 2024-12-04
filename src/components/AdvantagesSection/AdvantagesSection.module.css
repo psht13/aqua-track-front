@@ -1,0 +1,164 @@
+/* AdvantagesSection.module.css */
+.advantagesSection {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  width: 100%;
+  padding: 209px 16px 32px;
+  border-radius: 24px;
+  background-image: url("../../assets/imgs/advantageSection.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  
+  @media screen and (min-width: 768px) {
+    min-width: 704px;
+    padding: 32px;
+    padding-top: 283px;
+    background-image: url("../../assets/imgs/advantageSectionTab.jpg");
+  }
+
+  @media screen and (min-width: 1440px) {
+    min-width: 672px;
+    height: 736px;
+    padding: 60px;
+    background-image: url("../../assets/imgs/advantageSectionDesc.jpg");
+    background-size: contain;
+  }
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 8px;
+  @media screen and (min-width: 768px) {
+  }
+  @media screen and (min-width: 1440px) {
+    gap: 24px;
+  }
+}
+
+.badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 160px;
+  padding: 14px 10px;
+  padding: 14px 10px;
+  border-radius: 30px;
+  color: var(--main);
+  background-color: var(--main-white);
+  text-align: center;
+  font-family: var(--font);
+  font-size: 14px;
+  font-weight: 600;
+
+  @media screen and (min-width: 768px) {
+    width: 227px;
+    padding: 10px 20px;
+    font-size: 15px;
+    }
+  @media screen and (min-width: 1440px) {
+    
+  }
+}
+
+.avatar { 
+  z-index: 1;
+  width: 28px;
+  height: 28px; 
+  margin-left: -8px; 
+  border: 2px solid var(--main-white);
+  border-radius: 50%; 
+  @media screen and (min-width: 768px) {
+    width: 47px;
+  height: 47px;
+    margin-left: -18px;
+  }
+}
+
+.avatar:first-child {
+  margin-left: 0; 
+}
+
+.avatar:nth-child(1) {
+  z-index: 3; 
+}
+
+.avatar:nth-child(2) {
+  z-index: 2; 
+}
+
+.avatar:nth-child(3) {
+  z-index: 1;
+}
+
+
+.customersText strong {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+
+.featuresList {
+display: flex;
+align-self: flex-end;
+flex-wrap: wrap;
+width: 170px;
+gap: 4px;
+
+@media screen and (min-width: 768px) {
+  position: relative;
+    width: 242px;
+  margin-top: -40px;
+  }
+}
+
+.greenDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--accent);
+}
+.habitText, 
+.featuresText  {
+  color: var(--main-text);
+  white-space: nowrap;
+  font-family:var(--font); 
+  font-size: 8px;
+  font-weight: 600;
+  @media screen and (min-width: 768px) {
+    font-size: 12px;
+  }
+}
+.habitText {
+  color: var(--main-white);
+  }
+.featuresText {
+  color: var(--main-text);
+  
+}
+
+.statisticsItem,
+.settingItem,
+.habitItem {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 12px;
+  border-radius: 30px;
+  background-color: var(--accent);
+  @media screen and (min-width: 768px) {
+    padding: 11px 16px;
+  }
+}
+
+.habitItem {
+  background-color: var(--main);
+  gap: 4px;
+}
+
+.settingItem {
+  background-color: var(--main-white);
+}

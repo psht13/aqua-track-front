@@ -1,0 +1,208 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 436px;
+  border-radius: 10px;
+  background: #f0eff4;
+  gap: 16px;
+}
+
+.formContainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 343px;
+  height: calc(100vh - 32px);
+  min-height: 736px;
+  padding: 0 16px;
+  border-radius: 30px;
+  background: var(--background);
+}
+
+.formContainer div:first-child {
+  position: absolute;
+  top: 24px;
+  left: 16px;
+}
+
+.header {
+  line-height: 1;
+  margin-bottom: 16px;
+  color: #323f47;
+  text-align: left;
+  letter-spacing: -0.01em;
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.28571;
+  border-radius: 15px;
+  color: #2f2f2f;
+  letter-spacing: -0.01em;
+  font-size: 14px;
+  gap: 8px;
+}
+
+.formGroup label {
+  line-height: 1.28571;
+  color: #2f2f2f;
+  letter-spacing: -0.01em;
+  font-weight: 700;
+}
+
+.passwordWrapper {
+  position: relative;
+  width: 100%;
+}
+
+input[type="email"],
+input[type="password"],
+input[type="text"] {
+  width: 100%;
+  padding: 16px;
+  line-height: 129%;
+  border: 1px solid #ccc;
+  border-radius: 15px;
+  background: transparent;
+  font-size: 14px;
+}
+
+input[type="email"]:hover,
+input[type="password"]:hover,
+input[type="text"]:hover {
+  border-color: #87D28D;
+}
+
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="text"]:focus {
+  border-color: #87D28D;
+  outline: none;
+}
+
+.togglePasswordButton {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: none;
+  cursor: pointer;
+  transform: translateY(-50%);
+}
+
+.togglePasswordButton svg {
+  width: 20px;
+  height: 20px;
+  stroke: #333;
+  fill: none;
+}
+
+.errorInput {
+  border: 1px solid red;
+}
+
+.submitButton {
+  align-content: center;
+  height: 50px;
+  line-height: 1.28571;
+  margin-top: 16px;
+  border: none;
+  border-radius: 30px;
+  color: #323f47;
+  background: #9be1a0;
+  transition: all 250ms ease-in-out;
+  text-align: center;
+  letter-spacing: -0.01em;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.submitButton:hover {
+  background-color: #87D28D;
+  transform: scale(1.05);
+}
+
+.submitButton:disabled {
+  background: #d3d3d3;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.signupLink {
+  line-height: 1.28571;
+  margin-top: 10px;
+  color: rgba(47, 47, 47, 0.5);
+  text-align: center;
+  letter-spacing: -0.01em;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.link {
+  color: #2f2f2f;
+
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-skip-ink: none;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+.error {
+
+  color: red;
+}
+
+@media screen and (min-width: 768px) {
+  .formContainer {
+    max-width: 704px;
+    height: calc(100vh - 64px);
+    min-height: 960px;
+  }
+
+  .formContainer div:first-child {
+    top: 32px;
+    left: 32px;
+  }
+
+  .signupLink {
+    font-size: 16px;
+  }
+
+  .formGroup {
+    font-size: 16px;
+  }
+
+  .submitButton {
+    font-size: 16px;
+  }
+
+  input[type="email"],
+  input[type="password"],
+  input[type="text"] {
+    font-size: 16px;
+    line-height: 150%;
+  }
+
+  .header {
+    font-size: 36px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .formContainer {
+    max-width: 672px;
+    min-height: 736px;
+    max-height: 736px;
+  }
+}

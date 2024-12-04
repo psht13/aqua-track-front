@@ -1,0 +1,92 @@
+.deleteWaterModal {
+  padding: 20px 0px;
+}
+
+.title,
+.subtitle {
+  font-family: var(--font), sans-serif;
+  color: var(--main);
+  text-align: center;
+  letter-spacing: -0.01em;
+}
+
+.title {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 1.2;
+}
+
+.subtitle {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.29;
+  margin-top: 16px;
+}
+
+.buttonDelete,
+.buttonCancel {
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.29;
+  letter-spacing: -0.01em;
+  color: var(--main);
+  border-radius: 30px;
+  padding: 14px 0;
+  width: 100%;
+  border: none;
+  transition: all 300ms ease-in-out;
+}
+
+.buttonDelete {
+  background: var(--accent);
+  margin-top: 28px;
+}
+
+.buttonCancel {
+  color: rgba(50, 63, 71, 0.3);
+  background: var(--background);
+  margin-top: 9px;
+}
+
+.buttonDelete:hover,
+.buttondelete:focus {
+  background: #87d28d;
+}
+
+.buttonCancel:hover,
+.buttonCancel:focus {
+  color: var(--main);
+}
+
+@media (min-width: 768px) {
+  .deleteWaterModal {
+    padding: 0;
+  }
+
+  .title {
+    font-size: 28px;
+    line-height: 1.14;
+  }
+
+  .subtitle {
+    margin-top: 24px;
+    font-size: 18px;
+    line-height: 1.33;
+  }
+
+  .boxButton {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .buttonDelete,
+  .buttonCancel {
+    font-size: 16px;
+    line-height: 1.5;
+    padding: 18px 59px;
+    margin-top: 24px;
+    width: 178px;
+  }
+}
