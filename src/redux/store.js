@@ -9,18 +9,19 @@ import {
   PURGE,
   REGISTER,
 } from "redux-persist";
-import storage from "redux-persist/lib/storage"; 
-import authReducer from "./slice"; 
-
+import storage from "redux-persist/lib/storage";
+import authReducer from "./auth/slice";
+import userReducer from "./user/slice";
 
 const authPersistConfig = {
   key: "auth",
   storage,
-  whitelist: ["token"], 
+  whitelist: ["token"],
 };
 
 const store = configureStore({
   reducer: {
+    user: userReducer,
     auth: persistReducer(authPersistConfig, authReducer),
   },
   middleware: (getDefaultMiddleware) =>
@@ -31,5 +32,5 @@ const store = configureStore({
     }),
 });
 
-export const persistor = persistStore(store); 
+export const persistor = persistStore(store);
 export { store };

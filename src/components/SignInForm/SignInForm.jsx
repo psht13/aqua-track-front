@@ -3,7 +3,7 @@ import { useFormik } from "formik";
 import * as yup from "yup";
 import { useDispatch } from "react-redux";
 import { useNavigate, Link } from "react-router-dom";
-import { apiLogin } from "../../redux/operations";
+import { apiLogin } from "../../redux/auth/operations";
 import sprite from "../../assets/sprite.svg";
 import css from "./SignInForm.module.css";
 import Logo from "../Logo/Logo";
