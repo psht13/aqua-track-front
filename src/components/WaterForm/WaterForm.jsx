@@ -5,7 +5,7 @@ import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useDispatch } from "react-redux";
 import { addWater, updateWater } from "../../redux/water/operations";
-import css from "./waterForm.module.css";
+import css from "./WaterForm.module.css";
 
 const WaterForm = ({
   operationType,
