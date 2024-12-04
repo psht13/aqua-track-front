@@ -14,10 +14,14 @@ const WaterDetailedInfo = ({ waterRecords }) => {
 
   return (
     <div className={css.card}>
-      <DailyInfo waterRecords={waterRecords} selectedDate={selectedDate} />
-      <MonthInfo waterRecords={waterRecords} onDateChange={handleDateChange} />
+      <DailyInfo selectedDate={selectedDate} />
+      <MonthInfo
+        waterRecords={waterRecords}
+        onDateChange={handleDateChange} // Передаём для синхронизации
+      />
     </div>
   );
 };
 
 export default WaterDetailedInfo;
+

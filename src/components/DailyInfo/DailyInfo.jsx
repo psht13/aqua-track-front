@@ -1,16 +1,18 @@
+import { useSelector } from 'react-redux';
+import { selectAuthUser } from '../../redux/selectors';
 import { useState } from 'react';
 import AddWaterBtn from '../AddWaterBtn/AddWaterBtn';
 import WaterList from '../WaterList/WaterList';
 import css from './DailyInfo.module.css';
 import sprite from '../../assets/sprite.svg';
 
-const DailyInfo = ({
-  userName = 'Nadia',
-  waterRecords = [],
-  selectedDate = new Date(),
-}) => {
+const DailyInfo = ({ waterRecords = [], selectedDate = new Date() }) => {
   const [menuVisible, setMenuVisible] = useState(false);
-  const [activeModal, setActiveModal] = useState(null); // Отслеживание текущего модального окна
+  const [activeModal, setActiveModal] = useState(null);
+
+  // Получаем данные пользователя из Redux
+  const user = useSelector(selectAuthUser);
+  const userName = user?.name || (user?.email ? user.email.split('@')[0] : "Guest");
 
   const filteredRecords = waterRecords.filter((record) => {
     const recordDate = new Date(record.date);
@@ -25,11 +27,11 @@ const DailyInfo = ({
         })}`;
 
   const handleOpenModal = (modalType) => {
-    setActiveModal(modalType); // Устанавливаем тип модального окна
+    setActiveModal(modalType);
   };
 
   const handleCloseModal = () => {
-    setActiveModal(null); // Закрываем модальное окно
+    setActiveModal(null);
   };
 
   return (

@@ -1,7 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-console.log(import.meta.env.VITE_BASE_URL);
+// console.log(import.meta.env.VITE_BASE_URL);
 
 export const instance = axios.create({
   baseURL: import.meta.env.VITE_BASE_URL,
@@ -40,11 +40,16 @@ export const apiLogin = createAsyncThunk(
   async (formData, thunkAPI) => {
     try {
       const { data } = await instance.post("/auth/login", formData);
-      SetAuthHeaders(data.accessToken);
-      return data;
+      const accessToken = data.data.accessToken;
+
+      SetAuthHeaders(accessToken);
+
+      const user = await thunkAPI.dispatch(fetchCurrentUser()).unwrap();
+
+      return { accessToken, user };
     } catch (error) {
       return thunkAPI.rejectWithValue(
-        error.response.data?.data?.error || "An error occurred"
+        error.response?.data?.error || "An error occurred"
       );
     }
   }
@@ -85,5 +90,37 @@ export const apiRefreshUser = createAsyncThunk(
       const token = state.auth.token;
       return !!token;
     },
+  }
+);
+
+export const fetchCurrentUser = createAsyncThunk(
+  "auth/fetchCurrentUser",
+  async (_, thunkAPI) => {
+    try {
+      const { data } = await instance.get("/users/me");
+      return data.data.user;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(
+        error.response?.data?.message || "Failed to fetch user"
+      );
+    }
+  }
+);
+
+export const fetchWaterByDay = createAsyncThunk(
+  "water/fetchWaterByDay",
+  async (day, thunkAPI) => {
+    try {
+      const { data } = await axios.get(`/water/day`, {
+        params: { day },
+      });
+      console.log("Water data response:", data);
+      return data.data;
+    } catch (error) {
+      console.error("Failed to fetch water data:", error);
+      return thunkAPI.rejectWithValue(
+        error.response?.data?.message || "Error fetching water data"
+      );
+    }
   }
 );

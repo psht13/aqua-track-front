@@ -1,41 +1,63 @@
-import { useState } from 'react';
-import css from './WaterList.module.css';
-import sprite from '../../assets/sprite.svg';
-import DeleteWaterModal from '../DeleteWaterModal/DeleteWaterModal';
+import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchWaterByDay, deleteWaterRecord } from "../../redux/waterSlice"; // Предполагается, что эти действия определены
+import css from "./WaterList.module.css";
+import sprite from "../../assets/sprite.svg";
+import DeleteWaterModal from "../DeleteWaterModal/DeleteWaterModal";
 
-const WaterList = () => {
-  const [activeModal, setActiveModal] = useState(null); // Состояние для отслеживания открытого модального окна
+const WaterList = ({ selectedDate }) => {
+  const [activeModal, setActiveModal] = useState(null); // Состояние для модального окна
   const [selectedWaterId, setSelectedWaterId] = useState(null); // ID выбранного элемента
+  const dispatch = useDispatch();
 
-  const waterData = [
-    { id: 1, volume: 250, time: '07:00', date: new Date(2024, 12, 29) },
-    { id: 2, volume: 500, time: '12:00', date: new Date(2024, 12, 29) },
-    { id: 3, volume: 300, time: '16:00', date: new Date(2024, 12, 29) },
-    { id: 4, volume: 250, time: '18:50', date: new Date(2024, 12, 29) },
-    { id: 5, volume: 500, time: '19:00', date: new Date(2024, 12, 29) },
-    { id: 6, volume: 300, time: '22:10', date: new Date(2024, 12, 30) },
-  ];
+  // Данные из Redux
+  const { waterData, isLoading, error } = useSelector((state) => state.water);
 
+  // Формат времени для отображения
   const formatTime = (time) => {
-    const [hours, minutes] = time.split(':').map(Number);
+    const [hours, minutes] = time.split(":").map(Number);
     const isPM = hours >= 12;
     const formattedHours = hours % 12 || 12;
-    const period = isPM ? 'PM' : 'AM';
-    return `${formattedHours}:${minutes.toString().padStart(2, '0')} ${period}`;
+    const period = isPM ? "PM" : "AM";
+    return `${formattedHours}:${minutes.toString().padStart(2, "0")} ${period}`;
   };
 
+  // Обновляем данные при изменении выбранной даты
+  useEffect(() => {
+    if (selectedDate) {
+      console.log("Selected date changed to:", selectedDate);
+      const dayString = selectedDate.toISOString().split("T")[0];
+      console.log("Fetching water data for selected date:", dayString);
+      dispatch(fetchWaterByDay(dayString)); // Запрашиваем данные с сервера
+    }
+  }, [selectedDate, dispatch]);
+
+  // Открытие модального окна
   const handleOpenModal = (modalType, waterId) => {
-    setActiveModal(modalType); // Устанавливаем тип модального окна
-    setSelectedWaterId(waterId); // Устанавливаем ID воды
+    setActiveModal(modalType);
+    setSelectedWaterId(waterId);
   };
 
+  // Закрытие модального окна
   const handleCloseModal = () => {
-    setActiveModal(null); // Закрываем модальное окно
-    setSelectedWaterId(null); // Сбрасываем выбранный ID
+    setActiveModal(null);
+    setSelectedWaterId(null);
+  };
+
+  // Удаление записи о воде
+  const handleDelete = () => {
+    if (selectedWaterId) {
+      dispatch(deleteWaterRecord(selectedWaterId)).then(() => {
+        setActiveModal(null);
+        setSelectedWaterId(null);
+      });
+    }
   };
 
   return (
     <div className={css.container}>
+      {isLoading && <p>Loading water data...</p>}
+      {error && <p className={css.error}>Error: {error}</p>}
       {waterData.length > 0 ? (
         <div className={css.list}>
           {waterData.map((item) => (
@@ -46,13 +68,13 @@ const WaterList = () => {
                 </svg>
               </div>
               <div className={css.details}>
-                <span className={css.volume}>{item.volume} ml</span>
-                <span className={css.time}>{formatTime(item.time)}</span>
+                <span className={css.volume}>{item.amount} ml</span>
+                <span className={css.time}>{formatTime(item.date)}</span>
               </div>
               <div className={css.actions}>
                 <button
                   className={css.actionButton}
-                  onClick={() => handleOpenModal('edit', item.id)}
+                  onClick={() => handleOpenModal("edit", item.id)}
                 >
                   <svg>
                     <use href={`${sprite}#icon-edit-2`} />
@@ -60,7 +82,7 @@ const WaterList = () => {
                 </button>
                 <button
                   className={css.actionButton}
-                  onClick={() => handleOpenModal('delete', item.id)}
+                  onClick={() => handleOpenModal("delete", item.id)}
                 >
                   <svg>
                     <use href={`${sprite}#icon-trash-04`} />
@@ -76,14 +98,14 @@ const WaterList = () => {
         </p>
       )}
 
-      {/* Модальные окна */}
-      {activeModal === 'delete' && (
+      {/* Модальное окно для удаления */}
+      {activeModal === "delete" && (
         <DeleteWaterModal
           waterId={selectedWaterId}
           onClose={handleCloseModal}
+          onDelete={handleDelete}
         />
       )}
-      {/* Здесь можно будет добавить другие модальные окна */}
     </div>
   );
 };
