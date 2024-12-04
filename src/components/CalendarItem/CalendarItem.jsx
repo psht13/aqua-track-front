@@ -8,6 +8,7 @@ const CalendarItem = ({
   selectedDate,
 }) => {
   const today = new Date();
+
   const isToday =
     today.getFullYear() === currentDate.getFullYear() &&
     today.getMonth() === currentDate.getMonth() &&
@@ -17,7 +18,8 @@ const CalendarItem = ({
     selectedDate &&
     selectedDate.getFullYear() === currentDate.getFullYear() &&
     selectedDate.getMonth() === currentDate.getMonth() &&
-    selectedDate.getDate() === day;
+    selectedDate.getDate() === day &&
+    !isToday;
 
   const handleDayClick = () => {
     const selectedDay = new Date(
@@ -30,13 +32,15 @@ const CalendarItem = ({
 
   return (
     <button
-      className={`${css.day} ${isToday ? css.today : ''} ${
-        isSelected ? css.selected : ''
-      }`}
+      className={`${css.day} ${isToday ? css.today : ''}`}
       onClick={handleDayClick}
       aria-label={`Select day ${day}`}
     >
-      <div className={css.dayCircle}>{day}</div>
+      <div
+        className={`${css.dayCircle} ${isSelected ? css.selected : ''}`}
+      >
+        {day}
+      </div>
       <small className={css.progress}>{progress}%</small>
     </button>
   );

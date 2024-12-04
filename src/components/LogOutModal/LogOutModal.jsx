@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { logout } from "../../redux/auth/operations";
+import { logOut } from "../../redux/auth/operations";
 
 import Modal from "../Modal/Modal.jsx";
 
@@ -15,7 +15,7 @@ const LogOutModal = ({ logOutModalIsOpen, closeLogOutModal }) => {
 
     localStorage.removeItem("authToken");
 
-    dispatch(logout());
+    dispatch(logOut());
 
     navigate("/");
   };

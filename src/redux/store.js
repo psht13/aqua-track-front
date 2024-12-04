@@ -1,4 +1,4 @@
-import { configureStore } from "@reduxjs/toolkit";
+import { configureStore } from '@reduxjs/toolkit';
 import {
   persistStore,
   persistReducer,
@@ -8,21 +8,18 @@ import {
   PERSIST,
   PURGE,
   REGISTER,
-} from "redux-persist";
-import storage from "redux-persist/lib/storage";
-import authReducer from "./auth/slice";
-import userReducer from "./user/slice";
-
-import { waterReducer } from "./water/slice";
-import { instance } from "./auth/operations";
-
-
+} from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
+import authReducer from './auth/slice';
+import userReducer from './user/slice';
+import waterReducer from './user/waterSlice';
 
 const authPersistConfig = {
-  key: "auth",
+  key: 'auth',
   storage,
-  whitelist: ["token"], // Перевірте, що тут є "token"
+  whitelist: ['token'],
 };
+
 const store = configureStore({
   reducer: {
     user: userReducer,
@@ -36,14 +33,6 @@ const store = configureStore({
       },
     }),
 });
-
-const state = store.getState();
-const token = state.auth?.token;
-
-if (token) {
-  console.log("Initializing token from persisted state:", token);
-  instance.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-}
 
 export const persistor = persistStore(store);
 export { store };
