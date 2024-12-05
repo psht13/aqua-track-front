@@ -7,6 +7,7 @@ import {
   getDayWater,
   getMonthWater,
 } from "./operations";
+import { logOut } from "../auth/operations";
 
 const INITIAL_STATE = {
   dayWater: [],
@@ -42,6 +43,15 @@ export const showErrorToast = (message) => {
 const waterSlice = createSlice({
   name: "water",
   initialState: INITIAL_STATE,
+  reducers: {
+    clearWater(state) {
+      state.dayWater = [];
+      state.todayWater = [];
+      state.monthWater = [];
+      state.isLoading = false;
+      state.error = null;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(addWater.pending, handlePending)
@@ -105,8 +115,17 @@ const waterSlice = createSlice({
         state.isLoading = false;
         state.error = payload;
         showErrorToast("Oops, failed to fetch the water of this day");
+      })
+      .addCase(logOut.fulfilled, (state) => {
+        state.dayWater = [];
+        state.todayWater = [];
+        state.monthWater = [];
+        state.isLoading = false;
+        state.error = null;
       });
   },
 });
+
+export const { clearWater } = waterSlice.actions;
 
 export const waterReducer = waterSlice.reducer;

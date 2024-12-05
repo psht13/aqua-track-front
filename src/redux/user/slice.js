@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { getUser, patchUser } from "./operations"; // якщо у вас є ці операції
+import { logOut } from "../auth/operations";
 
 const initialState = {
   user: {},
@@ -10,6 +11,11 @@ const initialState = {
 const userSlice = createSlice({
   name: "auth",
   initialState,
+  reducers: {
+    clearUser(state) {
+      state.user = {};
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(getUser.pending, (state) => {
@@ -35,8 +41,13 @@ const userSlice = createSlice({
       .addCase(patchUser.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload || "error";
+      })
+      .addCase(logOut.fulfilled, (state) => {
+        state.user = {};
       });
   },
 });
+
+export const { clearUser } = userSlice.actions;
 
 export default userSlice.reducer;

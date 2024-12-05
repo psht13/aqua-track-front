@@ -3,7 +3,7 @@ import axios from "axios";
 
 export const instance = axios.create({
   baseURL: import.meta.env.VITE_BASE_URL,
-  withCredentials: true,
+  // withCredentials: true,
 });
 
 const SetAuthHeaders = (token) => {
@@ -63,26 +63,11 @@ export const apiLogin = createAsyncThunk(
   }
 );
 
-export const apiLogout = createAsyncThunk(
-  "auth/logout",
-  async (_, thunkAPI) => {
-    try {
-      await instance.post("/auth/logout");
-      return {};
-    } catch (error) {
-      return thunkAPI.rejectWithValue(
-        error.response?.data?.message || "An error occurred during logout"
-      );
-    }
-  }
-);
-
 export const apiRefreshUser = createAsyncThunk(
   "auth/refresh",
   async (_, thunkAPI) => {
     const state = thunkAPI.getState();
     const token = state.auth.token;
-
     if (!token) {
       console.warn("No token found during refresh");
       return thunkAPI.rejectWithValue("No token provided");
@@ -90,12 +75,12 @@ export const apiRefreshUser = createAsyncThunk(
 
     try {
       const { data } = await instance.post("/auth/refresh", null, {
-        headers: { Authorization: `Bearer ${token}` }, 
-        withCredentials: true, 
+        headers: { Authorization: `Bearer ${token}` },
+        withCredentials: true,
       });
 
       console.log("Refresh response:", data);
-      SetAuthHeaders(data.data.accessToken); 
+      SetAuthHeaders(data.data.accessToken);
       return data;
     } catch (error) {
       console.error("Refresh error:", error);
@@ -109,7 +94,7 @@ export const apiRefreshUser = createAsyncThunk(
       const state = thunkAPI.getState();
       const token = state.auth.token;
       console.log("Checking condition for refresh:", token);
-      return !!token; 
+      return !!token;
     },
   }
 );

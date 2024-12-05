@@ -1,26 +1,11 @@
-.box {
-    display: flex;
-    flex-direction: column;
-    gap: 28px;
-    align-items: center;
-    width: 100%;
-}
-
-.textBox {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    align-items: center;
-}
-
 .title {
     font-family: "Poppins", sans-serif;
     font-weight: 700;
-    font-size: 20px;
-    line-height: 120%;
+    font-size: 20px;    
     letter-spacing: -0.01em;
     text-align: center;
     color: #323f47;
+    margin-bottom: 15px;
 }
 
 .text {
@@ -31,48 +16,42 @@
     letter-spacing: -0.01em;
     text-align: center;
     color: #323f47;
+    margin-bottom: 28px;
 }
 
 .buttonBox {
     display: flex;
+    justify-content: center;
     flex-direction: column;
-    align-items: center;
-    gap: 9px;
+    gap: 10px;
 }
 
-.btnLogOut {
-    border-radius: 30px;
-    padding: 14px 126px;
-    width: 304px;
-    height: 46px;
-    background: #9be1a0;
+.btnCancel, .btnLogOut {
     font-family: "Poppins", sans-serif;
+    border-radius: 30px;
+    width: 100%;
+    border: none;
+    padding: 15px 0;
     font-weight: 700;
+    color: rgba(50, 63, 71, 1);
+    background-color: rgba(155, 225, 160, 1);
     font-size: 14px;
-    line-height: 129%;
-    letter-spacing: -0.01em;
-    text-align: center;
-    color: #323f47;
 }
-
 .btnCancel {
-    border-radius: 30px;
-    padding: 14px 126px;
-    width: 304px;
-    height: 46px;
-    background: #f0eff4;
-    font-family: "Poppins", sans-serif;
-    font-weight: 700;
-    font-size: 14px;
-    line-height: 129%;
-    letter-spacing: -0.01em;
-    text-align: center;
+    background-color: rgba(240, 239, 244, 1);
     color: rgba(50, 63, 71, 0.3);
-    transition: 0.3s;
+}
+
+.btnCancel, .btnLogOut {
+    transition: .3s;
+    cursor: pointer;
 }
 
 .btnCancel:hover {
     color: #323f47;
+}
+.btnLogOut:hover {
+    background-color: #87D28D;
 }
 
 @media screen and (min-width: 768px) {
@@ -93,6 +72,9 @@
         font-size: 18px;
         line-height: 133%;
     }
+    .title, .text {
+        margin-bottom: 25px;
+    }
 
     .buttonBox {
         flex-direction: row;
@@ -100,19 +82,9 @@
         gap: 10px;
     }
 
-    .btnLogOut {
-        padding: 18px 57px;
-        width: 173px;
-        height: 60px;
+    .btnLogOut, .btnCancel {
         font-size: 16px;
-        line-height: 150%;
-    }
-
-    .btnCancel {
-        padding: 18px 59px;
-        width: 176px;
-        height: 60px;
-        font-size: 16px;
-        line-height: 150%;
+        width: 175px;
+        padding: 18px 0;
     }
 }

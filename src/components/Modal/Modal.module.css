@@ -23,7 +23,7 @@
 .modalContent {
   position: relative;
   background: var(--main-white);
-  padding: 20px;
+  padding: 40px 20px;
   border-radius: 15px;
   margin: 50px auto;
   box-shadow: 0 4px 50px 0 rgba(0, 0, 0, 0.1);
@@ -86,5 +86,8 @@
 @media only screen and (min-width: 1440px) {
   .backdrop .modalContent {
     max-width: 920px;
+  }
+   .modalContent.narrow {
+    max-width: 515px;
   }
 }
