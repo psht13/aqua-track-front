@@ -3,7 +3,7 @@ import WaterModal from "../../components/WaterModal/WaterModal";
 import css from "../WaterItem/WaterItem.module.css";
 import DeleteWaterModal from "../DeleteWaterModal/DeleteWaterModal.jsx";
 
-const WaterItem = ({ item: { _id, time, amount } }) => {
+const WaterItem = ({ item: { _id, date, amount } }) => {
   const [isEditModalOpen, setEditModalIsOpen] = useState(false);
   const [isDeleteModalOpen, setDeleteModalIsOpen] = useState(false);
 
@@ -26,7 +26,7 @@ const WaterItem = ({ item: { _id, time, amount } }) => {
                 </svg> */}
         <div className={css.details}>
           <span className={css.amount}>{amount} ml</span>
-          <span className={css.time}>{formatTime(time)}</span>
+          <span className={css.time}>{formatTime(date)}</span>
         </div>
         <div className={css.actions}>
           <button
@@ -37,7 +37,7 @@ const WaterItem = ({ item: { _id, time, amount } }) => {
                   operationType="edit"
                   id={_id}
                   amount={amount}
-                  myTime={time}
+                  myTime={date}
                 />
               );
             }}
