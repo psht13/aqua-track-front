@@ -448,23 +448,20 @@ input[type="number"] {
   }
 }
 
-/* Стиль для контейнера повідомлень про помилки */
 .errorMessage {
-  color: red; /* Червоний колір тексту */
-  font-size: 14px; /* Розмір шрифта */
-  margin-top: 5px; /* Відступ зверху */
+  color: #ef5050;
+  font-size: 14px;
+  margin-top: 5px;
 }
 
-/* Стиль для конкретних полів форми з помилками */
 .inputError {
-  border: 1px solid red; /* Червона обводка для поля з помилкою */
+  border: 1px solid #ef5050 !important;
 }
 
 .inputError:focus {
-  border: 1px solid red;
+  border: 1px solid #ef5050 !important;
 }
 
-/* Стиль для повідомлень про помилки для груп */
 .errorGroup {
   margin-top: 10px;
   font-weight: bold;

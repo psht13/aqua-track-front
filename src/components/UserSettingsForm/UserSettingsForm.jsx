@@ -6,7 +6,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { getUser, patchUser } from "../../redux/user/operations";
 import { selectUser } from "../../redux/user/selectors";
 import * as Yup from "yup";
-import axios from "axios";
+import sprite from "../../assets/sprite.svg";
+// import axios from "axios";
 import css from "./UserSettingsForm.module.css";
 
 const validationSchema = Yup.object().shape({
@@ -48,6 +49,8 @@ const UserSettingsForm = ({ onClose }) => {
     defaultValues: {
       gender: user?.gender || "woman",
       dailyNorm: "1.8",
+      weight: user?.weight || "",
+      activeTime: user?.activeTime || "",
     },
   });
 
@@ -63,8 +66,8 @@ const UserSettingsForm = ({ onClose }) => {
     if (user) {
       setValue("name", user.name || "");
       setValue("email", user.email || "");
-      setValue("weight", user.weight);
-      setValue("activeTime", user.activeTime);
+      setValue("weight", user.weight || "");
+      setValue("activeTime", user.activeTime || "");
       setValue("dailyNorm", user.dailyNorm || "1.8");
       setValue("gender", user.gender || "woman");
       if (user.avatarUrl) {
@@ -92,8 +95,8 @@ const UserSettingsForm = ({ onClose }) => {
       formData.append("name", data.name || "");
       formData.append("email", data.email);
       formData.append("gender", data.gender);
-      formData.append("weight", data.weight || 0);
-      formData.append("activeTime", data.activeTime || 0);
+      formData.append("weight", data.weight || null);
+      formData.append("activeTime", data.activeTime || null);
       formData.append("dailyNorm", data.dailyNorm || 1500);
 
       if (data.avatarUrl && data.avatarUrl[0]) {
@@ -104,7 +107,7 @@ const UserSettingsForm = ({ onClose }) => {
 
       onClose();
     } catch (error) {
-      console.error("Error updating user:", error);
+      console.error("Error updating user:", error.message);
       setErrorMessage(error.message || "Failed to update user.");
     }
   };
@@ -130,7 +133,7 @@ const UserSettingsForm = ({ onClose }) => {
             className={css.avatar}
             src={
               avatarPreview ||
-              "src/assets/imgs/user-settings-form/avatar-user-basic.jpg"
+              "../../assets/imgs/user-settings-form/avatar-user-basic.jpg"
             }
             alt="Avatar preview"
             width="75px"
@@ -138,7 +141,7 @@ const UserSettingsForm = ({ onClose }) => {
 
           <label htmlFor="avatarUrl" className={css.customFileUpload}>
             <svg className={css.icon}>
-              <use href="src/assets/sprite.svg#icon-upload" />
+              <use href={`${sprite}#icon-upload`} />
             </svg>
             <p className={css.uploadBtn}> Upload a photo</p>
           </label>
@@ -245,6 +248,7 @@ const UserSettingsForm = ({ onClose }) => {
                 type="number"
                 {...register("weight")}
                 placeholder="0"
+                onWheel={(e) => e.target.blur()}
               />
               {errors.weight && (
                 <p className={css.errorMessage}>{errors.weight.message}</p>
@@ -256,12 +260,17 @@ const UserSettingsForm = ({ onClose }) => {
                 The time of active participation in sports:
               </label>
               <input
-                className={css.inputName}
+                className={`${css.inputName} ${
+                  errors.activeTime ? css.inputError : ""
+                }`}
                 type="number"
-                {...(register("activeTime") || 0)}
+                {...register("activeTime")}
                 placeholder="0"
+                onWheel={(e) => e.target.blur()}
               />
-              {errors.activeTime && <p>{errors.activeTime.message}</p>}
+              {errors.activeTime && (
+                <p className={css.errorMessage}>{errors.activeTime.message}</p>
+              )}
             </div>
 
             <div className={css.dailyRequiredWrapper}>
@@ -277,14 +286,19 @@ const UserSettingsForm = ({ onClose }) => {
               </label>
               <input
                 className={css.inputName}
-                type="text"
-                placeholder="1.8L"
-                value={calculateRecommendedWaterNorm(
-                  watch("weight"),
-                  watch("activeTime"),
-                  watch("gender")
-                )}
-                readOnly
+                type="number"
+                placeholder="1.8"
+                {...register("dailyNorm")}
+                value={
+                  errors.dailyNorm
+                    ? watch("dailyNorm")
+                    : calculateRecommendedWaterNorm(
+                        watch("weight"),
+                        watch("activeTime"),
+                        watch("gender")
+                      )
+                }
+                onChange={(e) => setValue("dailyNorm", e.target.value)}
               />
             </div>
           </div>
