@@ -1,32 +1,38 @@
-.container {
+/* .container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   max-width: 100%;
-  height: 123px; /* Фиксированная высота для предотвращения "скачков" */
+  height: 123px; 
   border-radius: 16px;
   background: var(--background-secondary);
-  /* overflow: hidden; */
   position: relative;
-}
+} */
 
-.noRecords {
+/* .noRecords {
   font-size: 16px;
   color: var(--text-secondary);
   text-align: center;
-}
+} */
 
-.list {
+/* .list {
   display: flex;
   gap: 16px;
   overflow-x: auto;
   overflow-y: hidden;
-  /* padding: 8px; */
+  padding: 8px;
   width: 100%;
-  box-sizing: border-box; /* Учитываем padding в ширину */
-  scroll-behavior: smooth; /* Плавный скроллинг */
+  box-sizing: border-box;
+  scroll-behavior: smooth; 
   padding-bottom: 24px;
+} */
+
+.list {
+  display: flex;
+  padding-top: 24px;
+  padding-bottom: 24px;
+  gap: 8px;
 }
 
 .list::-webkit-scrollbar {
@@ -64,42 +70,6 @@
   background: var(--secondary);
   border-radius: 50%;
   margin-right: 8px;
-}
-
-.details {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  flex-grow: 1;
-}
-
-.volume {
-  font-size: 15px;
-  font-weight: bold;
-  color: var(--text);
-}
-
-.time {
-  font-size: 12px;
-  color: var(--text-secondary);
-}
-
-.actions {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.actionButton {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 24px;
-  height: 24px;
-  background: none;
-  border: none;
-  cursor: pointer;
 }
 
 .actionButton svg {
