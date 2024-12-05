@@ -1,9 +1,11 @@
+import { Helmet } from "react-helmet-async";
 import WaterMainInfo from "../../components/WaterMainInfo/WaterMainInfo";
 import WaterDetailedInfo from "../../components/WaterDetailedInfo/WaterDetailedInfo";
 import styles from "./TrackerPage.module.css";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { getUser } from "../../redux/user/operations";
+
 const TrackerPage = () => {
   const dispatch = useDispatch();
 
@@ -12,7 +14,7 @@ const TrackerPage = () => {
       const user = await dispatch(getUser());
       console.log(user);
     } catch (error) {
-      console.error(error)
+      console.error(error);
     }
   };
 
@@ -21,10 +23,15 @@ const TrackerPage = () => {
   }, []);
 
   return (
-    <main className={styles.main}>
-      <WaterMainInfo />
-      <WaterDetailedInfo />
-    </main>
+    <>
+      <Helmet>
+        <title>Tracker</title>
+      </Helmet>
+      <main className={styles.main}>
+        <WaterMainInfo />
+        <WaterDetailedInfo />
+      </main>
+    </>
   );
 };
 
