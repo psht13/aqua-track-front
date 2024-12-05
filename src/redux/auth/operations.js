@@ -3,6 +3,7 @@ import axios from "axios";
 
 export const instance = axios.create({
   baseURL: import.meta.env.VITE_BASE_URL,
+  withCredentials: true,
 });
 
 const SetAuthHeaders = (token) => {
@@ -17,9 +18,11 @@ const SetAuthHeaders = (token) => {
 export const logOut = createAsyncThunk("/auth/logout", async (_, thunkAPI) => {
   try {
     await instance.post("/auth/logout");
-    axios.defaults.headers.common["Authorization"] = "";
+    instance.defaults.headers.common["Authorization"] = "";
   } catch (error) {
-    return thunkAPI.rejectWithValue(error.response.data?.data.error);
+    return thunkAPI.rejectWithValue(
+      error.response?.data?.error || "An error occurred during logout"
+    );
   }
 });
 
@@ -32,7 +35,7 @@ export const apiRegister = createAsyncThunk(
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(
-        error.response.data?.data.error || "An error occurred"
+        error.response?.data?.error || "An error occurred during registration"
       );
     }
   }
@@ -68,7 +71,7 @@ export const apiLogout = createAsyncThunk(
       return {};
     } catch (error) {
       return thunkAPI.rejectWithValue(
-        error.response?.data.message || "An error occurred"
+        error.response?.data?.message || "An error occurred during logout"
       );
     }
   }
@@ -76,33 +79,37 @@ export const apiLogout = createAsyncThunk(
 
 export const apiRefreshUser = createAsyncThunk(
   "auth/refresh",
-  async (_, thunkApi) => {
-    const state = thunkApi.getState();
+  async (_, thunkAPI) => {
+    const state = thunkAPI.getState();
     const token = state.auth.token;
 
-    console.log(token);
-    
     if (!token) {
       console.warn("No token found during refresh");
-      return thunkApi.rejectWithValue("No token provided");
+      return thunkAPI.rejectWithValue("No token provided");
     }
 
     try {
-      SetAuthHeaders(token);
-      const { data } = await instance.post("/auth/refresh", {accessToken: token});
+      const { data } = await instance.post("/auth/refresh", null, {
+        headers: { Authorization: `Bearer ${token}` }, 
+        withCredentials: true, 
+      });
+
+      console.log("Refresh response:", data);
+      SetAuthHeaders(data.data.accessToken); 
       return data;
     } catch (error) {
-      return thunkApi.rejectWithValue(
+      console.error("Refresh error:", error);
+      return thunkAPI.rejectWithValue(
         error.response?.data?.error || "An error occurred during refresh"
       );
     }
   },
   {
-    condition: (_, thunkApi) => {
-      const state = thunkApi.getState();
+    condition: (_, thunkAPI) => {
+      const state = thunkAPI.getState();
       const token = state.auth.token;
       console.log("Checking condition for refresh:", token);
-      return !!token;
+      return !!token; 
     },
   }
 );
