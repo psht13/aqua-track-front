@@ -7,6 +7,7 @@ import { getUser, patchUser } from "../../redux/user/operations";
 import { selectUser } from "../../redux/user/selectors";
 import * as Yup from "yup";
 import sprite from "../../assets/sprite.svg";
+import avatar from "/src/assets/imgs/user-settings-form/avatar-user-basic.jpg";
 // import axios from "axios";
 import css from "./UserSettingsForm.module.css";
 
@@ -131,10 +132,7 @@ const UserSettingsForm = ({ onClose }) => {
         <div className={css.imgContainer}>
           <img
             className={css.avatar}
-            src={
-              avatarPreview ||
-              "../../assets/imgs/user-settings-form/avatar-user-basic.jpg"
-            }
+            src={avatarPreview || { avatar }}
             alt="Avatar preview"
             width="75px"
           />
