@@ -5,22 +5,6 @@
   align-items: center;
 }
 
-.todayButton {
-  background-color: var(--accent);
-  color: var(--button-text);
-  border: none;
-  border-radius: 8px;
-  padding: 10px 20px;
-  cursor: pointer;
-  font-size: 16px;
-  font-weight: 500;
-  transition: background-color 0.3s;
-}
-
-.todayButton:hover {
-  background-color: var(--accent-hover);
-}
-
 .grid {
   display: grid;
   grid-template-columns: repeat(8, 1fr);
@@ -28,31 +12,16 @@
   width: 106%;
 }
 
-.grid > button {
-  cursor: pointer;
-}
-
 @media (max-width: 374px) {
   .grid {
-    grid-template-columns: repeat(4, 1fr); /* 4 кнопки в строке */
+    grid-template-columns: repeat(4, 1fr);
     gap: 8px;
-  }
-
-  .todayButton {
-    padding: 8px 16px;
-    font-size: 14px;
   }
 }
 
-/* От 375px до 767px (адаптивная верстка) */
 @media (min-width: 375px) and (max-width: 767px) {
   .grid {
-    grid-template-columns: repeat(5, 1fr); /* 5 кнопок в строке */
+    grid-template-columns: repeat(5, 1fr);
     gap: 10px;
-  }
-
-  .todayButton {
-    padding: 10px 18px;
-    font-size: 15px;
   }
 }

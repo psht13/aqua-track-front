@@ -88,6 +88,7 @@ const authSlice = createSlice({
       .addCase(apiRefreshUser.rejected, (state, action) => {
         state.isRefreshing = false;
         state.isLoading = false;
+        state.token = null;
         state.error = action.payload || "Refresh failed";
       });
   },

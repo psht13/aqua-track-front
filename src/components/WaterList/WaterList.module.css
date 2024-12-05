@@ -4,15 +4,14 @@
   align-items: center;
   justify-content: center;
   max-width: 100%;
-  height: 123px; 
+  height: 123px;
   border-radius: 16px;
-  background: var(--background-secondary);
   position: relative;
-} */
+  color: var(--mein-text);
+}
 
 /* .noRecords {
   font-size: 16px;
-  color: var(--text-secondary);
   text-align: center;
 } */
 
@@ -21,10 +20,9 @@
   gap: 16px;
   overflow-x: auto;
   overflow-y: hidden;
-  padding: 8px;
   width: 100%;
   box-sizing: border-box;
-  scroll-behavior: smooth; 
+  scroll-behavior: smooth;
   padding-bottom: 24px;
 } */
 
@@ -42,11 +40,11 @@
 
 .list::-webkit-scrollbar-thumb {
   background: var(--main);
-  border-radius: 9px; /* Скруглённые края */
+  border-radius: 9px;
 }
 
 .list::-webkit-scrollbar-track {
-  background: transparent; /* Прозрачный фон трека */
+  background: transparent;
 }
 
 .item {
@@ -54,11 +52,9 @@
   align-items: center;
   justify-content: space-between;
   flex-shrink: 0;
-  /* width: 100px; */
   padding: 20px;
   border-radius: 8px;
   background: var(--main-white);
-  box-shadow: var(--card-shadow);
 }
 
 .icon {
@@ -67,13 +63,46 @@
   align-items: center;
   width: 32px;
   height: 32px;
-  background: var(--secondary);
   border-radius: 50%;
   margin-right: 8px;
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  flex-grow: 1;
+}
+
+.volume {
+  font-size: 15px;
+  font-weight: bold;
+  color: var(--text);
+}
+
+.time {
+  font-size: 12px;
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.actionButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 24px;
+  height: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
 }
 
 .actionButton svg {
   width: 16px;
   height: 16px;
-  fill: var(--accent);
 }
