@@ -3,25 +3,26 @@ import { useNavigate } from "react-router-dom";
 import { logOut } from "../../redux/auth/operations";
 
 import Modal from "../Modal/Modal.jsx";
-
 import css from "./LogOutModal.module.css";
+import { clearUser } from "../../redux/user/slice.js";
+import { clearWater } from "../../redux/water/slice.js";
 
-const LogOutModal = ({ logOutModalIsOpen, closeLogOutModal }) => {
+const LogOutModal = ({ onClose }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    closeLogOutModal();
-
-    localStorage.removeItem("authToken");
-
-    dispatch(logOut());
-
-    navigate("/");
+    dispatch(logOut()).then(() => {
+      dispatch(clearUser());
+      dispatch(clearWater());
+      navigate('/signin');
+      
+      onClose();
+    });
   };
 
   return (
-    <Modal modalIsOpen={logOutModalIsOpen} closeModal={closeLogOutModal}>
+    <Modal widthStyle onClose={onClose}>
       <div className={css.box}>
         <div className={css.textBox}>
           <h3 className={css.title}>Log out</h3>
@@ -33,7 +34,7 @@ const LogOutModal = ({ logOutModalIsOpen, closeLogOutModal }) => {
           </button>
           <button
             className={css.btnCancel}
-            onClick={() => closeLogOutModal(false)}
+            onClick={onClose}
           >
             Cancel
           </button>

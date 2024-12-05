@@ -2,12 +2,12 @@ import { useCallback, useEffect, useState } from "react";
 import clsx from "clsx";
 import css from "./Modal.module.css";
 
-const Modal = ({ children, onClose }) => {
+const Modal = ({ children, onClose, widthStyle }) => {
   const [active, setActive] = useState(false);
   const [visible, setVisible] = useState(true);
 
-  const dynamicStyle = clsx(css.backdrop, active && css.active);
-
+  const dynamicStyle = clsx(css.backdrop, active && css.active); 
+  const dynamicChildStyle = clsx(widthStyle ? css.narrow : null, css.modalContent);
   const handleCloseModal = useCallback(
     (e) => {
       if (e.target === e.currentTarget || e.code === "Escape") {
@@ -42,7 +42,7 @@ const Modal = ({ children, onClose }) => {
 
   return (
     <div className={dynamicStyle} onClick={handleCloseModal}>
-      <div className={css.modalContent}>
+      <div className={dynamicChildStyle}>
         {children}
         <button
           type="button"
