@@ -82,3 +82,9 @@
     height: 28px;
   }
 }
+
+@media only screen and (min-width: 1440px) {
+  .backdrop .modalContent {
+    max-width: 920px;
+  }
+}
