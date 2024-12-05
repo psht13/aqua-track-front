@@ -40,10 +40,12 @@ export const deleteWater = createAsyncThunk(
 
 export const getDayWater = createAsyncThunk(
   "water/getDay",
-  async (date, thunkAPI) => {
+  async (day, thunkAPI) => {
     try {
-      const { data } = await instance.get(`/waters/day/${date}`);
-      if (date === new Date().toISOString().split("T")[0]) {
+      const { data } = await instance.get(`/waters/day`, {
+        params: { day },
+      });
+      if (day === new Date().toISOString().split("T")[0]) {
         data.date.today = [...data.date];
       }
       return data;
@@ -55,9 +57,11 @@ export const getDayWater = createAsyncThunk(
 
 export const getMonthWater = createAsyncThunk(
   "water/getMonth",
-  async (yearMonth, thunkAPI) => {
+  async ({ fromDate, toDate }, thunkAPI) => {
     try {
-      const { data } = await instance.get(`/waters/month/${yearMonth}`);
+      const { data } = await instance.get(`/waters/month/`, {
+        params: { fromDate, toDate },
+      });
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

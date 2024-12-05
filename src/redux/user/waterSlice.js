@@ -42,8 +42,7 @@ const waterSlice = createSlice({
     isLoading: false,
     error: null,
   },
-  reducers: {
-  },
+  reducers: {},
   extraReducers: (builder) => {
     builder
       // fetchWaterByDay
