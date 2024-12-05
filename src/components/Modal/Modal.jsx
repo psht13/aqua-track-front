@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 import clsx from "clsx";
 import css from "./Modal.module.css";
+import sprite from "../../assets/sprite.svg";
 
 const Modal = ({ children, onClose }) => {
   const [active, setActive] = useState(false);
@@ -55,7 +56,7 @@ const Modal = ({ children, onClose }) => {
             className={css.icon}
             style={{ stroke: "#2F2F2F", fill: "transparent" }}
           >
-            <use href="src/assets/sprite.svg#icon-x"></use>
+            <use href={`${sprite}#icon-x`}></use>
           </svg>
         </button>
       </div>

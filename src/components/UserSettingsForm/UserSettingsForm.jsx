@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getUser, patchUser } from "../../redux/user/operations";
 import { selectUser } from "../../redux/user/selectors";
 import * as Yup from "yup";
+import sprite from "../../assets/sprite.svg";
 // import axios from "axios";
 import css from "./UserSettingsForm.module.css";
 
@@ -106,7 +107,7 @@ const UserSettingsForm = ({ onClose }) => {
 
       onClose();
     } catch (error) {
-      console.error("Error updating user:", error);
+      console.error("Error updating user:", error.message);
       setErrorMessage(error.message || "Failed to update user.");
     }
   };
@@ -132,7 +133,7 @@ const UserSettingsForm = ({ onClose }) => {
             className={css.avatar}
             src={
               avatarPreview ||
-              "assets/imgs/user-settings-form/avatar-user-basic.jpg"
+              "../../assets/imgs/user-settings-form/avatar-user-basic.jpg"
             }
             alt="Avatar preview"
             width="75px"
@@ -140,7 +141,7 @@ const UserSettingsForm = ({ onClose }) => {
 
           <label htmlFor="avatarUrl" className={css.customFileUpload}>
             <svg className={css.icon}>
-              <use href="assets/sprite.svg#icon-upload" />
+              <use href={`${sprite}#icon-upload`} />
             </svg>
             <p className={css.uploadBtn}> Upload a photo</p>
           </label>
@@ -247,6 +248,7 @@ const UserSettingsForm = ({ onClose }) => {
                 type="number"
                 {...register("weight")}
                 placeholder="0"
+                onWheel={(e) => e.target.blur()}
               />
               {errors.weight && (
                 <p className={css.errorMessage}>{errors.weight.message}</p>
@@ -264,6 +266,7 @@ const UserSettingsForm = ({ onClose }) => {
                 type="number"
                 {...register("activeTime")}
                 placeholder="0"
+                onWheel={(e) => e.target.blur()}
               />
               {errors.activeTime && (
                 <p className={css.errorMessage}>{errors.activeTime.message}</p>
@@ -283,14 +286,19 @@ const UserSettingsForm = ({ onClose }) => {
               </label>
               <input
                 className={css.inputName}
-                type="text"
-                placeholder="1.8L"
-                value={calculateRecommendedWaterNorm(
-                  watch("weight"),
-                  watch("activeTime"),
-                  watch("gender")
-                )}
-                readOnly
+                type="number"
+                placeholder="1.8"
+                {...register("dailyNorm")}
+                value={
+                  errors.dailyNorm
+                    ? watch("dailyNorm")
+                    : calculateRecommendedWaterNorm(
+                        watch("weight"),
+                        watch("activeTime"),
+                        watch("gender")
+                      )
+                }
+                onChange={(e) => setValue("dailyNorm", e.target.value)}
               />
             </div>
           </div>
