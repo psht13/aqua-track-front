@@ -22,13 +22,18 @@
 
 .modalContent {
   position: relative;
+  overflow-x: hidden;
 
   overflow-y: auto;
   width: calc(100% - 32px);
   min-width: 288px;
   max-width: 344px;
   max-height: 90vh;
-  /* overflow: hidden; */
+  padding: 40px 20px;
+  margin: 50px auto;
+  border-radius: 15px;
+  background-color: var(--background);
+  box-shadow: 0 4px 50px 0 rgba(0, 0, 0, 0.1);
 }
 
 .modalContent::-webkit-scrollbar-button {
