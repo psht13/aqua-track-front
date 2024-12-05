@@ -78,13 +78,14 @@ const authSlice = createSlice({
         state.error = null;
       })
       .addCase(apiRefreshUser.fulfilled, (state, action) => {
-        state.user = action.payload.user;
-        state.token = action.payload.accessToken || state.token;
-        state.isAuthenticated = true;
-        state.isRefreshing = false;
-        state.isLoading = false;
-        state.error = null;
-      })
+  console.log("Refresh successful:", action.payload);
+  state.user = action.payload.data.user;
+  state.token = action.payload.data.accessToken || state.token; 
+  state.isAuthenticated = true;
+  state.isRefreshing = false;
+  state.isLoading = false;
+  state.error = null;
+})
       .addCase(apiRefreshUser.rejected, (state, action) => {
         state.isRefreshing = false;
         state.isLoading = false;
