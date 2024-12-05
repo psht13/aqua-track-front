@@ -1,41 +1,103 @@
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectUser } from '../../redux/auth/selectors.js';
-import { getUser } from '../../redux/auth/operations.js';
-import UserBar from '../UserBar/UserBar';
+import { getUser } from '../../redux/user/operations';
+import { selectUser } from '../../redux/user/selectors';
 import css from './UserPanel.module.css';
-const UserPanel = ({ setOpenSetting }) => {
+import sprite from '../../assets/sprite.svg';
+import UserSettingsModal from '../UserSettingsModal/UserSettingsModal';
+import LogOutModal from '../LogOutModal/LogOutModal';
+
+const UserPanel = () => {
+  const [activeModal, setActiveModal] = useState(null);
+  const [selectedWaterId, setSelectedWaterId] = useState(null);
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
+  const [menuVisible, setMenuVisible] = useState(false);
+
   useEffect(() => {
     dispatch(getUser());
   }, [dispatch]);
+
   const getDisplayName = (name, email) => {
     if (name && name !== 'User') {
       return name;
     } else if (email) {
       return email.split('@')[0];
     } else {
-      return 'User';
+      return 'Guest';
     }
   };
+
   const email = user?.email;
   const name = user?.name;
   const displayName = getDisplayName(name, email);
-  const shortDisplayName = displayName.substring(0, 5);
-  const avatarURL = user?.avatar;
+
+  const handleOpenModal = (modalType, waterId) => {
+    setActiveModal(modalType);
+    setSelectedWaterId(waterId);
+  };
+
+  const handleCloseModal = () => {
+    setActiveModal(null);
+    setSelectedWaterId(null);
+  };
+
   return (
-    <div className={css.panelWrapper}>
-      <h2 className={css.title}>
-        Hello
-        <span className={css.secondaryText}>, {displayName}!</span>
-      </h2>
-      <UserBar
-        setOpenSetting={setOpenSetting}
-        shortDisplayName={shortDisplayName}
-        avatarURL={avatarURL}
-      />
+    <div className={css.container}>
+      <header className={css.header}>
+        <h1 className={css.greeting}>
+          Hello, <span className={css.username}>{displayName}!</span>
+        </h1>
+        <div className={css.userMenu}>
+          <button
+            onClick={() => setMenuVisible(!menuVisible)}
+            className={css.menuButton}
+          >
+            <span className={css.userName}>{displayName}</span>
+            <div className={css.avatar}></div>
+            <svg className={css.icon}>
+              <use
+                href={`src/assets/sprite.svg#icon-chevron-${
+                  menuVisible ? 'up' : 'down'
+                }`}
+              />
+            </svg>
+          </button>
+          {menuVisible && (
+            <div className={css.menu}>
+              <button
+                onClick={() => handleOpenModal('settings')}
+                className={css.menuItem}
+              >
+                <svg className={css.icon}>
+                  <use href={`${sprite}#icon-settings`} />
+                </svg>
+                Setting
+              </button>
+              <button
+                onClick={() => handleOpenModal('logout')}
+                className={css.menuItem}
+              >
+                <svg className={css.icon}>
+                  <use href={`${sprite}#icon-log-out`} />
+                </svg>
+                Log out
+              </button>
+            </div>
+          )}
+        </div>
+      </header>
+      {activeModal === 'settings' && (
+        <UserSettingsModal
+          waterId={selectedWaterId}
+          onClose={handleCloseModal}
+        />
+      )}
+      {activeModal === 'logout' && (
+        <LogOutModal waterId={selectedWaterId} onClose={handleCloseModal} />
+      )}
     </div>
   );
 };
+
 export default UserPanel;

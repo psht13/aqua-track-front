@@ -4,16 +4,14 @@
   align-items: center;
   justify-content: center;
   max-width: 100%;
-  height: 123px; /* Фиксированная высота для предотвращения "скачков" */
+  height: 123px;
   border-radius: 16px;
-  background: var(--background-secondary);
-  /* overflow: hidden; */
   position: relative;
+  color: var(--mein-text);
 }
 
 .noRecords {
   font-size: 16px;
-  color: var(--text-secondary);
   text-align: center;
 }
 
@@ -22,10 +20,9 @@
   gap: 16px;
   overflow-x: auto;
   overflow-y: hidden;
-  /* padding: 8px; */
   width: 100%;
-  box-sizing: border-box; /* Учитываем padding в ширину */
-  scroll-behavior: smooth; /* Плавный скроллинг */
+  box-sizing: border-box;
+  scroll-behavior: smooth;
   padding-bottom: 24px;
 }
 
@@ -36,11 +33,11 @@
 
 .list::-webkit-scrollbar-thumb {
   background: var(--main);
-  border-radius: 9px; /* Скруглённые края */
+  border-radius: 9px;
 }
 
 .list::-webkit-scrollbar-track {
-  background: transparent; /* Прозрачный фон трека */
+  background: transparent;
 }
 
 .item {
@@ -48,11 +45,9 @@
   align-items: center;
   justify-content: space-between;
   flex-shrink: 0;
-  /* width: 100px; */
   padding: 20px;
   border-radius: 8px;
   background: var(--main-white);
-  box-shadow: var(--card-shadow);
 }
 
 .icon {
@@ -61,7 +56,6 @@
   align-items: center;
   width: 32px;
   height: 32px;
-  background: var(--secondary);
   border-radius: 50%;
   margin-right: 8px;
 }
@@ -82,7 +76,6 @@
 
 .time {
   font-size: 12px;
-  color: var(--text-secondary);
 }
 
 .actions {
@@ -105,5 +98,4 @@
 .actionButton svg {
   width: 16px;
   height: 16px;
-  fill: var(--accent);
 }

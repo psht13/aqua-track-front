@@ -4,6 +4,7 @@ import {
   selectAuthIsLoggedIn,
   selectAuthIsRefreshing,
 } from "../redux/auth/selectors";
+import Loader from "./Loader/Loader";
 
 export default function PrivateRoute({ children }) {
   const isLoggedIn = useSelector(selectAuthIsLoggedIn);
@@ -13,7 +14,7 @@ export default function PrivateRoute({ children }) {
   console.log("isRefreshing:", isRefreshing);
 
   if (isRefreshing) {
-    return <div>Loading...</div>;
+    return <Loader/>;
   }
   return isLoggedIn ? children : <Navigate to="/signin" />;
 }
