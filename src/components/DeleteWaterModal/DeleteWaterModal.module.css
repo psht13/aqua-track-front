@@ -4,49 +4,49 @@
 
 .title,
 .subtitle {
-  font-family: var(--font), sans-serif;
   color: var(--main);
   text-align: center;
   letter-spacing: -0.01em;
+  font-family: var(--font), sans-serif;
 }
 
 .title {
-  font-weight: 700;
-  font-size: 20px;
   line-height: 1.2;
+  font-size: 20px;
+  font-weight: 700;
 }
 
 .subtitle {
-  font-weight: 400;
-  font-size: 14px;
   line-height: 1.29;
   margin-top: 16px;
+  font-size: 14px;
+  font-weight: 400;
 }
 
 .buttonDelete,
 .buttonCancel {
-  font-family: "Poppins", sans-serif;
-  font-weight: 700;
-  font-size: 14px;
-  line-height: 1.29;
-  letter-spacing: -0.01em;
-  color: var(--main);
-  border-radius: 30px;
-  padding: 14px 0;
   width: 100%;
+  line-height: 1.29;
+  padding: 14px 0;
   border: none;
-  transition: all 300ms ease-in-out;
+  border-radius: 30px;
+  color: var(--main);
+  transition: all 150ms ease-in-out;
+  letter-spacing: -0.01em;
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+  font-weight: 700;
 }
 
 .buttonDelete {
-  background: var(--accent);
   margin-top: 28px;
+  background: var(--accent);
 }
 
 .buttonCancel {
+  margin-top: 9px;
   color: rgba(50, 63, 71, 0.3);
   background: var(--background);
-  margin-top: 9px;
 }
 
 .buttonDelete:hover,
@@ -65,14 +65,14 @@
   }
 
   .title {
-    font-size: 28px;
     line-height: 1.14;
+    font-size: 28px;
   }
 
   .subtitle {
+    line-height: 1.33;
     margin-top: 24px;
     font-size: 18px;
-    line-height: 1.33;
   }
 
   .boxButton {
@@ -83,10 +83,10 @@
 
   .buttonDelete,
   .buttonCancel {
-    font-size: 16px;
+    width: 178px;
     line-height: 1.5;
     padding: 18px 59px;
     margin-top: 24px;
-    width: 178px;
+    font-size: 16px;
   }
 }

@@ -38,19 +38,36 @@ export const deleteWater = createAsyncThunk(
   }
 );
 
+
 export const getDayWater = createAsyncThunk(
-  "water/getDay",
+  "water/getDayWater",
   async (day, thunkAPI) => {
     try {
-      const { data } = await instance.get(`/waters/day`, {
+      const { data: fetchedData } = await instance.get(`/waters/day`, {
         params: { day },
       });
-      if (day === new Date().toISOString().split("T")[0]) {
-        data.date.today = [...data.date];
-      }
+
+      const data = fetchedData.data;
+
+      console.log(data);
+      
+
+      // if (!data || !data.date) {
+      //   throw new Error("Invalid data structure received");
+      // }
+
+      // if (day === new Date().toISOString().split("T")[0]) {
+      //   data.date.today = [...data.date];
+      // }
+
+      // console.log(data.date.today || 'No data available for today');
+      
       return data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      console.error("Error fetching day water data:", error);
+      return thunkAPI.rejectWithValue(
+        error.response?.data?.message || error.message || "An unexpected error occurred"
+      );
     }
   }
 );

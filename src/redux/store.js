@@ -12,7 +12,7 @@ import {
 import storage from 'redux-persist/lib/storage';
 import authReducer from './auth/slice';
 import userReducer from './user/slice';
-import waterReducer from './user/waterSlice';
+import waterReducer from './water/slice';
 
 const authPersistConfig = {
   key: 'auth',

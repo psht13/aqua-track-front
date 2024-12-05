@@ -100,7 +100,7 @@
   padding: 14px 19px; 
   border: none;
   border-radius: 50px;
-  transition: all 0.3s ease;
+  transition: all 150ms, ease-in-out;
   font-family: var(--font);
   font-size: 14px;
   font-weight: 600; 

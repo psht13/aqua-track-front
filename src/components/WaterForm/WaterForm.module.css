@@ -3,12 +3,12 @@
 }
 
 .amountWaterLabel {
-  font-family: var(--font), sans-serif;
-  font-weight: 400;
-  font-size: 14px;
   line-height: 1.29;
-  letter-spacing: -0.01em;
   color: var(--main-text);
+  letter-spacing: -0.01em;
+  font-family: var(--font), sans-serif;
+  font-size: 14px;
+  font-weight: 400;
 }
 
 .amountWaterLabel {
@@ -18,29 +18,29 @@
 .btnBox {
   display: flex;
   align-items: center;
-  gap: 8px;
   margin-top: 8px;
+  gap: 8px;
 }
 
 .numberSpan {
-  font-family: "Poppins", sans-serif;
-  border-radius: 30px;
   padding: 11px 20px;
-  background: var(--main);
+  border-radius: 30px;
   color: var(--main-white);
+  background: var(--main);
+  font-family: "Poppins", sans-serif;
   font-size: 14px;
 }
 
 .buttons {
-  border-radius: 30px;
-  border: 1.5px solid var(--main);
-  width: 40px;
-  height: 40px;
-  color: var(--main);
-  background-color: var(--main-white);
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: 1.5px solid var(--main);
+  border-radius: 30px;
+  color: var(--main);
+  background-color: var(--main-white);
 }
 
 .btnSvg {
@@ -49,30 +49,30 @@
 }
 
 .recordingTimeLabel {
-  margin: 0 0 0 0;
   display: block;
-  font-weight: 400;
-  font-size: 14px;
-  letter-spacing: -0.01em;
-  color: var(--main-text);
+  margin: 0 0 0 0;
   margin-top: 16px;
+  color: var(--main-text);
+  letter-spacing: -0.01em;
+  font-size: 14px;
+  font-weight: 400;
 }
 
 .recordingTimeInput {
   display: block;
-  border: 1px solid rgba(47, 47, 47, 0.15);
-  outline: transparent;
-  border-radius: 15px;
-  padding: 14px 16px;
-  height: 46px;
   width: 100%;
-  background-color: var(--main-white);
-  font-weight: 400;
-  font-size: 14px;
+  height: 46px;
   line-height: 1.3;
-  letter-spacing: -0.01em;
-  color: var(--main-text);
+  padding: 14px 16px;
   margin: 8px 0 0 0;
+  border: 1px solid rgba(47, 47, 47, 0.15);
+  border-radius: 15px;
+  outline: transparent;
+  color: var(--main-text);
+  background-color: var(--main-white);
+  letter-spacing: -0.01em;
+  font-size: 14px;
+  font-weight: 400;
 }
 
 .recordingTimeInput:focus {
@@ -81,29 +81,29 @@
 
 .waterValueLabel {
   display: block;
-  font-weight: 700;
-  font-size: 16px;
   line-height: 1.25;
-  letter-spacing: -0.01em;
-  color: var(--main-text);
   margin-top: 24px;
+  color: var(--main-text);
+  letter-spacing: -0.01em;
+  font-size: 16px;
+  font-weight: 700;
 }
 
 .waterValueInput {
   display: block;
-  border: 1px solid rgba(47, 47, 47, 0.15);
-  outline: transparent;
-  border-radius: 15px;
-  padding: 14px 16px;
-  height: 46px;
   width: 100%;
-  background-color: var(--main-white);
-  font-weight: 400;
-  font-size: 14px;
+  height: 46px;
   line-height: 1.3;
-  letter-spacing: -0.01em;
-  color: var(--main-text);
+  padding: 14px 16px;
   margin: 8px 0 0;
+  border: 1px solid rgba(47, 47, 47, 0.15);
+  border-radius: 15px;
+  outline: transparent;
+  color: var(--main-text);
+  background-color: var(--main-white);
+  letter-spacing: -0.01em;
+  font-size: 14px;
+  font-weight: 400;
 }
 
 .waterValueInput:focus {
@@ -112,8 +112,8 @@
 
 input[type="number"]::-webkit-outer-spin-button,
 input[type="number"]::-webkit-inner-spin-button {
-  -webkit-appearance: none;
   margin: 0;
+  -webkit-appearance: none;
 }
 
 input[type="number"] {
@@ -121,26 +121,26 @@ input[type="number"] {
 }
 
 .error {
+  margin-top: 0px;
   color: red;
   font-size: 12px;
-  margin-top: 0px;
   font-weight: 400;
 }
 
 .btnSave {
+  line-height: 1.29;
+  padding: 14px 40px;
   margin-top: 24px;
   margin-bottom: 20px;
-  border-radius: 30px;
-  padding: 14px 40px;
-  font-family: "Poppins", sans-serif;
-  font-weight: 700;
-  font-size: 14px;
-  line-height: 1.29;
-  letter-spacing: -0.01em;
-  color: var(--main);
   border: none;
-  transition: all 300ms ease-in-out;
+  border-radius: 30px;
+  color: var(--main);
   background: var(--accent);
+  transition: all 150ms ease-in-out;
+  letter-spacing: -0.01em;
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+  font-weight: 700;
 }
 
 .btnSave:hover,
@@ -173,9 +173,9 @@ input[type="number"] {
   }
 
   .btnSave {
-    font-size: 16px;
     line-height: 1.5;
     padding: 18px 50px;
     margin-bottom: 0;
+    font-size: 16px;
   }
 }

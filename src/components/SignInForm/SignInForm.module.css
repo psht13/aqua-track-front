@@ -64,8 +64,8 @@ input[type="email"],
 input[type="password"],
 input[type="text"] {
   width: 100%;
-  padding: 16px;
   line-height: 129%;
+  padding: 16px;
   border: 1px solid #ccc;
   border-radius: 15px;
   background: transparent;
@@ -118,7 +118,7 @@ input[type="text"]:focus {
   border-radius: 30px;
   color: #323f47;
   background: #9be1a0;
-  transition: all 250ms ease-in-out;
+  transition: all 150ms ease-in-out;
   text-align: center;
   letter-spacing: -0.01em;
   font-size: 14px;
@@ -190,8 +190,8 @@ input[type="text"]:focus {
   input[type="email"],
   input[type="password"],
   input[type="text"] {
-    font-size: 16px;
     line-height: 150%;
+    font-size: 16px;
   }
 
   .header {

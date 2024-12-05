@@ -1,50 +1,50 @@
 .title {
-    font-family: "Poppins", sans-serif;
-    font-weight: 700;
-    font-size: 20px;    
-    letter-spacing: -0.01em;
-    text-align: center;
-    color: #323f47;
     margin-bottom: 15px;
+    color: #323f47;
+    text-align: center;    
+    letter-spacing: -0.01em;
+    font-family: "Poppins", sans-serif;
+    font-size: 20px;
+    font-weight: 700;
 }
 
 .text {
-    font-family: "Poppins", sans-serif;
-    font-weight: 400;
-    font-size: 14px;
     line-height: 129%;
-    letter-spacing: -0.01em;
-    text-align: center;
-    color: #323f47;
     margin-bottom: 28px;
+    color: #323f47;
+    text-align: center;
+    letter-spacing: -0.01em;
+    font-family: "Poppins", sans-serif;
+    font-size: 14px;
+    font-weight: 400;
 }
 
 .buttonBox {
     display: flex;
-    justify-content: center;
     flex-direction: column;
+    justify-content: center;
     gap: 10px;
 }
 
 .btnCancel, .btnLogOut {
-    font-family: "Poppins", sans-serif;
-    border-radius: 30px;
     width: 100%;
-    border: none;
     padding: 15px 0;
-    font-weight: 700;
+    border: none;
+    border-radius: 30px;
     color: rgba(50, 63, 71, 1);
     background-color: rgba(155, 225, 160, 1);
+    font-family: "Poppins", sans-serif;
     font-size: 14px;
+    font-weight: 700;
 }
 .btnCancel {
-    background-color: rgba(240, 239, 244, 1);
     color: rgba(50, 63, 71, 0.3);
+    background-color: rgba(240, 239, 244, 1);
 }
 
 .btnCancel, .btnLogOut {
-    transition: .3s;
     cursor: pointer;
+    transition: all 150ms, ease-in-out;
 }
 
 .btnCancel:hover {
@@ -64,27 +64,27 @@
     }
 
     .title {
-        font-size: 28px;
         line-height: 114%;
+        font-size: 28px;
     }
 
     .text {
-        font-size: 18px;
         line-height: 133%;
+        font-size: 18px;
     }
     .title, .text {
         margin-bottom: 25px;
     }
 
     .buttonBox {
-        flex-direction: row;
         align-items: center;
+        flex-direction: row;
         gap: 10px;
     }
 
     .btnLogOut, .btnCancel {
-        font-size: 16px;
         width: 175px;
         padding: 18px 0;
+        font-size: 16px;
     }
 }

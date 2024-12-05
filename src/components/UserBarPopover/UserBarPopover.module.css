@@ -1,16 +1,16 @@
 .popoverList {
-    border-radius: 15px;
-    max-width: 137px;
-    height: 64px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    box-shadow: 0 4px 50px 0 rgba(0, 0, 0, 0.1);
-    background-color: var(--white);
-    opacity: 0;
-    transform: translateY(-10px);
-    transition: opacity 0.5s ease, transform 0.5s ease;
+    max-width: 137px;
+    height: 64px;
     margin-top: 2px;
+    border-radius: 15px;
+    opacity: 0;
+    background-color: var(--white);
+    box-shadow: 0 4px 50px 0 rgba(0, 0, 0, 0.1);
+    transition: all 150ms, ease-in-out;
+    transform: translateY(-10px);
 }
 
 .popoverList.show {
@@ -30,24 +30,24 @@
 }
 
 .popoverBtnSetting {
-    padding: 0;
     display: flex;
     align-items: center;
-    font-weight: 700;
-    font-size: 15px;
     line-height: 1.49;
+    padding: 0;
     color: var(--text-grey);
+    font-size: 15px;
+    font-weight: 700;
 }
 
 .popoverBtnLogOut {
-    padding: 0;
     display: flex;
     align-items: center;
-    font-weight: 700;
-    font-size: 15px;
     line-height: 1.49;
+    padding: 0;
     color: rgba(50, 63, 71, 0.4);
-    transition: color 0.3s ease, transform 0.3s ease;
+    transition: all 150ms, ease-in-out;
+    font-size: 15px;
+    font-weight: 700;
 }
 
 .popoverBtnLogOut:hover,

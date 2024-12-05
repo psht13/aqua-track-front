@@ -54,7 +54,7 @@ const UserPanel = () => {
             className={css.menuButton}
           >
             <span className={css.userName}>{displayName}</span>
-            <div className={css.avatar}></div>
+            <div className={css.avatar}><img className={css.avatarImg} src={user.avatarUrl} alt="User avatar" /></div>
             <svg className={css.icon}>
               <use
                 href={`src/assets/sprite.svg#icon-chevron-${

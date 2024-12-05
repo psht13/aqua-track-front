@@ -3,13 +3,9 @@ import AddWaterBtn from "../AddWaterBtn/AddWaterBtn";
 import WaterList from "../WaterList/WaterList";
 import css from "./DailyInfo.module.css";
 
-const DailyInfo = ({ waterRecords = [], selectedDate = new Date() }) => {
+const DailyInfo = ({ selectedDate = new Date() }) => {
   const [activeModal, setActiveModal] = useState(null);
 
-  const filteredRecords = waterRecords.filter((record) => {
-    const recordDate = new Date(record.date);
-    return recordDate.toDateString() === selectedDate.toDateString();
-  });
 
   const formattedDate =
     selectedDate.toDateString() === new Date().toDateString()

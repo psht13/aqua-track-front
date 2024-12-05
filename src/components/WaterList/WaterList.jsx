@@ -20,6 +20,8 @@ const WaterList = ({ day }) => {
   useEffect(() => {
     dispatch(getDayWater(formattedDay));
   }, [formattedDay, dispatch]);
+  console.log("water list: dayWaterList", dayWaterList);
+  
 
   const waterData = day === today ? todayWaterList || [] : dayWaterList || [];
 
@@ -34,8 +36,8 @@ const WaterList = ({ day }) => {
   return (
     <div className={css.waterListContainer}>
       <ul className={css.waterList}>
-        {waterData.map((item) => (
-          <li key={item.id}>
+        {waterData.map((item,i) => (
+          <li key={item.id +' - '+ i}>
             <WaterItem item={item} />
           </li>
         ))}

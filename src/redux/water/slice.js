@@ -98,8 +98,8 @@ const waterSlice = createSlice({
       .addCase(getDayWater.fulfilled, (state, { payload }) => {
         console.log("Payload from getDayWater:", payload);
         state.isLoading = false;
-        state.dayWater = payload.date;
-        state.todayWater = payload.date.today || [...state.todayWater];
+        state.dayWater = payload;
+        state.todayWater = payload || [...state.todayWater];
       })
       .addCase(getDayWater.rejected, (state, { payload }) => {
         state.isLoading = false;
@@ -128,4 +128,4 @@ const waterSlice = createSlice({
 
 export const { clearWater } = waterSlice.actions;
 
-export const waterReducer = waterSlice.reducer;
+export default waterSlice.reducer;

@@ -129,7 +129,7 @@ input[type="text"]:focus {
   border-radius: 30px;
   color: #323f47;
   background: #9be1a0;
-  transition: all 250ms ease-in-out;
+  transition: all 150ms ease-in-out;
   text-align: center;
   letter-spacing: -0.01em;
   font-size: 14px;

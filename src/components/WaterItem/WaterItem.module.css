@@ -1,32 +1,42 @@
 .waterContainer {
   display: flex;
-  width: 149px;
-  height: 74px;
   align-items: center;
   justify-content: space-between;
-  background-color: var(--white);
-  border-radius: 10px;
+  width: 149px;
+  height: 74px;
   padding: 14px;
+  border-radius: 10px;
+  background-color: var(--white);
   gap: 3px;
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  stroke: transparent;
+  fill: var(--accent);
 }
 
 .details {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
   align-items: flex-start;
+  flex-direction: column;
   flex-grow: 1;
+  justify-content: center;
 }
 
 .amount {
+  color: var(--text);
   font-size: 15px;
   font-weight: bold;
-  color: var(--text);
 }
 
 .time {
-  font-size: 12px;
   color: var(--text-secondary);
+  font-size: 12px;
 }
 
 .actions {
@@ -37,12 +47,12 @@
 
 .actionButton {
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   width: 24px;
   height: 24px;
-  background: none;
   border: none;
+  background: none;
   cursor: pointer;
 }
 
@@ -53,22 +63,22 @@
   width: fit-content;
 }
 .water_amount {
-  font-size: 14px;
-  font-weight: 700;
   line-height: 1;
   margin-bottom: 6px;
+  font-size: 14px;
+  font-weight: 700;
 }
 
 .water_date {
-  font-size: 12px;
   line-height: 1;
   color: rgba(47, 47, 47, 0.6);
+  font-size: 12px;
 }
 
 .icon_water_glass {
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   width: 36px;
   height: 36px;
   fill: var(--color-second-bg-hover);
@@ -76,10 +86,10 @@
 
 .editButton,
 .deleteButton {
-  background: none;
-  border: none;
-  cursor: pointer;
   padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
 }
 
 .editButton:hover,
@@ -94,17 +104,17 @@
 }
 
 .icon_action {
-  fill: none;
   stroke: var(--color-font-main);
+  fill: none;
 }
 
 .icon_action {
-  fill: none;
   stroke: var(--color-font-main);
+  fill: none;
 }
 
 .icon_action {
-  transition: opacity 0.3s ease;
+  transition: all 150ms, ease-in-out;
 }
 
 .icon_action:hover {
@@ -112,9 +122,9 @@
   fill: var(--color-second-bg);
 }
 .icon_water-glass {
-  fill: var(--color-second-bg);
   stroke: var(--color-second-bg);
   stroke-width: 0;
+  fill: var(--color-second-bg);
 }
 
 @media screen and (min-width: 768px) {
@@ -131,9 +141,9 @@
     width: fit-content;
   }
   .water_amount {
-    font-size: 15px;
     line-height: 1.49;
     margin-bottom: 0;
+    font-size: 15px;
   }
   .water_date {
     line-height: 1.87;

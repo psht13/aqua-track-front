@@ -7,9 +7,9 @@
 
 .waterList {
   display: flex;
-  gap: 16px; /* Відстань між елементами списку */
   padding: 8px;
   list-style: none;
+  gap: 16px; /* Відстань між елементами списку */
 }
 
 .waterList::-webkit-scrollbar {
@@ -17,13 +17,16 @@
 }
 
 .waterList::-webkit-scrollbar-thumb {
-  background-color: var(--accent);
   border-radius: 4px;
+  background-color: var(--accent);
 }
 
 .noRecords {
-  text-align: center;
-  margin-top: 16px;
-  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 90px;
   color: var(--text-secondary);
+  text-align: center;
+  font-size: 16px;
 }

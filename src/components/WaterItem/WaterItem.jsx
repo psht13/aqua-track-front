@@ -1,9 +1,10 @@
 import { useState } from "react";
 import WaterModal from "../../components/WaterModal/WaterModal";
 import css from "../WaterItem/WaterItem.module.css";
+import glass from '../../assets/sprite.svg#icon-glass';
 import DeleteWaterModal from "../DeleteWaterModal/DeleteWaterModal.jsx";
 
-const WaterItem = ({ item: { _id, date, amount } }) => {
+const WaterItem = ({ item: { id, date, amount } }) => {
   const [isEditModalOpen, setEditModalIsOpen] = useState(false);
   const [isDeleteModalOpen, setDeleteModalIsOpen] = useState(false);
 
@@ -21,9 +22,9 @@ const WaterItem = ({ item: { _id, date, amount } }) => {
   return (
     <>
       <div className={css.waterContainer}>
-        {/* <svg>
-                  <use href="src/assets/sprite.svg#icon-glass" />
-                </svg> */}
+        <svg className={css.icon} width={32} height={32}>
+                  <use href={glass} />
+                </svg>
         <div className={css.details}>
           <span className={css.amount}>{amount} ml</span>
           <span className={css.time}>{formatTime(date)}</span>
@@ -35,7 +36,7 @@ const WaterItem = ({ item: { _id, date, amount } }) => {
               openModalEdit(
                 <WaterModal
                   operationType="edit"
-                  id={_id}
+                  id={id}
                   amount={amount}
                   myTime={date}
                 />
@@ -54,7 +55,7 @@ const WaterItem = ({ item: { _id, date, amount } }) => {
           <button
             className={css.actionButton}
             onClick={() => {
-              openModalDelete(<DeleteWaterModal id={_id} />);
+              openModalDelete(<DeleteWaterModal id={id} />);
             }}
             type="button"
             aria-label="Delete item"

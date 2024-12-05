@@ -1,20 +1,22 @@
 .pagination {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  gap: 16px;
+  justify-content: space-between;
   padding: 10px 0;
+  gap: 16px;
 }
 
 .navButton {
-  border: none;
-  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 36px;
+  height: 36px;
   padding: 8px;
+  border: none;
   border-radius: 50%;
-  transition: background-color 0.3s, transform 0.2s;
+  cursor: pointer;
+  transition: all 150ms, ease-in-out;
 }
 
 .navButton:active {
@@ -22,9 +24,9 @@
 }
 
 .currentDate {
+  color: var(--mein-text);
   font-size: 16px;
   font-weight: bold;
-  color: var(--mein-text);
 }
 
 .statisticsButton {

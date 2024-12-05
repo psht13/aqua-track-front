@@ -1,5 +1,5 @@
 .loader {
-  position: absolute;
+  position: fixed;
   align-content: center;
   width: 100vw;
   height: 100vh;

@@ -1,19 +1,19 @@
 .backdrop {
-  width: 100vw;
-  height: 100vh;
   position: fixed;
+  z-index: 100;
   top: 0;
   left: 0;
-  z-index: 100;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  background-color: rgba(44, 39, 39, 0.4);
 
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  padding-top: 10px;
+  padding-bottom: 10px;
   opacity: 0;
-  transition: opacity 200ms linear;
+  background-color: rgba(44, 39, 39, 0.4);
+  transition: all 150ms, ease-in-out;
 }
 
 .active {
@@ -22,17 +22,12 @@
 
 .modalContent {
   position: relative;
-  background: var(--main-white);
-  padding: 40px 20px;
-  border-radius: 15px;
-  margin: 50px auto;
-  box-shadow: 0 4px 50px 0 rgba(0, 0, 0, 0.1);
+
+  overflow-y: auto;
+  width: calc(100% - 32px);
   min-width: 288px;
   max-width: 344px;
-  width: calc(100% - 32px);
-  overflow-y: auto;
   max-height: 90vh;
-  overflow-x: hidden;
   /* overflow: hidden; */
 }
 
@@ -46,9 +41,9 @@
 }
 
 .modalContent::-webkit-scrollbar-thumb {
-  background-color: #f0eff4;
-  border-radius: 30px;
   border: 2px solid transparent;
+  border-radius: 30px;
+  background-color: #f0eff4;
   background-clip: content-box;
 }
 
@@ -56,11 +51,11 @@
   position: absolute;
   top: 20px;
   right: 16px;
-  background: none;
-  border: none;
-  cursor: pointer;
   width: 24px;
   height: 24px;
+  border: none;
+  background: none;
+  cursor: pointer;
 }
 
 .icon {
@@ -70,8 +65,8 @@
 
 @media only screen and (min-width: 768px) {
   .modalContent {
-    padding: 40px;
     min-width: 518px;
+    padding: 40px;
   }
   .closeButton {
     right: 20px;

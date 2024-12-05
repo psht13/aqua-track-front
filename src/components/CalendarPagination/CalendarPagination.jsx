@@ -49,16 +49,6 @@ const CalendarPagination = ({ currentDate, setCurrentDate }) => {
           <use href={`${sprite}#icon-chevron-right`} />
         </svg> */}
       </button>
-
-      <button
-        className={css.statisticsButton}
-        aria-label="Switch to statistics"
-        onClick={() => console.log('Switch to statistics mode')}
-      >
-        <svg className={css.icon}>
-          <use href="src/assets/sprite.svg#icon-pie-chart-02" />
-        </svg>
-      </button>
     </div>
   );
 };

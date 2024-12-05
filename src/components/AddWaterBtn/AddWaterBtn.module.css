@@ -1,16 +1,17 @@
 .addBtn {
-  border-radius: 30px;
-  width: 140px;
-  height: 46px;
-  background: var(--main);
-  border: none;
-  color: var(--main-white);
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-  transition: color 250ms ease-in-out;
+  width: 140px;
+  height: 46px;
   margin-left: auto;
+  border: none;
+  border-radius: 30px;
+  color: var(--main-white);
+  background: var(--main);
+  cursor: pointer;
+  transition: all 150ms ease-in-out;
+  gap: 10px;
 }
 
 .addBtn:hover,
@@ -20,14 +21,18 @@
 }
 
 .addBtn p {
-  font-weight: 700;
-  font-size: 14px;
   line-height: 129%;
-  letter-spacing: -0.01em;
   text-align: center;
+  letter-spacing: -0.01em;
+  font-size: 14px;
+  font-weight: 700;
 }
 
 .plus {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px;
   stroke: currentColor;
   /* color: red;
   fill: red; */
@@ -35,14 +40,14 @@
 
 @media screen and (min-width: 768px) {
   .addBtn {
+    right: 32px;
+    bottom: 64px;
     width: 178px;
     height: 60px;
-    bottom: 64px;
-    right: 32px;
   }
   .addBtn p {
-    font-size: 16px;
     line-height: 150%;
+    font-size: 16px;
   }
   .plus {
     width: 24px;
