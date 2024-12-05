@@ -5,23 +5,23 @@ import { selectDayWater, selectTodayWater } from "../../redux/water/selectors";
 import { getDayWater } from "../../redux/water/operations";
 import WaterItem from "../WaterItem/WaterItem";
 
-const WaterList = ({ filteredRecords }) => {
-  console.log(filteredRecords);
+const WaterList = ({ day }) => {
   const dispatch = useDispatch();
-  const dayWaterList = useSelector(selectDayWater) || [];
+  const dayWaterList = useSelector(selectDayWater);
   const todayWaterList = useSelector(selectTodayWater);
-  const today = new Date().toISOString().split("T")[0];
+
+  const formattedDay = (day instanceof Date ? day : new Date(day))
+    .toISOString()
+    .split("T")[0];
+  const today = (day instanceof Date ? day : new Date(day))
+    .toISOString()
+    .split("T")[0];
 
   useEffect(() => {
-    if (filteredRecords === today) {
-      dispatch(getDayWater(today));
-    } else {
-      dispatch(getDayWater(filteredRecords));
-    }
-  }, [filteredRecords, dispatch, today]);
+    dispatch(getDayWater(formattedDay));
+  }, [formattedDay, dispatch]);
 
-  const waterData = filteredRecords === today ? todayWaterList : dayWaterList;
-  console.log(waterData);
+  const waterData = day === today ? todayWaterList || [] : dayWaterList || [];
 
   if (!waterData.length) {
     return (
@@ -35,7 +35,7 @@ const WaterList = ({ filteredRecords }) => {
     <div className={css.waterListContainer}>
       <ul className={css.waterList}>
         {waterData.map((item) => (
-          <li key={item._id}>
+          <li key={item.id}>
             <WaterItem item={item} />
           </li>
         ))}
