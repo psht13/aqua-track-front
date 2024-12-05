@@ -11,7 +11,9 @@ const TrackerPage = () => {
     try {
       const user = await dispatch(getUser());
       console.log(user);
-    } catch (error) {}
+    } catch (error) {
+      console.error(error)
+    }
   };
 
   useEffect(() => {

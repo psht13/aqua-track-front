@@ -1,7 +1,17 @@
 .card {
-  border-radius: 30px;
+
   width: 100%;
-  height: 100%;
-  background: var(--background);
+  min-height: 736px;
   padding: 24px 16px;
+  border-radius: 30px;
+  background: var(--background);
+}
+
+@media screen and (max-width: 768px) {
+  .card{
+    min-height: 738px;}
+}
+@media screen and (max-width: 375px) {
+  .card{
+  min-height: 770px;}
 }

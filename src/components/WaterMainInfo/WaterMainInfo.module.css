@@ -1,14 +1,15 @@
 .mainInfo {
   display: flex;
   flex-direction: column;
+  width: 100%;
+  max-width: 343px;
+  max-height: 736px;
+  padding: 24px 16px;
+  border-radius: 30px;
   background: var(--accent);
   background-image: url("../../assets/imgs/bottle-bg-mobile.png");
   background-repeat: no-repeat;
   background-position: center;
-  width: 100%;
-  border-radius: 30px;
-  max-width: 343px;
-  padding: 24px 16px;
 }
 
 .infoBlock {
@@ -18,9 +19,9 @@
 }
 @media screen and (min-width: 768px) {
   .mainInfo {
-    background-image: url("../../assets/imgs/bottle-bg-tablet.png");
     max-width: 704px;
     padding: 32px;
+    background-image: url("../../assets/imgs/bottle-bg-tablet.png");
   }
 .infoBlock {
   padding-top: 101px;
