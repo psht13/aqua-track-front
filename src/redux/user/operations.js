@@ -17,11 +17,12 @@ export const patchUser = createAsyncThunk(
   "user/patchUser",
   async (data, thunkAPI) => {
     try {
-      const { data } = await instance.patch("/users/me", data);
-      return data;
+      const response = await instance.patch("/users/me", data);
+      console.log(response.data);
+      return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(
-        error.response.data?.data.error || "An error occurred"
+        error.response?.data?.error || "An error occurred"
       );
     }
   }
