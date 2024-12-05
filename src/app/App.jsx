@@ -29,15 +29,13 @@ const App = () => {
   }, [dispatch]);
 
   return isRefreshing ? (
-    <Loader/>
+    <Loader />
   ) : (
     <div className={css.container}>
-      <Suspense fallback={<Loader/>}>
+      <Suspense fallback={<Loader />}>
         {" "}
         <Routes>
-          <Route
-            path="/"
-            element={<SharedLayout />}>
+          <Route path="/" element={<SharedLayout />}>
             <Route
               path="/"
               element={
@@ -71,10 +69,7 @@ const App = () => {
               </PrivateRoute>
             }
           />
-          <Route
-            path="*"
-            element={<NotFoundPage />}
-          />
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
         <Toaster />
       </Suspense>

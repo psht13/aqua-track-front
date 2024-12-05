@@ -1,7 +1,7 @@
-import { useState } from 'react';
-import AddWaterBtn from '../AddWaterBtn/AddWaterBtn';
-import WaterList from '../WaterList/WaterList';
-import css from './DailyInfo.module.css';
+import { useState } from "react";
+import AddWaterBtn from "../AddWaterBtn/AddWaterBtn";
+import WaterList from "../WaterList/WaterList";
+import css from "./DailyInfo.module.css";
 
 const DailyInfo = ({ waterRecords = [], selectedDate = new Date() }) => {
   const [activeModal, setActiveModal] = useState(null);
@@ -13,9 +13,9 @@ const DailyInfo = ({ waterRecords = [], selectedDate = new Date() }) => {
 
   const formattedDate =
     selectedDate.toDateString() === new Date().toDateString()
-      ? 'Today'
-      : `${selectedDate.getDate()}, ${selectedDate.toLocaleString('en-US', {
-          month: 'long',
+      ? "Today"
+      : `${selectedDate.getDate()}, ${selectedDate.toLocaleString("en-US", {
+          month: "long",
         })}`;
 
   const handleCloseModal = () => {
@@ -28,19 +28,19 @@ const DailyInfo = ({ waterRecords = [], selectedDate = new Date() }) => {
         <h2 className={css.date}>{formattedDate}</h2>
         <AddWaterBtn
           className={css.customAddWaterBtn}
-          onClick={() => console.log('Add water')}
+          onClick={() => console.log("Add water")}
         />
       </div>
 
-      <WaterList records={filteredRecords} />
+      <WaterList day={selectedDate} />
 
-      {activeModal === 'settings' && (
+      {activeModal === "settings" && (
         <div className={css.modal}>
           <h2>Settings Modal</h2>
           <button onClick={handleCloseModal}>Close</button>
         </div>
       )}
-      {activeModal === 'logout' && (
+      {activeModal === "logout" && (
         <div className={css.modal}>
           <h2>Logout Modal</h2>
           <button onClick={handleCloseModal}>Close</button>

@@ -1,101 +1,29 @@
-.container {
+.waterListContainer {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  max-width: 100%;
-  height: 123px;
-  border-radius: 16px;
-  position: relative;
-  color: var(--mein-text);
+  overflow-x: auto; /* Додає горизонтальний скрол, якщо контент виходить за межі */
+  scrollbar-width: thin; /* Тонкий скролбар для браузерів, які його підтримують */
+  gap: 16px; /* Відстань між елементами списку */
+}
+
+.waterList {
+  display: flex;
+  gap: 16px; /* Відстань між елементами списку */
+  padding: 8px;
+  list-style: none;
+}
+
+.waterList::-webkit-scrollbar {
+  height: 8px; /* Висота горизонтального скролбару */
+}
+
+.waterList::-webkit-scrollbar-thumb {
+  background-color: var(--accent);
+  border-radius: 4px;
 }
 
 .noRecords {
-  font-size: 16px;
   text-align: center;
-}
-
-.list {
-  display: flex;
-  gap: 16px;
-  overflow-x: auto;
-  overflow-y: hidden;
-  width: 100%;
-  box-sizing: border-box;
-  scroll-behavior: smooth;
-  padding-bottom: 24px;
-}
-
-.list::-webkit-scrollbar {
-  height: 8px;
-  background: var(--main-white);
-}
-
-.list::-webkit-scrollbar-thumb {
-  background: var(--main);
-  border-radius: 9px;
-}
-
-.list::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-.item {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-shrink: 0;
-  padding: 20px;
-  border-radius: 8px;
-  background: var(--main-white);
-}
-
-.icon {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  margin-right: 8px;
-}
-
-.details {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  flex-grow: 1;
-}
-
-.volume {
-  font-size: 15px;
-  font-weight: bold;
-  color: var(--text);
-}
-
-.time {
-  font-size: 12px;
-}
-
-.actions {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.actionButton {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 24px;
-  height: 24px;
-  background: none;
-  border: none;
-  cursor: pointer;
-}
-
-.actionButton svg {
-  width: 16px;
-  height: 16px;
+  margin-top: 16px;
+  font-size: 16px;
+  color: var(--text-secondary);
 }
