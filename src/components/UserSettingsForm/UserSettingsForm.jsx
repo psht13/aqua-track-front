@@ -90,7 +90,7 @@ const UserSettingsForm = ({ onClose, onUpdate }) => {
   };
 
   return (
-    <div>
+    <div className={css.wrap}>
       <h3 className={css.settingFormTitle}>Setting</h3>
       <div className={css.imgContainer}>
         <img
