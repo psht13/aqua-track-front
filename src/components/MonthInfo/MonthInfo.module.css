@@ -4,7 +4,6 @@
   gap: 16px;
   padding: 16px;
   border-radius: 16px;
-  background: var(--background-secondary);
   max-width: 100%;
 }
 
@@ -20,25 +19,20 @@
   color: var(--text);
 }
 
-.statisticsButton {
-  background: black;
+.todayButton {
+  background-color: var(--accent);
+  color: var(--mein);
   border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
   cursor: pointer;
-  padding: 8px;
-  border-radius: 50%;
-  transition: background-color 0.3s, transform 0.2s;
+  font-size: 18px;
+  font-weight: 500;
+  transition: background-color 0.3s;
 }
 
-.statisticsButton:hover {
-  background-color: var(--hover);
-}
-
-.statisticsButton:focus {
-  outline: 2px solid var(--focus-outline);
-}
-
-.statisticsButton:active {
-  transform: scale(0.9);
+.todayButton:hover {
+  background-color: #87d28d;
 }
 
 .controls {
@@ -47,60 +41,30 @@
   gap: 16px;
 }
 
-.todayButton {
-  background-color: var(--accent);
-  color: var(--button-text);
-  border: none;
-  border-radius: 8px;
-  padding: 5px 15px;
-  font-size: 14px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: background-color 0.3s, transform 0.2s;
-}
-
-.todayButton:hover {
-  background-color: var(--accent-hover);
-}
 @media (max-width: 374px) {
   .title {
-    font-size: 20px; /* Уменьшаем шрифт для заголовка */
+    display: none;
   }
-
-  .statisticsButton {
-    padding: 6px; /* Уменьшаем размер кнопки */
-    width: 24px; /* Делаем кнопку квадратной */
-    height: 24px;
-  }
-
   .todayButton {
-    font-size: 12px; /* Уменьшаем шрифт */
+    font-size: 12px;
     padding: 4px 10px;
   }
 
   .controls {
-    gap: 12px; /* Уменьшаем расстояние между элементами */
+    gap: 12px;
   }
 }
 
-/* Адаптивная верстка: от 375px до 767px */
 @media (min-width: 375px) and (max-width: 767px) {
   .title {
-    font-size: 24px; /* Средний размер шрифта для заголовка */
+    display: none;
   }
-
-  .statisticsButton {
-    padding: 7px; /* Средний размер кнопки */
-    width: 28px;
-    height: 28px;
-  }
-
   .todayButton {
-    font-size: 13px; /* Средний размер шрифта */
+    font-size: 13px;
     padding: 5px 12px;
   }
 
   .controls {
-    gap: 14px; /* Среднее расстояние между элементами */
+    gap: 14px;
   }
 }

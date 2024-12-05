@@ -9,8 +9,7 @@ const getDaysInMonth = (date) => {
   return Array.from({ length: daysInMonth }, (_, i) => i + 1);
 };
 
-const Calendar = ({ currentMonth, onDaySelect, waterRecords = [] }) => {
-  // Вычисление прогресса для каждого дня
+const Calendar = ({ currentMonth, onDaySelect, waterRecords = [], selectedDate }) => {
   const dailyProgress = useMemo(() => {
     const year = currentMonth.getFullYear();
     const month = currentMonth.getMonth();
@@ -47,6 +46,7 @@ const Calendar = ({ currentMonth, onDaySelect, waterRecords = [] }) => {
             currentDate={currentMonth}
             progress={dailyProgress[day] || 0}
             onDaySelect={onDaySelect}
+            selectedDate={selectedDate}
           />
         ))}
       </div>
