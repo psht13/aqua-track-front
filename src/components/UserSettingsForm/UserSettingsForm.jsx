@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { BsExclamationLg } from "react-icons/bs";
-import { selectUser } from "../../redux/user/selectors";
 
 import * as Yup from "yup";
 import axios from "axios";
@@ -91,7 +90,7 @@ const UserSettingsForm = ({ onClose, onUpdate }) => {
   };
 
   return (
-    <div>
+    <div className={css.wrap}>
       <h3 className={css.settingFormTitle}>Setting</h3>
       <div className={css.imgContainer}>
         <img
