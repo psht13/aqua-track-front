@@ -5,69 +5,86 @@ import DeleteWaterModal from "../DeleteWaterModal/DeleteWaterModal.jsx";
 import sprite from "../../assets/sprite.svg";
 
 const WaterItem = ({ item: { id, date, amount } }) => {
-  const [isEditModalOpen, setEditModalIsOpen] = useState(false);
-  const [isDeleteModalOpen, setDeleteModalIsOpen] = useState(false);
+	const [isEditModalOpen, setEditModalIsOpen] = useState(false);
+	const [isDeleteModalOpen, setDeleteModalIsOpen] = useState(false);
 
-  const openModalEdit = () => setEditModalIsOpen(true);
-  const openModalDelete = () => setDeleteModalIsOpen(true);
+	const openModalEdit = () => setEditModalIsOpen(true);
+	const closeModalEdit = () => setEditModalIsOpen(false);
 
-  const formatTime = (time) => {
-    const [hours, minutes] = time.split(":").map(Number);
-    const isPM = hours >= 12;
-    const formattedHours = hours % 12 || 12; // Преобразование 0 и 12 в 12-часовой формат
-    const period = isPM ? "PM" : "AM";
-    return `${formattedHours}:${minutes.toString().padStart(2, "0")} ${period}`;
-  };
+	const openModalDelete = () => setDeleteModalIsOpen(true);
+	const closeModalDelete = () => setDeleteModalIsOpen(false);
 
-  return (
-    <>
-      <div className={css.waterContainer}>
-        <svg className={css.icon} width={32} height={32}>
-          <use href={`${sprite}#icon-glass`} />
-        </svg>
-        <div className={css.details}>
-          <span className={css.amount}>{amount} ml</span>
-          <span className={css.time}>{formatTime(date)}</span>
-        </div>
-        <div className={css.actions}>
-          <button
-            className={css.actionButton}
-            onClick={() => {
-              openModalEdit(
-                <WaterModal
-                  operationType="edit"
-                  id={id}
-                  amount={amount}
-                  myTime={date}
-                />
-              );
-            }}
-          >
-            <svg
-              width={14}
-              height={14}
-              className={css.btnSvg}
-              //   style={{ stroke: "var(--main)" }}
-            >
-              <use href={`${sprite}#icon-edit`}></use>
-            </svg>
-          </button>
-          <button
-            className={css.actionButton}
-            onClick={() => {
-              openModalDelete(<DeleteWaterModal id={id} />);
-            }}
-            type="button"
-            aria-label="Delete item"
-          >
-            <svg width={14} height={14} className={css.btnSvg}>
-              <use href={`${sprite}#icon-trash`} />
-            </svg>
-          </button>
-        </div>
-      </div>
-    </>
-  );
+
+	const formatTime = (time) => {
+		if (!time) return "Invalid time";
+		const dateObj = new Date(time);
+		const hours = String(dateObj.getHours()).padStart(2, "0");
+		const minutes = String(dateObj.getMinutes()).padStart(2, "0");
+		return `${hours}:${minutes}`;
+	};
+
+	return (
+		<>
+			<div className={css.waterContainer}>
+				<svg
+					className={css.icon}
+					width={32}
+					height={32}
+				>
+					<use href={`${sprite}#icon-glass`} />
+				</svg>
+				<div className={css.details}>
+					<span className={css.amount}>{amount} ml</span>
+					<span className={css.time}>{formatTime(date)}</span>
+				</div>
+				<div className={css.actions}>
+					<button
+						className={css.actionButton}
+						onClick={openModalEdit}
+					>
+						<svg
+							width={14}
+							height={14}
+							className={css.btnSvg}
+						>
+							<use href={`${sprite}#icon-edit`}></use>
+						</svg>
+					</button>
+					<button
+						className={css.actionButton}
+						onClick={openModalDelete}
+						type='button'
+						aria-label='Delete item'
+					>
+						<svg
+							width={14}
+							height={14}
+							className={css.btnSvg}
+						>
+							<use href={`${sprite}#icon-trash`} />
+						</svg>
+					</button>
+				</div>
+			</div>
+
+			{isEditModalOpen && (
+				<WaterModal
+					operationType='edit'
+					id={id}
+					waterPortion={amount}
+					myTime={date}
+					handleClose={closeModalEdit}
+				/>
+			)}
+
+			{isDeleteModalOpen && (
+				<DeleteWaterModal
+					id={id}
+					onClose={closeModalDelete}
+				/>
+			)}
+		</>
+	);
 };
 
 export default WaterItem;

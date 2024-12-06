@@ -13,25 +13,38 @@ export const addWater = createAsyncThunk(
   }
 );
 
+
 export const updateWater = createAsyncThunk(
-  "water/edit",
-  async (waterData, thunkAPI) => {
-    try {
-      const { _id, ...editData } = waterData;
-      const { data } = await instance.patch(`/waters/${_id}`, editData);
-      return data;
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
-    }
-  }
+	"water/edit",
+	async ({ id, amount, date }, thunkAPI) => {
+		try {
+			const { data } = await instance.patch(`/waters/${id}`, { amount, date });
+			return data;
+		} catch (error) {
+			return thunkAPI.rejectWithValue(error.message);
+		}
+	}
 );
+
+// export const updateWater = createAsyncThunk(
+//   "water/edit",
+//   async (waterData, thunkAPI) => {
+//     try {
+//       const { id, ...editData } = waterData;
+//       const { data } = await instance.patch(`/waters/${id}`, editData);
+//       return data;
+//     } catch (error) {
+//       return thunkAPI.rejectWithValue(error.message);
+//     }
+//   }
+// );
 
 export const deleteWater = createAsyncThunk(
   "water/delete",
-  async (_id, thunkAPI) => {
+  async (id, thunkAPI) => {
     try {
-      await instance.delete(`/waters/${_id}`);
-      return _id;
+      await instance.delete(`/waters/${id}`);
+      return id;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
