@@ -69,7 +69,7 @@ const UserSettingsForm = ({ onClose }) => {
       setValue("email", user.email || "");
       setValue("weight", user.weight || "");
       setValue("activeTime", user.activeTime || "");
-      setValue("dailyNorm", user.dailyNorm / 1000 || "1.8");
+      setValue("dailyNorm", user.dailyNorm || "1.8");
       setValue("gender", user.gender || "woman");
       if (user.avatarUrl) {
         setAvatarPreview(user.avatarUrl);
@@ -293,7 +293,8 @@ const UserSettingsForm = ({ onClose }) => {
                 className={css.inputName}
                 type="number"
                 placeholder="1.8"
-                {...register("dailyNorm")}
+                step="0.1"
+                min="0"
                 value={watch("dailyNorm")}
                 onChange={(e) => setValue("dailyNorm", e.target.value)}
               />
