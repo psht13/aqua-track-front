@@ -69,7 +69,7 @@ const UserSettingsForm = ({ onClose }) => {
       setValue("email", user.email || "");
       setValue("weight", user.weight || "");
       setValue("activeTime", user.activeTime || "");
-      setValue("dailyNorm", user.dailyNorm || "1.8");
+      setValue("dailyNorm", user.dailyNorm / 1000 || "1.8");
       setValue("gender", user.gender || "woman");
       if (user.avatarUrl) {
         setAvatarPreview(user.avatarUrl);
@@ -86,7 +86,7 @@ const UserSettingsForm = ({ onClose }) => {
       dailyNorm = weight * 0.04 + activeTime * 0.6;
     }
 
-    return dailyNorm.toFixed(1);
+    return Math.max(dailyNorm, 1.8).toFixed(1);
   };
 
   const onSubmit = async (data) => {
@@ -275,7 +275,14 @@ const UserSettingsForm = ({ onClose }) => {
               <p className={css.dailyRequiredText}>
                 The required amount of water in liters per day:
               </p>
-              <p className={css.dailyRequiredNorma}>1.8 L</p>
+              <p className={css.dailyRequiredNorma}>
+                {calculateRecommendedWaterNorm(
+                  watch("weight"),
+                  watch("activeTime"),
+                  watch("gender")
+                )}
+                &nbsp;L
+              </p>
             </div>
 
             <div className={css.dailyWaterWrapper}>
@@ -287,15 +294,7 @@ const UserSettingsForm = ({ onClose }) => {
                 type="number"
                 placeholder="1.8"
                 {...register("dailyNorm")}
-                value={
-                  errors.dailyNorm
-                    ? watch("dailyNorm")
-                    : calculateRecommendedWaterNorm(
-                        watch("weight"),
-                        watch("activeTime"),
-                        watch("gender")
-                      )
-                }
+                value={watch("dailyNorm")}
                 onChange={(e) => setValue("dailyNorm", e.target.value)}
               />
             </div>
@@ -305,7 +304,6 @@ const UserSettingsForm = ({ onClose }) => {
           <button className={css.saveButton} type="submit">
             Save
           </button>
-
           {errorMessage && (
             <p style={{ color: "red", fontSize: "14px", marginTop: "10px" }}>
               {errorMessage}
