@@ -137,7 +137,9 @@ const UserSettingsForm = ({ onClose }) => {
             width="75px"
           />
 
-          <label htmlFor="avatarUrl" className={css.customFileUpload}>
+          <label
+            htmlFor="avatarUrl"
+            className={css.customFileUpload}>
             <svg className={css.icon}>
               <use href={`${sprite}#icon-upload`} />
             </svg>
@@ -301,13 +303,11 @@ const UserSettingsForm = ({ onClose }) => {
             </div>
           </div>
         </div>
-        {errorMessage && (
-          <div className={css.errorWrapper}>
-            <p>{errorMessage}</p>
-          </div>
-        )}
+
         <div className={css.btnWrapper}>
-          <button className={css.saveButton} type="submit">
+          <button
+            className={css.saveButton}
+            type="submit">
             Save
           </button>
 
