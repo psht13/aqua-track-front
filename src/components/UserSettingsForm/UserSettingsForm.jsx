@@ -98,7 +98,7 @@ const UserSettingsForm = ({ onClose }) => {
       formData.append("gender", data.gender);
       formData.append("weight", data.weight || null);
       formData.append("activeTime", data.activeTime || null);
-      formData.append("dailyNorm", data.dailyNorm || 1.8);
+      formData.append("dailyNorm", data.dailyNorm * 1000 || 1.8);
 
       if (data.avatarUrl && data.avatarUrl[0]) {
         formData.append("avatarUrl", data.avatarUrl[0]);
