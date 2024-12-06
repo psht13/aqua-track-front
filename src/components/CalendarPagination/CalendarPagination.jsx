@@ -1,6 +1,10 @@
 import PropTypes from "prop-types";
 import css from "./CalendarPagination.module.css";
-import sprite from "../../assets/sprite.svg";
+
+import {
+  MdOutlineKeyboardArrowLeft,
+  MdOutlineKeyboardArrowRight,
+} from "react-icons/md";
 
 const CalendarPagination = ({ currentDate, setCurrentDate }) => {
   const handlePrevMonth = () => {
@@ -24,12 +28,9 @@ const CalendarPagination = ({ currentDate, setCurrentDate }) => {
       <button
         onClick={handlePrevMonth}
         className={css.navButton}
-        aria-label="Previous Month"
-      >
+        aria-label="Previous Month">
         {/* ← */}
-        <svg className={css.icon}>
-          <use href={`${sprite}#icon-circle-left`} />
-        </svg>
+        <MdOutlineKeyboardArrowLeft fontSize={"24px"} />
       </button>
       <h3 className={css.currentDate}>
         {currentDate instanceof Date && !isNaN(currentDate)
@@ -41,12 +42,9 @@ const CalendarPagination = ({ currentDate, setCurrentDate }) => {
       <button
         onClick={handleNextMonth}
         className={css.navButton}
-        aria-label="Next Month"
-      >
+        aria-label="Next Month">
         {/* → */}
-        <svg className={css.icon}>
-          <use href={`${sprite}#icon-circle-right`} />
-        </svg>
+        <MdOutlineKeyboardArrowRight fontSize="24px" />
       </button>
     </div>
   );

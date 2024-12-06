@@ -101,7 +101,11 @@ const UserSettingsForm = ({ onClose }) => {
         formData.append("avatarUrl", data.avatarUrl[0]);
       }
       const response = await dispatch(patchUser(formData)).unwrap();
-      console.log(response);
+
+      if (response.error) {
+        setErrorMessage(response.error);
+        return;
+      }
 
       onClose();
     } catch (error) {

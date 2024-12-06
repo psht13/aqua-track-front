@@ -11,6 +11,7 @@ const TrackerPage = () => {
 
   const fetchUser = async () => {
     try {
+      // eslint-disable-next-line
       const user = await dispatch(getUser());
     } catch (error) {
       console.error(error);
@@ -19,6 +20,7 @@ const TrackerPage = () => {
 
   useEffect(() => {
     fetchUser();
+    // eslint-disable-next-line
   }, []);
 
   return (

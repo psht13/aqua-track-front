@@ -17,13 +17,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 27px;
-  height: 30px;
-  stroke: transparent;
+  width: 24px;
+  height: 24px;
+  stroke: var(--accent);
   fill: var(--accent);
   @media screen and (min-width: 768px) {
-    width: 44px;
-    height: 45px;
+    width: 32px;
+    height: 32px;
     gap: 20px;
   }
 }
@@ -38,9 +38,9 @@
 
 .amount {
   color: var(--text);
+  text-wrap: nowrap;
   font-size: 15px;
   font-weight: bold;
-  text-wrap: nowrap;
 }
 
 .time {

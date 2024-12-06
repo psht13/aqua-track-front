@@ -2,7 +2,9 @@ import { useState } from "react";
 import WaterModal from "../../components/WaterModal/WaterModal";
 import css from "../WaterItem/WaterItem.module.css";
 import DeleteWaterModal from "../DeleteWaterModal/DeleteWaterModal.jsx";
-import sprite from "../../assets/sprite.svg";
+import { FaGlassWhiskey } from "react-icons/fa";
+import { MdEdit } from "react-icons/md";
+import { FaRegTrashAlt } from "react-icons/fa";
 
 const WaterItem = ({ item: { id, date, amount } }) => {
   const [isEditModalOpen, setEditModalIsOpen] = useState(false);
@@ -26,9 +28,12 @@ const WaterItem = ({ item: { id, date, amount } }) => {
   return (
     <>
       <div className={css.waterContainer}>
-        <svg className={css.icon} width={32} height={32}>
-          <use href={`${sprite}#icon-glass`} />
-        </svg>
+        <div className={css.icon}>
+          <FaGlassWhiskey
+            color="var(--accent)"
+            fontSize={'24px'}
+          />
+        </div>
         <div className={css.details}>
           <span className={css.amount}>{amount} ml</span>
           <span className={css.time}>{formatTime(date)}</span>
@@ -36,21 +41,15 @@ const WaterItem = ({ item: { id, date, amount } }) => {
         <div className={css.actions}>
           <button
             className={css.actionButton}
-            onClick={openModalEdit}
-          >
-            <svg width={14} height={14} className={css.btnSvg}>
-             <use href={`${sprite}#icon-edit`} />
-            </svg>
+            onClick={openModalEdit}>
+            <MdEdit />
           </button>
           <button
             className={css.actionButton}
             onClick={openModalDelete}
             type="button"
-            aria-label="Delete item"
-          >
-            <svg width={14} height={14} className={css.btnSvg}>
-              <use href={`${sprite}#icon-trash`}/>
-            </svg>
+            aria-label="Delete item">
+            <FaRegTrashAlt />
           </button>
         </div>
       </div>
@@ -59,8 +58,8 @@ const WaterItem = ({ item: { id, date, amount } }) => {
         <WaterModal
           operationType="edit"
           id={id}
-          waterPortion={amount} 
-          myTime={date} 
+          waterPortion={amount}
+          myTime={date}
           onClose={closeModalEdit}
         />
       )}

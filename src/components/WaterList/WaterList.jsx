@@ -34,7 +34,7 @@ const WaterList = ({ day }) => {
   useEffect(() => {
     dispatch(getDayWater(formattedDay));
   }, [formattedDay, dispatch, dayWaterList]);
-  console.log("water list: dayWaterList", dayWaterList);
+
 
   const waterData = day === today ? todayWaterList || [] : dayWaterList || [];
 

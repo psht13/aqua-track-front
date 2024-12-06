@@ -28,7 +28,7 @@ const DailyInfo = ({ selectedDate = new Date() }) => {
         <h3 className={css.date}>{formattedDate}</h3>
         <AddWaterBtn
           className={css.customAddWaterBtn}
-          onClick={() => console.log("Add water")}
+          onClick={() => {}}
         />
       </div>
 

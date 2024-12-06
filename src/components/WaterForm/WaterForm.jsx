@@ -6,7 +6,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useDispatch } from "react-redux";
 import { addWater, updateWater } from "../../redux/water/operations";
 import css from "./WaterForm.module.css";
-import sprite from "../../assets/sprite.svg";
+import { FaMinus, FaPlus } from "react-icons/fa6";
 
 const WaterForm = ({
   operationType,
@@ -100,34 +100,25 @@ const WaterForm = ({
   const isPlusButtonDisabled = waterAmount === 5000;
 
   return (
-    <form className={css.waterForm} onSubmit={handleSubmit(onSubmit)}>
+    <form
+      className={css.waterForm}
+      onSubmit={handleSubmit(onSubmit)}>
       <p className={css.amountWaterLabel}>Amount of water:</p>
       <div className={css.btnBox}>
         <button
           className={css.buttons}
           type="button"
           onClick={() => handleWaterAmountChange(Math.max(waterAmount - 50, 0))}
-          disabled={isMinusButtonDisabled}
-        >
-          <svg
-            width={12}
-            height={12}
-            className={css.btnSvg}
-            style={{ stroke: "var(--main)" }}
-          >
-            <use href={`${sprite}#icon-minus`}></use>
-          </svg>
+          disabled={isMinusButtonDisabled}>
+          <FaMinus />
         </button>
         <span className={css.numberSpan}>{waterAmount} ml</span>
         <button
           className={css.buttons}
           type="button"
           onClick={() => handleWaterAmountChange(waterAmount + 50)}
-          disabled={isPlusButtonDisabled}
-        >
-          <svg width={12} height={12} className={css.btnSvg}>
-            <use href={`${sprite}#icon-plus`}></use>
-          </svg>
+          disabled={isPlusButtonDisabled}>
+          <FaPlus />
         </button>
       </div>
       <label className={css.recordingTimeLabel}>
@@ -173,7 +164,9 @@ const WaterForm = ({
           <p className={css.error}>{errors.waterValue.message}</p>
         )}
       </label>
-      <button className={css.btnSave} type="submit">
+      <button
+        className={css.btnSave}
+        type="submit">
         Save
       </button>
     </form>
