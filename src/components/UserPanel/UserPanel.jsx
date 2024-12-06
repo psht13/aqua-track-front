@@ -6,6 +6,7 @@ import css from "./UserPanel.module.css";
 import sprite from "../../assets/sprite.svg";
 import UserSettingsModal from "../UserSettingsModal/UserSettingsModal";
 import LogOutModal from "../LogOutModal/LogOutModal";
+import avatar from "../../assets/imgs/user-settings-form/avatar-user-basic.jpg";
 
 
 const UserPanel = () => {
@@ -58,7 +59,11 @@ const UserPanel = () => {
 						<div className={css.avatar}>
 							<img
 								className={css.avatarImg}
-								src={user.avatarUrl}
+								src={
+									user?.avatarUrl && user.avatarUrl.length > 0
+										? user.avatarUrl
+										: avatar
+								}
 								alt='User avatar'
 							/>
 						</div>
@@ -74,7 +79,7 @@ const UserPanel = () => {
 								onClick={() => handleOpenModal("settings")}
 								className={css.menuItem}
 							>
-								<svg className={css.iconSettings}>
+								<svg className={css.icon}>
 									<use href={`${sprite}#icon-settings`} />
 								</svg>
 								Setting
@@ -83,7 +88,7 @@ const UserPanel = () => {
 								onClick={() => handleOpenModal("logout")}
 								className={css.menuItem}
 							>
-								<svg className={css.iconSettings}>
+								<svg className={css.icon}>
 									<use href={`${sprite}#icon-log-out`} />
 								</svg>
 								Log out
