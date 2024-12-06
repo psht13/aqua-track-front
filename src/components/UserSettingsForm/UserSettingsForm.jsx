@@ -86,7 +86,7 @@ const UserSettingsForm = ({ onClose }) => {
       dailyNorm = weight * 0.04 + activeTime * 0.6;
     }
 
-    return dailyNorm.toFixed(1);
+    return Math.max(dailyNorm, 1.8).toFixed(1);
   };
 
   const onSubmit = async (data) => {
@@ -98,7 +98,7 @@ const UserSettingsForm = ({ onClose }) => {
       formData.append("gender", data.gender);
       formData.append("weight", data.weight || null);
       formData.append("activeTime", data.activeTime || null);
-      formData.append("dailyNorm", data.dailyNorm || 1500);
+      formData.append("dailyNorm", data.dailyNorm * 1000 || 1.8);
 
       if (data.avatarUrl && data.avatarUrl[0]) {
         formData.append("avatarUrl", data.avatarUrl[0]);
@@ -275,7 +275,14 @@ const UserSettingsForm = ({ onClose }) => {
               <p className={css.dailyRequiredText}>
                 The required amount of water in liters per day:
               </p>
-              <p className={css.dailyRequiredNorma}>1.8 L</p>
+              <p className={css.dailyRequiredNorma}>
+                {calculateRecommendedWaterNorm(
+                  watch("weight"),
+                  watch("activeTime"),
+                  watch("gender")
+                )}
+                &nbsp;L
+              </p>
             </div>
 
             <div className={css.dailyWaterWrapper}>
@@ -286,31 +293,18 @@ const UserSettingsForm = ({ onClose }) => {
                 className={css.inputName}
                 type="number"
                 placeholder="1.8"
-                {...register("dailyNorm")}
-                value={
-                  errors.dailyNorm
-                    ? watch("dailyNorm")
-                    : calculateRecommendedWaterNorm(
-                        watch("weight"),
-                        watch("activeTime"),
-                        watch("gender")
-                      )
-                }
+                step="0.1"
+                min="0"
+                value={watch("dailyNorm")}
                 onChange={(e) => setValue("dailyNorm", e.target.value)}
               />
             </div>
           </div>
         </div>
-        {errorMessage && (
-          <div className={css.errorWrapper}>
-            <p>{errorMessage}</p>
-          </div>
-        )}
         <div className={css.btnWrapper}>
           <button className={css.saveButton} type="submit">
             Save
           </button>
-
           {errorMessage && (
             <p style={{ color: "red", fontSize: "14px", marginTop: "10px" }}>
               {errorMessage}
