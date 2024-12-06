@@ -1,7 +1,6 @@
 import { useState } from "react";
 import WaterModal from "../../components/WaterModal/WaterModal";
 import css from "../WaterItem/WaterItem.module.css";
-import glass from '../../assets/sprite.svg#icon-glass';
 import DeleteWaterModal from "../DeleteWaterModal/DeleteWaterModal.jsx";
 
 
@@ -28,7 +27,7 @@ const WaterItem = ({ item: { id, date, amount } }) => {
 					width={32}
 					height={32}
 				>
-					<use href={glass} />
+					<use href='src/assets/sprite.svg#icon-glass' />
 				</svg>
 				<div className={css.details}>
 					<span className={css.amount}>{amount} ml</span>
