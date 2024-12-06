@@ -12,7 +12,11 @@ const formatTime = (timeString) => {
   if (isNaN(date.getTime())) return "";
 
   // Форматування часу в AM/PM
-  return date.toLocaleString([], { hour: '2-digit', minute: '2-digit', hour12: true });
+  return date.toLocaleString([], {
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: true,
+  });
 };
 
 const WaterList = ({ day }) => {
@@ -29,7 +33,7 @@ const WaterList = ({ day }) => {
 
   useEffect(() => {
     dispatch(getDayWater(formattedDay));
-  }, [formattedDay, dispatch]);
+  }, [formattedDay, dispatch, dayWaterList]);
   console.log("water list: dayWaterList", dayWaterList);
 
   const waterData = day === today ? todayWaterList || [] : dayWaterList || [];
@@ -49,7 +53,7 @@ const WaterList = ({ day }) => {
           <li key={item.id + " - " + i}>
             <WaterItem item={item} />
             {/* Форматуємо і відображаємо час для кожного елемента */}
-            <p>{formatTime(item.time)}</p> 
+            <p>{formatTime(item.time)}</p>
             {/* Припустимо, що `item.time` містить строку з часом, отриману з бекенду */}
           </li>
         ))}
