@@ -6,6 +6,7 @@ import css from "./UserPanel.module.css";
 import sprite from "../../assets/sprite.svg";
 import UserSettingsModal from "../UserSettingsModal/UserSettingsModal";
 import LogOutModal from "../LogOutModal/LogOutModal";
+import avatar from "../../assets/imgs/user-settings-form/avatar-user-basic.jpg";
 
 const UserPanel = () => {
   const [activeModal, setActiveModal] = useState(null);
@@ -51,12 +52,17 @@ const UserPanel = () => {
         <div className={css.userMenu}>
           <button
             onClick={() => setMenuVisible(!menuVisible)}
-            className={css.menuButton}>
+            className={css.menuButton}
+          >
             <span className={css.userName}>{displayName}</span>
             <div className={css.avatar}>
               <img
                 className={css.avatarImg}
-                src={user.avatarUrl}
+                src={
+                  user?.avatarUrl && user.avatarUrl.length > 0
+                    ? user.avatarUrl
+                    : avatar
+                }
                 alt="User avatar"
               />
             </div>
@@ -72,7 +78,8 @@ const UserPanel = () => {
             <div className={css.menu}>
               <button
                 onClick={() => handleOpenModal("settings")}
-                className={css.menuItem}>
+                className={css.menuItem}
+              >
                 <svg className={css.icon}>
                   <use href={`${sprite}#icon-settings`} />
                 </svg>
@@ -80,7 +87,8 @@ const UserPanel = () => {
               </button>
               <button
                 onClick={() => handleOpenModal("logout")}
-                className={css.menuItem}>
+                className={css.menuItem}
+              >
                 <svg className={css.icon}>
                   <use href={`${sprite}#icon-log-out`} />
                 </svg>
@@ -97,10 +105,7 @@ const UserPanel = () => {
         />
       )}
       {activeModal === "logout" && (
-        <LogOutModal
-          waterId={selectedWaterId}
-          onClose={handleCloseModal}
-        />
+        <LogOutModal waterId={selectedWaterId} onClose={handleCloseModal} />
       )}
     </div>
   );
