@@ -139,6 +139,10 @@
 }
 
 @media screen and (min-width: 768px) {
+  .btnSvg {
+    width: 16px;
+    height: 16px;
+  }
   .water_item_content {
     width: 191px;
     height: 86px;

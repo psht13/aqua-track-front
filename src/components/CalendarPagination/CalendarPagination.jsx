@@ -1,5 +1,6 @@
-import PropTypes from 'prop-types';
-import css from './CalendarPagination.module.css';
+import PropTypes from "prop-types";
+import css from "./CalendarPagination.module.css";
+import sprite from "../../assets/sprite.svg";
 
 const CalendarPagination = ({ currentDate, setCurrentDate }) => {
   const handlePrevMonth = () => {
@@ -25,29 +26,27 @@ const CalendarPagination = ({ currentDate, setCurrentDate }) => {
         className={css.navButton}
         aria-label="Previous Month"
       >
-        {' '}
-        ←
-        {/* <svg className={css.icon}>
-          <use href={`${sprite}#icon-chevron-left`} />
-        </svg> */}
+        {/* ← */}
+        <svg className={css.icon}>
+          <use href={`${sprite}#icon-circle-left`} />
+        </svg>
       </button>
       <h3 className={css.currentDate}>
         {currentDate instanceof Date && !isNaN(currentDate)
-          ? `${currentDate.toLocaleString('en-US', {
-              month: 'long',
+          ? `${currentDate.toLocaleString("en-US", {
+              month: "long",
             })}, ${currentDate.getFullYear()}`
-          : 'Invalid Date'}
+          : "Invalid Date"}
       </h3>
       <button
         onClick={handleNextMonth}
         className={css.navButton}
         aria-label="Next Month"
       >
-        {' '}
-        →
-        {/* <svg className={css.icon}>
-          <use href={`${sprite}#icon-chevron-right`} />
-        </svg> */}
+        {/* → */}
+        <svg className={css.icon}>
+          <use href={`${sprite}#icon-circle-right`} />
+        </svg>
       </button>
     </div>
   );
