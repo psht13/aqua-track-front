@@ -14,7 +14,9 @@ const DailyInfo = ({ selectedDate = new Date() }) => {
     return <div>Invalid date</div>; // Якщо selectedDate некоректна
   }
 
-  const formattedDate = date.toDateString();
+  const formattedDate = `${date.getDate().toString().padStart(2, "0")}, ${date.toLocaleString("en-US", {
+    month: "long",
+  })}`;
 
   const handleCloseModal = () => {
     setActiveModal(null);
