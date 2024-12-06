@@ -301,11 +301,6 @@ const UserSettingsForm = ({ onClose }) => {
             </div>
           </div>
         </div>
-        {errorMessage && (
-          <div className={css.errorWrapper}>
-            <p>{errorMessage}</p>
-          </div>
-        )}
         <div className={css.btnWrapper}>
           <button className={css.saveButton} type="submit">
             Save
