@@ -12,7 +12,6 @@ const TrackerPage = () => {
   const fetchUser = async () => {
     try {
       const user = await dispatch(getUser());
-      console.log(user);
     } catch (error) {
       console.error(error);
     }

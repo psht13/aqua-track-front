@@ -60,17 +60,6 @@ export const getDayWater = createAsyncThunk(
 
       const data = fetchedData.data;
 
-      console.log(data);
-
-      // if (!data || !data.date) {
-      //   throw new Error("Invalid data structure received");
-      // }
-
-      // if (day === new Date().toISOString().split("T")[0]) {
-      //   data.date.today = [...data.date];
-      // }
-
-      // console.log(data.date.today || 'No data available for today');
 
       return { day, data };
     } catch (error) {

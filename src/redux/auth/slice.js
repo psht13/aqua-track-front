@@ -43,10 +43,6 @@ const authSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(apiLogin.fulfilled, (state, action) => {
-        console.log(
-          "Token in action payload:",
-          action.payload.data.accessToken
-        ); // Логуємо токен
         state.token = action.payload.data.accessToken;
         state.user = action.payload.data.user;
         state.isAuthenticated = true;
@@ -81,7 +77,6 @@ const authSlice = createSlice({
         state.error = null;
       })
       .addCase(apiRefreshUser.fulfilled, (state, action) => {
-  console.log("Refresh successful:", action.payload);
   state.user = action.payload.data.user;
   state.token = action.payload.data.accessToken || state.token; 
   state.isAuthenticated = true;

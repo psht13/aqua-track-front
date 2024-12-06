@@ -12,7 +12,6 @@ const AddWaterBtn = ({
   const handleClick = () => {
     if (onClick) {
       setShowModal(true);
-      console.log(showModal);
     }
   };
 

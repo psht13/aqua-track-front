@@ -61,7 +61,6 @@ const UserSettingsForm = ({ onClose }) => {
   }, [dispatch]);
 
   useEffect(() => {
-    console.log(user);
     if (user) {
       setValue("name", user.name || "");
       setValue("email", user.email || "");

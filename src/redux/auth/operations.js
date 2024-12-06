@@ -12,7 +12,6 @@ const SetAuthHeaders = (token) => {
     return;
   }
   instance.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-  console.log("Authorization header set:", token);
 };
 
 export const logOut = createAsyncThunk("/auth/logout", async (_, thunkAPI) => {
@@ -46,7 +45,6 @@ export const apiLogin = createAsyncThunk(
   async (formData, thunkAPI) => {
     try {
       const { data } = await instance.post("/auth/login", formData);
-      console.log("Login response:", data);
 
       const token = data?.data?.accessToken;
       if (!token) {
@@ -79,7 +77,7 @@ export const apiRefreshUser = createAsyncThunk(
         withCredentials: true,
       });
 
-      console.log("Refresh response:", data);
+
       SetAuthHeaders(data.data.accessToken);
       return data;
     } catch (error) {
@@ -93,7 +91,7 @@ export const apiRefreshUser = createAsyncThunk(
     condition: (_, thunkAPI) => {
       const state = thunkAPI.getState();
       const token = state.auth.token;
-      console.log("Checking condition for refresh:", token);
+
       return !!token;
     },
   }
