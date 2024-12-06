@@ -13,17 +13,16 @@ export const addWater = createAsyncThunk(
   }
 );
 
-
 export const updateWater = createAsyncThunk(
-	"water/edit",
-	async ({ id, amount, date }, thunkAPI) => {
-		try {
-			const { data } = await instance.patch(`/waters/${id}`, { amount, date });
-			return data;
-		} catch (error) {
-			return thunkAPI.rejectWithValue(error.message);
-		}
-	}
+  "water/edit",
+  async ({ id, amount, date }, thunkAPI) => {
+    try {
+      const { data } = await instance.patch(`/waters/${id}`, { amount, date });
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
 );
 
 // export const updateWater = createAsyncThunk(
@@ -51,7 +50,6 @@ export const deleteWater = createAsyncThunk(
   }
 );
 
-
 export const getDayWater = createAsyncThunk(
   "water/getDayWater",
   async (day, thunkAPI) => {
@@ -63,7 +61,6 @@ export const getDayWater = createAsyncThunk(
       const data = fetchedData.data;
 
       console.log(data);
-      
 
       // if (!data || !data.date) {
       //   throw new Error("Invalid data structure received");
@@ -74,12 +71,14 @@ export const getDayWater = createAsyncThunk(
       // }
 
       // console.log(data.date.today || 'No data available for today');
-      
+
       return data;
     } catch (error) {
       console.error("Error fetching day water data:", error);
       return thunkAPI.rejectWithValue(
-        error.response?.data?.message || error.message || "An unexpected error occurred"
+        error.response?.data?.message ||
+          error.message ||
+          "An unexpected error occurred"
       );
     }
   }
