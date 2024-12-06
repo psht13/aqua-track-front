@@ -69,6 +69,16 @@
   width: 16px;
   height: 16px;
   stroke: #fff;
+  fill: #323f47;
+
+  
+}
+
+.iconSettings{
+  width: 16px;
+  height: 16px;
+  stroke: currentColor;
+  fill: none;
 }
 
 .menu {
@@ -92,6 +102,7 @@
   text-align: left;
   font-size: 15px;
   font-weight: bold;
+  gap: 8px;
 }
 
 .menuItem:hover {
