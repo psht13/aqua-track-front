@@ -7,14 +7,17 @@ const MonthInfo = ({ waterRecords, onDateChange }) => {
   const [currentMonth, setCurrentMonth] = useState(new Date());
   const [selectedDate, setSelectedDate] = useState(new Date());
 
+  // Переконатися, що selectedDate є об'єктом типу Date
   const handleMonthChange = (newMonth) => {
     setCurrentMonth(newMonth);
   };
 
   const handleDaySelect = (date) => {
-    setSelectedDate(date);
+    // Перевірка на валідність дати перед оновленням
+    const validDate = date instanceof Date && !isNaN(date) ? date : new Date(date);
+    setSelectedDate(validDate);
     if (onDateChange) {
-      onDateChange(date);
+      onDateChange(validDate);
     }
   };
 
@@ -27,7 +30,8 @@ const MonthInfo = ({ waterRecords, onDateChange }) => {
     }
   };
 
-  const isToday = selectedDate?.toDateString() === new Date().toDateString();
+  // Перевірка на те, чи є selectedDate коректною датою
+  const isToday = selectedDate instanceof Date && !isNaN(selectedDate) && selectedDate.toDateString() === new Date().toDateString();
 
   return (
     <div className={css.container}>
