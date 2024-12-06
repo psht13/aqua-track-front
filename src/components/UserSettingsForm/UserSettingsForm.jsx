@@ -293,7 +293,8 @@ const UserSettingsForm = ({ onClose }) => {
                 className={css.inputName}
                 type="number"
                 placeholder="1.8"
-                {...register("dailyNorm")}
+                step="0.1"
+                min="0"
                 value={watch("dailyNorm")}
                 onChange={(e) => setValue("dailyNorm", e.target.value)}
               />
