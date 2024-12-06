@@ -39,7 +39,7 @@ const WaterItem = ({ item: { id, date, amount } }) => {
             onClick={openModalEdit}
           >
             <svg width={14} height={14} className={css.btnSvg}>
-              <use href="src/assets/sprite.svg#icon-edit"></use>
+             <use href={`${sprite}#icon-edit`} />
             </svg>
           </button>
           <button
@@ -49,7 +49,7 @@ const WaterItem = ({ item: { id, date, amount } }) => {
             aria-label="Delete item"
           >
             <svg width={14} height={14} className={css.btnSvg}>
-              <use href="src/assets/sprite.svg#icon-trash" />
+              <use href={`${sprite}#icon-trash`}/>
             </svg>
           </button>
         </div>
