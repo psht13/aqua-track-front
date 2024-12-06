@@ -6,13 +6,15 @@ import css from "./DailyInfo.module.css";
 const DailyInfo = ({ selectedDate = new Date() }) => {
   const [activeModal, setActiveModal] = useState(null);
 
+  // Переконатися, що selectedDate є об'єктом типу Date
+  const date = selectedDate instanceof Date ? selectedDate : new Date(selectedDate);
 
-  const formattedDate =
-    selectedDate.toDateString() === new Date().toDateString()
-      ? "Today"
-      : `${selectedDate.getDate()}, ${selectedDate.toLocaleString("en-US", {
-          month: "long",
-        })}`;
+  // Перевірка на валідність дати
+  if (isNaN(date)) {
+    return <div>Invalid date</div>; // Якщо selectedDate некоректна
+  }
+
+  const formattedDate = date.toDateString();
 
   const handleCloseModal = () => {
     setActiveModal(null);
@@ -28,7 +30,7 @@ const DailyInfo = ({ selectedDate = new Date() }) => {
         />
       </div>
 
-      <WaterList day={selectedDate} />
+      <WaterList day={date} />
 
       {activeModal === "settings" && (
         <div className={css.modal}>

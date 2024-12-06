@@ -55,38 +55,43 @@ const WaterForm = ({
 		},
 	});
 
-const onSubmit = (data) => {
-	const combinedDateTime = new Date(
-		`${year}-${month}-${day}T${formHours}:${formMinutes}:00`
-	).toISOString(); 
+  const onSubmit = (data) => {
+    const combinedDateTime = new Date(
+      `${year}-${month}-${day}T${formHours}:${formMinutes}:00`
+    );
+    const timeToSend = combinedDateTime.getTime().toString(); // Unix timestamp у мілісекундах
 
-	const waterData = {
-		id, 
-		amount: data.waterValue,
-		date: combinedDateTime,
-	};
+    const addWaterValue = {
+      amount: data.waterValue,
+      date: timeToSend,
+    };
 
-	switch (operationType) {
-		case "edit":
-			dispatch(updateWater(waterData)).then((result) => {
-				if (!result.error) {
-					handleClose();
-				}
-			});
-			break;
+    const editWaterValue = {
+      amount: data.waterValue,
+      date: timeToSend,
+    };
 
-		case "add":
-			dispatch(addWater(waterData)).then((result) => {
-				if (!result.error) {
-					handleClose();
-				}
-			});
-			break;
-
-		default:
-			break;
-	}
-};
+    switch (operationType) {
+      case "add": {
+        const result = dispatch(addWater(addWaterValue));
+        if (!result.error) {
+          handleClose();
+        }
+        break;
+      }
+      case "edit": {
+        const result = dispatch(
+          updateWater({ id: id, formData: editWaterValue })
+        );
+        if (!result.error) {
+          handleClose();
+        }
+        break;
+      }
+      default:
+        break;
+    }
+  };
 
 	const handleWaterAmountChange = (amount) => {
 		setWaterAmount(amount);
@@ -106,9 +111,7 @@ const onSubmit = (data) => {
 				<button
 					className={css.buttons}
 					type='button'
-					onClick={() =>
-						handleWaterAmountChange(Math.max(waterAmount - 50, 50))
-					}
+					onClick={() => handleWaterAmountChange(Math.max(waterAmount - 50, 0))}
 					disabled={isMinusButtonDisabled}
 				>
 					<svg
@@ -124,9 +127,7 @@ const onSubmit = (data) => {
 				<button
 					className={css.buttons}
 					type='button'
-					onClick={() =>
-						handleWaterAmountChange(Math.min(waterAmount + 50, 5000))
-					}
+					onClick={() => handleWaterAmountChange(waterAmount + 50)}
 					disabled={isPlusButtonDisabled}
 				>
 					<svg
@@ -152,10 +153,8 @@ const onSubmit = (data) => {
 							placeholder='HH:MM'
 							onChange={(e) => {
 								const [newHours, newMinutes] = e.target.value.split(":");
-								if (newHours && newMinutes) {
-									setFormHours(newHours);
-									setFormMinutes(newMinutes);
-								}
+								setFormHours(newHours);
+								setFormMinutes(newMinutes);
 								field.onChange(e);
 							}}
 						/>
