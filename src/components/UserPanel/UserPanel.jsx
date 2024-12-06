@@ -7,6 +7,7 @@ import sprite from '../../assets/sprite.svg';
 import UserSettingsModal from '../UserSettingsModal/UserSettingsModal';
 import LogOutModal from '../LogOutModal/LogOutModal';
 
+
 const UserPanel = () => {
   const [activeModal, setActiveModal] = useState(null);
   const [selectedWaterId, setSelectedWaterId] = useState(null);
@@ -63,9 +64,7 @@ const UserPanel = () => {
 						</div>
 						<svg className={css.icon}>
 							<use
-								href={`src/assets/sprite.svg#icon-vector-${
-									menuVisible ? "up" : "down"
-								}`}
+								href={`${sprite}#icon-vector-${menuVisible ? "up" : "down"}`}
 							/>
 						</svg>
 					</button>
@@ -76,7 +75,7 @@ const UserPanel = () => {
 								className={css.menuItem}
 							>
 								<svg className={css.iconSettings}>
-									<use href={`src/assets/sprite.svg#icon-settings`} />
+									<use href={`${sprite}#icon-settings`} />
 								</svg>
 								Setting
 							</button>
