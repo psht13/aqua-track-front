@@ -1,10 +1,9 @@
-
 .card {
   margin: auto;
   margin-bottom: 42px;
   border-radius: 15px;
   padding: 12px;
-  width: 198px; 
+  width: 198px;
   box-shadow: 0 4px 50px 0 rgba(0, 0, 0, 0.1);
   background: var(--main-white);
 }
@@ -27,6 +26,8 @@
 }
 
 .percent {
+  transition: all 250ms ease-in-out;
+
   left: var(--progress-percent, 0%);
   position: absolute;
   transform: translateX(-50%);
@@ -46,6 +47,7 @@
 }
 
 .active {
+  transition: all 250ms ease-in-out;
   width: var(--progress-percent, 0%);
   display: block;
   border-radius: 9px;
@@ -82,6 +84,8 @@
 }
 
 .circleWrap {
+  transition: all 250ms ease-in-out;
+
   left: var(--progress-percent, 0%);
   position: absolute;
   top: -50%;
@@ -92,7 +96,6 @@
 }
 
 @media screen and (min-width: 768px) {
-  
   .card {
     padding: 20px;
     width: 295px;
@@ -121,7 +124,6 @@
 }
 
 @media screen and (min-width: 1440px) {
-  
   .card {
     margin-bottom: 56px;
   }
