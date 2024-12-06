@@ -79,7 +79,7 @@ const UserPanel = () => {
 								onClick={() => handleOpenModal("settings")}
 								className={css.menuItem}
 							>
-								<svg className={css.icon}>
+								<svg className={css.iconSettings}>
 									<use href={`${sprite}#icon-settings`} />
 								</svg>
 								Setting
@@ -88,7 +88,7 @@ const UserPanel = () => {
 								onClick={() => handleOpenModal("logout")}
 								className={css.menuItem}
 							>
-								<svg className={css.icon}>
+								<svg className={css.iconSettings}>
 									<use href={`${sprite}#icon-log-out`} />
 								</svg>
 								Log out
