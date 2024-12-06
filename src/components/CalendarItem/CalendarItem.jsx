@@ -1,4 +1,4 @@
-import css from './CalendarItem.module.css';
+import css from "./CalendarItem.module.css";
 
 const CalendarItem = ({
   day,
@@ -32,13 +32,11 @@ const CalendarItem = ({
 
   return (
     <button
-      className={`${css.day} ${isToday ? css.today : ''}`}
+      className={`${css.day} ${isToday ? css.today : ""}`}
       onClick={handleDayClick}
       aria-label={`Select day ${day}`}
     >
-      <div
-        className={`${css.dayCircle} ${isSelected ? css.selected : ''}`}
-      >
+      <div className={`${css.dayCircle} ${isSelected ? css.selected : ""}`}>
         {day}
       </div>
       <small className={css.progress}>{progress}%</small>
