@@ -1,5 +1,4 @@
 .card {
-
   width: 100%;
   max-width: 704px;
   min-height: 736px;
@@ -8,11 +7,14 @@
   background: var(--background);
 }
 
-@media screen and (max-width: 768px) {
-  .card{
-    min-height: 738px;}
+@media screen and (min-width: 768px) {
+  .card {
+    min-height: 738px;
+    padding: 32px;
+  }
 }
 @media screen and (max-width: 375px) {
-  .card{
-  min-height: 770px;}
+  .card {
+    min-height: 770px;
+  }
 }
