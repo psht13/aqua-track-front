@@ -2,7 +2,7 @@ import { useState } from "react";
 import WaterModal from "../../components/WaterModal/WaterModal";
 import css from "../WaterItem/WaterItem.module.css";
 import DeleteWaterModal from "../DeleteWaterModal/DeleteWaterModal.jsx";
-import sprite from '../../assets/sprite.svg';
+import sprite from "../../assets/sprite.svg";
 
 const WaterItem = ({ item: { id, date, amount } }) => {
   const [isEditModalOpen, setEditModalIsOpen] = useState(false);
@@ -20,62 +20,54 @@ const WaterItem = ({ item: { id, date, amount } }) => {
   };
 
   return (
-		<>
-			<div className={css.waterContainer}>
-				<svg
-					className={css.icon}
-					width={32}
-					height={32}
-				>
-					<use href={`${sprite}#icon-glass`} />
-				</svg>
-				<div className={css.details}>
-					<span className={css.amount}>{amount} ml</span>
-					<span className={css.time}>{formatTime(date)}</span>
-				</div>
-				<div className={css.actions}>
-					<button
-						className={css.actionButton}
-						onClick={() => {
-							openModalEdit(
-								<WaterModal
-									operationType='edit'
-									id={id}
-									amount={amount}
-									myTime={date}
-								/>
-							);
-						}}
-					>
-						<svg
-							width={14}
-							height={14}
-							className={css.btnSvg}
-							//   style={{ stroke: "var(--main)" }}
-						>
-							<use href={`${sprite}#icon-edit`}></use>
-						</svg>
-					</button>
-					<button
-						className={css.actionButton}
-						onClick={() => {
-							openModalDelete(<DeleteWaterModal id={id} />);
-						}}
-						type='button'
-						aria-label='Delete item'
-					>
-						<svg
-							width={14}
-							height={14}
-							className={css.btnSvg}
-						>
-							<use href={`${sprite}#icon-trash`} />
-						</svg>
-					</button>
-				</div>
-			</div>
-		</>
-	);
+    <>
+      <div className={css.waterContainer}>
+        <svg className={css.icon} width={32} height={32}>
+          <use href={`${sprite}#icon-glass`} />
+        </svg>
+        <div className={css.details}>
+          <span className={css.amount}>{amount} ml</span>
+          <span className={css.time}>{formatTime(date)}</span>
+        </div>
+        <div className={css.actions}>
+          <button
+            className={css.actionButton}
+            onClick={() => {
+              openModalEdit(
+                <WaterModal
+                  operationType="edit"
+                  id={id}
+                  amount={amount}
+                  myTime={date}
+                />
+              );
+            }}
+          >
+            <svg
+              width={14}
+              height={14}
+              className={css.btnSvg}
+              //   style={{ stroke: "var(--main)" }}
+            >
+              <use href={`${sprite}#icon-edit`}></use>
+            </svg>
+          </button>
+          <button
+            className={css.actionButton}
+            onClick={() => {
+              openModalDelete(<DeleteWaterModal id={id} />);
+            }}
+            type="button"
+            aria-label="Delete item"
+          >
+            <svg width={14} height={14} className={css.btnSvg}>
+              <use href={`${sprite}#icon-trash`} />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </>
+  );
 };
 
 export default WaterItem;
