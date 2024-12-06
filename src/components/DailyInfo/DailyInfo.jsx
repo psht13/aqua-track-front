@@ -21,7 +21,7 @@ const DailyInfo = ({ selectedDate = new Date() }) => {
   return (
     <div className={css.container}>
       <div className={css.dateAndAction}>
-        <h2 className={css.date}>{formattedDate}</h2>
+        <h3 className={css.date}>{formattedDate}</h3>
         <AddWaterBtn
           className={css.customAddWaterBtn}
           onClick={() => console.log("Add water")}
