@@ -127,7 +127,7 @@ const UserSettingsForm = ({ onClose }) => {
 
   return (
     <div className={css.wrap}>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form noValidate onSubmit={handleSubmit(onSubmit)}>
         <h3 className={css.settingFormTitle}>Setting</h3>
         <div className={css.imgContainer}>
           <img
@@ -294,9 +294,9 @@ const UserSettingsForm = ({ onClose }) => {
                 type="number"
                 placeholder="1.8"
                 step="0.1"
-                min="1.8"
                 value={watch("dailyNorm")}
                 onChange={(e) => setValue("dailyNorm", e.target.value) * 1000}
+                onWheel={(e) => e.target.blur()}
               />
             </div>
           </div>
