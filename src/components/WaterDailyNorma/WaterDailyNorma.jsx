@@ -7,7 +7,7 @@ const WaterDailyNorma = () => {
 
   return (
     <div className={css.card}>
-      <p className={css.amount}>{dailyNorma / 1000}</p>
+      <p className={css.amount}>{dailyNorma / 1000} L</p>
       <p className={css.descr}>My daily norma</p>
     </div>
   );
