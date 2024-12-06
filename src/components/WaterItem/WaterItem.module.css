@@ -6,7 +6,7 @@
   height: 74px;
   padding: 14px;
   border-radius: 10px;
-  background-color: var(--white);
+  background-color: #fff;
   gap: 3px;
 }
 
@@ -57,6 +57,8 @@
 }
 
 .btnSvg {
+  stroke: black;
+  fill: #fff;
 }
 
 .water_info {
