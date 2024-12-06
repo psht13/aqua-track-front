@@ -69,7 +69,7 @@ const UserSettingsForm = ({ onClose }) => {
       setValue("email", user.email || "");
       setValue("weight", user.weight || "");
       setValue("activeTime", user.activeTime || "");
-      setValue("dailyNorm", user.dailyNorm / 1000 || "1.8");
+      setValue("dailyNorm", user.dailyNorm / 1000 || 1.8);
       setValue("gender", user.gender || "woman");
       if (user.avatarUrl) {
         setAvatarPreview(user.avatarUrl);
@@ -98,7 +98,7 @@ const UserSettingsForm = ({ onClose }) => {
       formData.append("gender", data.gender);
       formData.append("weight", data.weight || null);
       formData.append("activeTime", data.activeTime || null);
-      formData.append("dailyNorm", data.dailyNorm * 1000 || 1.8);
+      formData.append("dailyNorm", data.dailyNorm || 1.8);
 
       if (data.avatarUrl && data.avatarUrl[0]) {
         formData.append("avatarUrl", data.avatarUrl[0]);
@@ -294,9 +294,9 @@ const UserSettingsForm = ({ onClose }) => {
                 type="number"
                 placeholder="1.8"
                 step="0.1"
-                min="0"
+                min="1.8"
                 value={watch("dailyNorm")}
-                onChange={(e) => setValue("dailyNorm", e.target.value)}
+                onChange={(e) => setValue("dailyNorm", e.target.value) * 1000}
               />
             </div>
           </div>
