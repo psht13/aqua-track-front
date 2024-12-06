@@ -6,6 +6,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useDispatch } from "react-redux";
 import { addWater, updateWater } from "../../redux/water/operations";
 import css from "./WaterForm.module.css";
+import sprite from "../../assets/sprite.svg";
 
 const WaterForm = ({
   operationType,
@@ -103,91 +104,96 @@ const WaterForm = ({
   const isPlusButtonDisabled = waterAmount === 5000;
 
   return (
-    <form className={css.waterForm} onSubmit={handleSubmit(onSubmit)}>
-      <p className={css.amountWaterLabel}>Amount of water:</p>
-      <div className={css.btnBox}>
-        <button
-          className={css.buttons}
-          type="button"
-          onClick={() => handleWaterAmountChange(Math.max(waterAmount - 50, 0))}
-          disabled={isMinusButtonDisabled}
-        >
-          <svg
-            width={12}
-            height={12}
-            className={css.btnSvg}
-            style={{ stroke: "var(--main)" }}
-          >
-            <use href="src/assets/sprite.svg#icon-minus"></use>
-          </svg>
-        </button>
-        <span className={css.numberSpan}>{waterAmount} ml</span>
-        <button
-          className={css.buttons}
-          type="button"
-          onClick={() => handleWaterAmountChange(waterAmount + 50)}
-          disabled={isPlusButtonDisabled}
-        >
-          <svg
-            width={12}
-            height={12}
-            className={css.btnSvg}
-            style={{ stroke: "var(--main)" }}
-          >
-            <use href="src/assets/sprite.svg#icon-plus"></use>
-          </svg>
-        </button>
-      </div>
+		<form
+			className={css.waterForm}
+			onSubmit={handleSubmit(onSubmit)}
+		>
+			<p className={css.amountWaterLabel}>Amount of water:</p>
+			<div className={css.btnBox}>
+				<button
+					className={css.buttons}
+					type='button'
+					onClick={() => handleWaterAmountChange(Math.max(waterAmount - 50, 0))}
+					disabled={isMinusButtonDisabled}
+				>
+					<svg
+						width={12}
+						height={12}
+						className={css.btnSvg}
+						style={{ stroke: "var(--main)" }}
+					>
+						<use href={`${sprite}#icon-minus`}></use>
+					</svg>
+				</button>
+				<span className={css.numberSpan}>{waterAmount} ml</span>
+				<button
+					className={css.buttons}
+					type='button'
+					onClick={() => handleWaterAmountChange(waterAmount + 50)}
+					disabled={isPlusButtonDisabled}
+				>
+					<svg
+						width={12}
+						height={12}
+						className={css.btnSvg}
+					>
+						<use href={`${sprite}#icon-plus`}></use>
+					</svg>
+				</button>
+			</div>
 
-      <label className={css.recordingTimeLabel}>
-        Recording time:
-        <Controller
-          name="recordingTime"
-          control={control}
-          render={({ field }) => (
-            <input
-              {...field}
-              type="text"
-              className={clsx(css.recordingTimeInput)}
-              placeholder="HH:MM"
-              onChange={(e) => {
-                const [newHours, newMinutes] = e.target.value.split(":");
-                setFormHours(newHours);
-                setFormMinutes(newMinutes);
-                field.onChange(e);
-              }}
-            />
-          )}
-        />
-        {errors.recordingTime && (
-          <p className={css.error}>{errors.recordingTime.message}</p>
-        )}
-      </label>
+			<label className={css.recordingTimeLabel}>
+				Recording time:
+				<Controller
+					name='recordingTime'
+					control={control}
+					render={({ field }) => (
+						<input
+							{...field}
+							type='text'
+							className={clsx(css.recordingTimeInput)}
+							placeholder='HH:MM'
+							onChange={(e) => {
+								const [newHours, newMinutes] = e.target.value.split(":");
+								setFormHours(newHours);
+								setFormMinutes(newMinutes);
+								field.onChange(e);
+							}}
+						/>
+					)}
+				/>
+				{errors.recordingTime && (
+					<p className={css.error}>{errors.recordingTime.message}</p>
+				)}
+			</label>
 
-      <label className={css.waterValueLabel}>
-        Enter the value of the water used:
-        <Controller
-          name="waterValue"
-          control={control}
-          render={({ field }) => (
-            <input
-              {...field}
-              type="number"
-              value={waterAmount || ""}
-              onChange={(e) => handleWaterAmountChange(Number(e.target.value))}
-              className={css.waterValueInput}
-            />
-          )}
-        />
-        {errors.waterValue && (
-          <p className={css.error}>{errors.waterValue.message}</p>
-        )}
-      </label>
-      <button className={css.btnSave} type="submit">
-        Save
-      </button>
-    </form>
-  );
+			<label className={css.waterValueLabel}>
+				Enter the value of the water used:
+				<Controller
+					name='waterValue'
+					control={control}
+					render={({ field }) => (
+						<input
+							{...field}
+							type='number'
+							value={waterAmount || ""}
+							onChange={(e) => handleWaterAmountChange(Number(e.target.value))}
+							className={css.waterValueInput}
+						/>
+					)}
+				/>
+				{errors.waterValue && (
+					<p className={css.error}>{errors.waterValue.message}</p>
+				)}
+			</label>
+			<button
+				className={css.btnSave}
+				type='submit'
+			>
+				Save
+			</button>
+		</form>
+	);
 };
 
 export default WaterForm;
