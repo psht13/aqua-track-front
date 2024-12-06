@@ -14,23 +14,18 @@ import css from "./UserSettingsForm.module.css";
 const validationSchema = Yup.object().shape({
   avatarUrl: Yup.mixed(),
   gender: Yup.string().required("Gender is required"),
-  name: Yup.string()
-    .required("Name is required")
-    .min(3, "Name must be at least 3 characters"),
+  name: Yup.string().min(3, "Name must be at least 3 characters"),
   email: Yup.string().email("Invalid email").required("Email is required"),
   weight: Yup.number()
     .typeError("Weight must be a number")
-    .positive("Weight must be positive")
-    .required("Weight is required"),
+    .positive("Weight must be positive"),
   activeTime: Yup.number()
     .typeError("Active hours must be a number")
     .min(0, "Active hours cannot be negative")
-    .max(24, "Active hours cannot exceed 24")
-    .required("Active hours are required"),
+    .max(24, "Active hours cannot exceed 24"),
   dailyNorm: Yup.number()
     .typeError("Daily water norm must be a number")
-    .positive("Daily water norm must be positive")
-    .required("Daily water norm is required"),
+    .positive("Daily water norm must be positive"),
 });
 
 const UserSettingsForm = ({ onClose }) => {
