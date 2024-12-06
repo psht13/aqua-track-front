@@ -14,6 +14,7 @@ const WaterItem = ({ item: { id, date, amount } }) => {
 	const openModalDelete = () => setDeleteModalIsOpen(true);
 	const closeModalDelete = () => setDeleteModalIsOpen(false);
 
+
 	const formatTime = (time) => {
 		if (!time) return "Invalid time";
 		const dateObj = new Date(time);
