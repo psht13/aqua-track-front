@@ -58,31 +58,34 @@ const WaterForm = ({
   const onSubmit = (data) => {
     const combinedDateTime = new Date(
       `${year}-${month}-${day}T${formHours}:${formMinutes}:00`
-    ).toISOString();
+    );
+    const timeToSend = combinedDateTime.getTime().toString(); // Unix timestamp у мілісекундах
 
-    const waterData = {
-      id,
+    const addWaterValue = {
       amount: data.waterValue,
-      date: combinedDateTime,
+      date: timeToSend,
+    };
+
+    const editWaterValue = {
+      amount: data.waterValue,
+      date: timeToSend,
     };
 
     switch (operationType) {
-      case "edit":
-        dispatch(updateWater(waterData)).then((result) => {
-          if (!result.error) {
-            handleClose();
-          }
-        });
+      case "add": {
+        const result = dispatch(addWater(addWaterValue));
+        if (!result.error) {
+          handleClose();
+        }
         break;
-
-      case "add":
-        dispatch(addWater(waterData)).then((result) => {
-          if (!result.error) {
-            handleClose();
-          }
-        });
+      }
+      case "edit": {
+        const result = dispatch(updateWater({ id, ...editWaterValue }));
+        if (!result.error) {
+          handleClose();
+        }
         break;
-
+      }
       default:
         break;
     }
@@ -103,9 +106,7 @@ const WaterForm = ({
         <button
           className={css.buttons}
           type="button"
-          onClick={() =>
-            handleWaterAmountChange(Math.max(waterAmount - 50, 50))
-          }
+          onClick={() => handleWaterAmountChange(Math.max(waterAmount - 50, 0))}
           disabled={isMinusButtonDisabled}
         >
           <svg
@@ -121,9 +122,7 @@ const WaterForm = ({
         <button
           className={css.buttons}
           type="button"
-          onClick={() =>
-            handleWaterAmountChange(Math.min(waterAmount + 50, 5000))
-          }
+          onClick={() => handleWaterAmountChange(waterAmount + 50)}
           disabled={isPlusButtonDisabled}
         >
           <svg width={12} height={12} className={css.btnSvg}>
@@ -131,7 +130,6 @@ const WaterForm = ({
           </svg>
         </button>
       </div>
-
       <label className={css.recordingTimeLabel}>
         Recording time:
         <Controller
@@ -145,10 +143,8 @@ const WaterForm = ({
               placeholder="HH:MM"
               onChange={(e) => {
                 const [newHours, newMinutes] = e.target.value.split(":");
-                if (newHours && newMinutes) {
-                  setFormHours(newHours);
-                  setFormMinutes(newMinutes);
-                }
+                setFormHours(newHours);
+                setFormMinutes(newMinutes);
                 field.onChange(e);
               }}
             />
@@ -158,7 +154,7 @@ const WaterForm = ({
           <p className={css.error}>{errors.recordingTime.message}</p>
         )}
       </label>
-
+      >>>>>>> main
       <label className={css.waterValueLabel}>
         Enter the value of the water used:
         <Controller

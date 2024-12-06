@@ -72,7 +72,7 @@ export const getDayWater = createAsyncThunk(
 
       // console.log(data.date.today || 'No data available for today');
 
-      return data;
+      return { day, data };
     } catch (error) {
       console.error("Error fetching day water data:", error);
       return thunkAPI.rejectWithValue(

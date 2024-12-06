@@ -5,6 +5,16 @@ import { selectDayWater, selectTodayWater } from "../../redux/water/selectors";
 import { getDayWater } from "../../redux/water/operations";
 import WaterItem from "../WaterItem/WaterItem";
 
+// Функція для правильного форматування часу в AM/PM без змін часової зони
+const formatTime = (timeString) => {
+  const date = new Date(timeString); // Перетворюємо час у Date
+  // Якщо це не валідна дата, повертаємо порожній рядок
+  if (isNaN(date.getTime())) return "";
+
+  // Форматування часу в AM/PM
+  return date.toLocaleString([], { hour: '2-digit', minute: '2-digit', hour12: true });
+};
+
 const WaterList = ({ day }) => {
   const dispatch = useDispatch();
   const dayWaterList = useSelector(selectDayWater);
@@ -21,7 +31,6 @@ const WaterList = ({ day }) => {
     dispatch(getDayWater(formattedDay));
   }, [formattedDay, dispatch]);
   console.log("water list: dayWaterList", dayWaterList);
-  
 
   const waterData = day === today ? todayWaterList || [] : dayWaterList || [];
 
@@ -36,9 +45,12 @@ const WaterList = ({ day }) => {
   return (
     <div className={css.waterListContainer}>
       <ul className={css.waterList}>
-        {waterData.map((item,i) => (
-          <li key={item.id +' - '+ i}>
+        {waterData.map((item, i) => (
+          <li key={item.id + " - " + i}>
             <WaterItem item={item} />
+            {/* Форматуємо і відображаємо час для кожного елемента */}
+            <p>{formatTime(item.time)}</p> 
+            {/* Припустимо, що `item.time` містить строку з часом, отриману з бекенду */}
           </li>
         ))}
       </ul>

@@ -57,7 +57,7 @@ const waterSlice = createSlice({
       .addCase(addWater.pending, handlePending)
       .addCase(addWater.fulfilled, (state, { payload }) => {
         state.isLoading = false;
-        state.todayWater.push(payload.data);
+        state.todayWater = [...state.todayWater, payload.data]; // Додаємо новий елемент в кінець
         showSuccessToast("Water added successfully!");
       })
       .addCase(addWater.rejected, (state, { payload }) => {
@@ -68,25 +68,21 @@ const waterSlice = createSlice({
       .addCase(updateWater.pending, handlePending)
       .addCase(updateWater.fulfilled, (state, { payload }) => {
         state.isLoading = false;
-        const index = state.dayWater.findIndex(
-          (item) => item._id === payload.data._id
+        state.todayWater = state.todayWater.map(
+          (item) => (item._id === payload.data._id ? payload.data : item) // Оновлюємо елемент з відповідним id
         );
-        state.todayWater.splice(index, 1, payload.data);
         showSuccessToast("Water edited successfully!");
       })
       .addCase(updateWater.rejected, (state, { payload }) => {
         state.isLoading = false;
         state.error = payload;
-        showErrorToast("Oops, failed to remove water");
+        showErrorToast("Oops, failed to update water");
       })
       .addCase(deleteWater.pending, handlePending)
       .addCase(deleteWater.fulfilled, (state, { payload }) => {
         state.isLoading = false;
-        const searchIndex = state.dayWater.findIndex(
-          (item) => item._id === payload
-        );
-        state.dayWater.splice(searchIndex, 1);
-        state.todayWater = [...state.dayWater];
+        state.dayWater = state.dayWater.filter((item) => item._id !== payload); // Фільтруємо елемент за id
+        state.todayWater = state.dayWater; // Оновлюємо todayWater після видалення
         showSuccessToast("Water removed successfully!");
       })
       .addCase(deleteWater.rejected, (state, { payload }) => {
@@ -96,10 +92,11 @@ const waterSlice = createSlice({
       })
       .addCase(getDayWater.pending, handlePending)
       .addCase(getDayWater.fulfilled, (state, { payload }) => {
-        console.log("Payload from getDayWater:", payload);
         state.isLoading = false;
-        state.dayWater = payload;
-        state.todayWater = payload || [...state.todayWater];
+        state.dayWater = payload.data;
+        if (payload.day == new Date().toISOString().split("T")[0]) {
+          state.todayWater = payload.data; // Заміщуємо старі дані новими
+        }
       })
       .addCase(getDayWater.rejected, (state, { payload }) => {
         state.isLoading = false;
@@ -109,12 +106,12 @@ const waterSlice = createSlice({
       .addCase(getMonthWater.pending, handlePending)
       .addCase(getMonthWater.fulfilled, (state, { payload }) => {
         state.isLoading = false;
-        state.monthWater = payload.date;
+        state.monthWater = payload.date; // Заміщуємо місячні дані
       })
       .addCase(getMonthWater.rejected, (state, { payload }) => {
         state.isLoading = false;
         state.error = payload;
-        showErrorToast("Oops, failed to fetch the water of this day");
+        showErrorToast("Oops, failed to fetch the water of this month");
       })
       .addCase(logOut.fulfilled, (state) => {
         state.dayWater = [];

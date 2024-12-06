@@ -9,6 +9,14 @@ const CalendarItem = ({
 }) => {
   const today = new Date();
 
+  // Перетворення дати з часу на локальний
+  const adjustDateForLocalTime = (dateString) => {
+    const date = new Date(dateString);
+    // Приведення до місцевого часу, щоб уникнути зміщення на день
+    date.setHours(date.getHours() - date.getTimezoneOffset() / 60);
+    return date;
+  };
+
   const isToday =
     today.getFullYear() === currentDate.getFullYear() &&
     today.getMonth() === currentDate.getMonth() &&
@@ -27,7 +35,8 @@ const CalendarItem = ({
       currentDate.getMonth(),
       day
     );
-    onDaySelect(selectedDay);
+    // Перетворюємо дату на локальний формат перед передачею
+    onDaySelect(adjustDateForLocalTime(selectedDay).toISOString());
   };
 
   return (
