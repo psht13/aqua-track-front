@@ -9,101 +9,94 @@ import css from "./WaterForm.module.css";
 import sprite from "../../assets/sprite.svg";
 
 const WaterForm = ({
-  operationType,
-  myTime,
-  waterPortion,
-  id,
-  handleClose,
+	operationType,
+	myTime,
+	waterPortion,
+	id,
+	handleClose,
 }) => {
-  const [waterAmount, setWaterAmount] = useState(waterPortion || 50);
+	const [waterAmount, setWaterAmount] = useState(waterPortion || 50);
 
-  const dispatch = useDispatch();
+	const dispatch = useDispatch();
 
-  const dateFromUrl = new Date();
+	const dateFromUrl = new Date();
 
-  const year = dateFromUrl.getFullYear();
-  const month = String(dateFromUrl.getMonth() + 1).padStart(2, "0");
-  const day = String(dateFromUrl.getDate()).padStart(2, "0");
+	const year = dateFromUrl.getFullYear();
+	const month = String(dateFromUrl.getMonth() + 1).padStart(2, "0");
+	const day = String(dateFromUrl.getDate()).padStart(2, "0");
 
-  const currentTime =
-    operationType === "add" ? new Date() : myTime || dateFromUrl;
+	const currentTime = myTime ? new Date(myTime) : new Date();
+	const hours = String(currentTime.getHours()).padStart(2, "0");
+	const minutes = String(currentTime.getMinutes()).padStart(2, "0");
 
-  const hours = String(currentTime.getHours()).padStart(2, "0");
-  const minutes = String(currentTime.getMinutes()).padStart(2, "0");
+	const [formHours, setFormHours] = useState(hours);
+	const [formMinutes, setFormMinutes] = useState(minutes);
 
-  const [formHours, setFormHours] = useState(hours);
-  const [formMinutes, setFormMinutes] = useState(minutes);
+	const waterFormSchema = Yup.object().shape({
+		waterValue: Yup.number()
+			.required("Water amount is required")
+			.min(50, "Minimum value is 50 ml")
+			.max(5000, "Maximum value is 5000 ml"),
+		recordingTime: Yup.string()
+			.required("Recording time is required")
+			.matches(/^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$/, "Invalid time format"),
+	});
 
-  const waterFormSchema = Yup.object().shape({
-    waterValue: Yup.number()
-      .required("Water amount is required")
-      .min(50, "Minimum value is 50 ml")
-      .max(5000, "Maximum value is 5000 ml"),
-    recordingTime: Yup.string()
-      .required("Recording time is required")
-      .matches(/^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$/, "Invalid time format"),
-  });
+	const {
+		control,
+		handleSubmit,
+		setValue,
+		formState: { errors },
+	} = useForm({
+		resolver: yupResolver(waterFormSchema),
+		defaultValues: {
+			waterValue: waterAmount.toString(),
+			recordingTime: `${formHours}:${formMinutes}`,
+		},
+	});
 
-  const {
-    control,
-    handleSubmit,
-    setValue,
-    formState: { errors },
-  } = useForm({
-    resolver: yupResolver(waterFormSchema),
-    defaultValues: {
-      waterValue: waterAmount.toString(),
-      recordingTime: `${formHours}:${formMinutes}`,
-    },
-  });
+const onSubmit = (data) => {
+	const combinedDateTime = new Date(
+		`${year}-${month}-${day}T${formHours}:${formMinutes}:00`
+	).toISOString(); 
 
-  const onSubmit = (data) => {
-    const combinedDateTime = new Date(
-      `${year}-${month}-${day}T${formHours}:${formMinutes}:00`
-    );
-    const timeToSend = combinedDateTime.getTime().toString(); // Unix timestamp у мілісекундах
+	const waterData = {
+		id, 
+		amount: data.waterValue,
+		date: combinedDateTime,
+	};
 
-    const addWaterValue = {
-      amount: data.waterValue,
-      date: timeToSend,
-    };
+	switch (operationType) {
+		case "edit":
+			dispatch(updateWater(waterData)).then((result) => {
+				if (!result.error) {
+					handleClose();
+				}
+			});
+			break;
 
-    const editWaterValue = {
-      amount: data.waterValue,
-      date: timeToSend,
-    };
+		case "add":
+			dispatch(addWater(waterData)).then((result) => {
+				if (!result.error) {
+					handleClose();
+				}
+			});
+			break;
 
-    switch (operationType) {
-      case "add": {
-        const result = dispatch(addWater(addWaterValue));
-        if (!result.error) {
-          handleClose();
-        }
-        break;
-      }
-      case "edit": {
-        const result = dispatch(
-          updateWater({ id: id, formData: editWaterValue })
-        );
-        if (!result.error) {
-          handleClose();
-        }
-        break;
-      }
-      default:
-        break;
-    }
-  };
+		default:
+			break;
+	}
+};
 
-  const handleWaterAmountChange = (amount) => {
-    setWaterAmount(amount);
-    setValue("waterValue", amount.toString());
-  };
+	const handleWaterAmountChange = (amount) => {
+		setWaterAmount(amount);
+		setValue("waterValue", amount.toString());
+	};
 
-  const isMinusButtonDisabled = waterAmount === 50;
-  const isPlusButtonDisabled = waterAmount === 5000;
+	const isMinusButtonDisabled = waterAmount === 50;
+	const isPlusButtonDisabled = waterAmount === 5000;
 
-  return (
+	return (
 		<form
 			className={css.waterForm}
 			onSubmit={handleSubmit(onSubmit)}
@@ -113,7 +106,9 @@ const WaterForm = ({
 				<button
 					className={css.buttons}
 					type='button'
-					onClick={() => handleWaterAmountChange(Math.max(waterAmount - 50, 0))}
+					onClick={() =>
+						handleWaterAmountChange(Math.max(waterAmount - 50, 50))
+					}
 					disabled={isMinusButtonDisabled}
 				>
 					<svg
@@ -129,7 +124,9 @@ const WaterForm = ({
 				<button
 					className={css.buttons}
 					type='button'
-					onClick={() => handleWaterAmountChange(waterAmount + 50)}
+					onClick={() =>
+						handleWaterAmountChange(Math.min(waterAmount + 50, 5000))
+					}
 					disabled={isPlusButtonDisabled}
 				>
 					<svg
@@ -155,8 +152,10 @@ const WaterForm = ({
 							placeholder='HH:MM'
 							onChange={(e) => {
 								const [newHours, newMinutes] = e.target.value.split(":");
-								setFormHours(newHours);
-								setFormMinutes(newMinutes);
+								if (newHours && newMinutes) {
+									setFormHours(newHours);
+									setFormMinutes(newMinutes);
+								}
 								field.onChange(e);
 							}}
 						/>
