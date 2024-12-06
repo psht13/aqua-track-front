@@ -130,7 +130,6 @@ const WaterForm = ({
           </svg>
         </button>
       </div>
-
       <label className={css.recordingTimeLabel}>
         Recording time:
         <Controller
@@ -155,7 +154,7 @@ const WaterForm = ({
           <p className={css.error}>{errors.recordingTime.message}</p>
         )}
       </label>
-
+      >>>>>>> main
       <label className={css.waterValueLabel}>
         Enter the value of the water used:
         <Controller

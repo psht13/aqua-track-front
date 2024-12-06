@@ -1,6 +1,6 @@
-import { useMemo } from 'react';
-import CalendarItem from '../CalendarItem/CalendarItem';
-import css from './Calendar.module.css';
+import { useMemo } from "react";
+import CalendarItem from "../CalendarItem/CalendarItem";
+import css from "./Calendar.module.css";
 
 const getDaysInMonth = (date) => {
   const year = date.getFullYear();
@@ -9,7 +9,12 @@ const getDaysInMonth = (date) => {
   return Array.from({ length: daysInMonth }, (_, i) => i + 1);
 };
 
-const Calendar = ({ currentMonth, onDaySelect, waterRecords = [], selectedDate }) => {
+const Calendar = ({
+  currentMonth,
+  onDaySelect,
+  waterRecords = [],
+  selectedDate,
+}) => {
   const dailyProgress = useMemo(() => {
     const year = currentMonth.getFullYear();
     const month = currentMonth.getMonth();
