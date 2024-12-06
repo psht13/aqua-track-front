@@ -1,28 +1,35 @@
 .container {
   display: flex;
   flex-direction: column;
-  padding: 16px;
   border-radius: 16px;
   color: var(--mein-text);
   gap: 20px;
+  padding-bottom: 40px;
+  @media screen and (min-width: 768px) {
+    padding-bottom: 49px;
+}
 }
 
 .header {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  align-items: start;
+  flex-direction: column;
+  @media screen and (min-width: 768px) {
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+}
 }
 
-@media screen and (max-width: 767px) {
-  .header {
-    align-items: start;
-    flex-direction: column;
-  }
-}
+
 
 .greeting {
   font-size: 36px;
   font-weight: 400;
+  margin-bottom: 20px;
+  @media screen and (min-width: 768px) {
+    margin-bottom: 0;
+  }
 }
 
 .username {
@@ -43,10 +50,13 @@
   border: none;
   background: none;
   cursor: pointer;
+  gap: 8px;
+  @media screen and (min-width: 768px) {
+    gap: 10px;
+  }
 }
 
 .userName {
-  margin-right: 10px;
   color: #fff;
   font-size: 16px;
   font-weight: bold;
@@ -70,6 +80,11 @@
   height: 16px;
   stroke: #fff;
   fill: #323f47;
+@media screen and (min-width: 768px) {
+  width: 20px;
+  height: 20px;
+  }
+  
 }
 
 .iconSettings {

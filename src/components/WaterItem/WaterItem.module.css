@@ -2,22 +2,30 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 149px;
-  height: 74px;
-  padding: 14px;
+  padding: 14px 19px;
   border-radius: 10px;
   background-color: #fff;
-  gap: 3px;
+  gap: 10px;
+  @media screen and (min-width: 768px) {
+    width: 192px;
+    height: 86px;
+    gap: 20px;
+  }
 }
 
 .icon {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 24px;
-  height: 24px;
+  width: 27px;
+  height: 30px;
   stroke: transparent;
   fill: var(--accent);
+  @media screen and (min-width: 768px) {
+    width: 44px;
+    height: 45px;
+    gap: 20px;
+  }
 }
 
 .details {
@@ -32,6 +40,7 @@
   color: var(--text);
   font-size: 15px;
   font-weight: bold;
+  text-wrap: nowrap;
 }
 
 .time {

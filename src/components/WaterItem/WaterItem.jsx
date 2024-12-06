@@ -1,9 +1,8 @@
 import { useState } from "react";
 import WaterModal from "../../components/WaterModal/WaterModal";
 import css from "../WaterItem/WaterItem.module.css";
-import glass from '../../assets/sprite.svg#icon-glass';
 import DeleteWaterModal from "../DeleteWaterModal/DeleteWaterModal.jsx";
-
+import sprite from '../../assets/sprite.svg';
 
 const WaterItem = ({ item: { id, date, amount } }) => {
   const [isEditModalOpen, setEditModalIsOpen] = useState(false);
@@ -28,7 +27,7 @@ const WaterItem = ({ item: { id, date, amount } }) => {
 					width={32}
 					height={32}
 				>
-					<use href={glass} />
+					<use href={`${sprite}#icon-glass`} />
 				</svg>
 				<div className={css.details}>
 					<span className={css.amount}>{amount} ml</span>
@@ -54,7 +53,7 @@ const WaterItem = ({ item: { id, date, amount } }) => {
 							className={css.btnSvg}
 							//   style={{ stroke: "var(--main)" }}
 						>
-							<use href='src/assets/sprite.svg#icon-edit'></use>
+							<use href={`${sprite}#icon-edit`}></use>
 						</svg>
 					</button>
 					<button
@@ -70,7 +69,7 @@ const WaterItem = ({ item: { id, date, amount } }) => {
 							height={14}
 							className={css.btnSvg}
 						>
-							<use href='src/assets/sprite.svg#icon-trash' />
+							<use href={`${sprite}#icon-trash`} />
 						</svg>
 					</button>
 				</div>
