@@ -93,8 +93,10 @@ const waterSlice = createSlice({
       .addCase(getDayWater.pending, handlePending)
       .addCase(getDayWater.fulfilled, (state, { payload }) => {
         state.isLoading = false;
-        state.dayWater = payload;
-        state.todayWater = payload; // Заміщуємо старі дані новими
+        state.dayWater = payload.data;
+        if (payload.day == new Date().toISOString().split("T")[0]) {
+          state.todayWater = payload.data; // Заміщуємо старі дані новими
+        }
       })
       .addCase(getDayWater.rejected, (state, { payload }) => {
         state.isLoading = false;
